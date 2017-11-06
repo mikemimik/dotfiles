@@ -13,8 +13,10 @@ export PATH="$PATH:/usr/local/sbin"
 export PATH="$HOME/repos/flutter/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 
-# Load NVM
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# Check if NVM exists then source it
+if [ -f "$NVM_DIR/nvm.sh" ]; then
+    source "$NVM_DIR/nvm.sh"
+fi
 
 # TERMINAL IMPROVEMENT CONFIGS
 alias ls='ls -aF'
