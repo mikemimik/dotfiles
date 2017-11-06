@@ -1,0 +1,43 @@
+{
+    // Workbench
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.colorTheme": "Monokai",
+    // Window
+    "window.zoomLevel": 0,
+    "window.nativeTabs": true,
+    // Terminal
+    "terminal.external.osxExec": "iTerm.app",
+    // Plugin
+    // - Material Icon Theme
+    "material-icon-theme.showUpdateMessage": false,
+    // - ESLint
+    "eslint.autoFixOnSave": true,
+    "eslint.options": {
+        "configFile": "/Code/.eslintrc",
+        "rules": {
+            "space-before-function-paren": [
+                "error",
+                "never"
+            ]
+        }
+    },
+    // - Flow
+    "flow.useNPMPackagedFlow": true,
+    // - Dart Code
+    "dart.sdkPath": "~/repos/flutter/bin/cache/dark-sdk",
+    "dart.debugSdkLibraries": true,
+    "dart.debugExternalLibraries": true,
+    "dart.showTodos": true,
+    "dart.showLintNames": true,
+    "dart.lineLength": 100,
+    // Editor
+    "editor.stablePeek": true,
+    "editor.renderIndentGuides": false,
+    "editor.autoIndent": true,
+    // "editor.formatOnSave": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.formatOnPaste": true,
+    // Javascript
+    "javascript.validate.enable": false
+}
