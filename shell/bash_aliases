@@ -1,0 +1,13 @@
+# Set personal aliases, overriding those provided by framework or bash_profile
+
+# Convenience
+alias cask='brew cask'
+alias where='which'
+alias brwe='brew' #typoes
+
+# Flush DNS cache
+alias flushdns="dscacheutil -flushcache"
+
+# Show/hide all desktop icons (useful when presenting)
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
