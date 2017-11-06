@@ -112,7 +112,7 @@ file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
 defaults write com.apple.dock show-process-indicators -bool true
 
 # Add several spacers
-defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
+# defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
 
 ###############################################################################
 # Do some clean up work.                                                      #
@@ -121,7 +121,7 @@ defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-ty
 for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
            "Dock" "Finder" "Mail" "Messages" "Safari" "SystemUIServer" \
            "Terminal" "Twitter" "iCal"; do
-           kill all "${app}" > /dev/null 2>&1
+           killall "${app}" &> /dev/null
 done
 
 # Wait a bit before moving on...
