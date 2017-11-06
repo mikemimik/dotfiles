@@ -1,0 +1,27 @@
+# ENVIRONMENT CONFIGS
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
+# PATH CONFIGS
+export PATH="$PATH:/usr/local/sbin"
+export PATH="$HOME/repos/flutter/bin:$PATH"
+export NVM_DIR="$HOME/.nvm"
+
+# Load NVM
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+# TERMINAL IMPROVEMENT CONFIGS
+alias ls='ls -aF'
+alias ll='ls -alF'
+alias howbig='du -skh'
+cd() { builtin cd "$@"; ll; }
+alias cd..='cd ../'
+alias ..='cd ../'
+alias ...='cd ../../'
+alias .3='cd ../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../../'
+alias ~='cd ~'
+alias f='open -a Finder ./'
+alias c='clear'
+ql() { qlmanage -p "$*" >& /dev/null; }
