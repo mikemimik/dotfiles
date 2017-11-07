@@ -18,6 +18,11 @@ if [ -f "$NVM_DIR/nvm.sh" ]; then
     source "$NVM_DIR/nvm.sh"
 fi
 
+# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+if [ -e "$HOME/.ssh/config" ]; then
+    complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+fi
+
 # TERMINAL IMPROVEMENT CONFIGS
 alias ls='ls -aF'
 alias ll='ls -alF'
