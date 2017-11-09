@@ -5,6 +5,10 @@ alias cask='brew cask'
 alias where='which'
 alias brwe='brew' #typoes
 
+
+# RESOLVER aliases
+alias r='rslv'
+
 # Flush DNS cache
 alias flushdns="dscacheutil -flushcache"
 
