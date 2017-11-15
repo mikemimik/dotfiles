@@ -12,6 +12,7 @@
     // - Material Icon Theme
     "material-icon-theme.showUpdateMessage": false,
     // - ESLint
+    "eslint.enable": true,
     "eslint.autoFixOnSave": true,
     "eslint.options": {
         "configFile": "/Code/.eslintrc",
@@ -22,6 +23,11 @@
             ]
         }
     },
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact"
+    ],
+    "eslint.run": "onSave",
     // - Flow
     "flow.useNPMPackagedFlow": true,
     // - Dart Code
@@ -35,9 +41,15 @@
     "editor.stablePeek": true,
     "editor.renderIndentGuides": false,
     "editor.autoIndent": true,
-    // "editor.formatOnSave": true,
     "editor.multiCursorModifier": "ctrlCmd",
+    "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
     // Javascript
-    "javascript.validate.enable": false
+    "javascript.validate.enable": false,
+    "javascript.format.enable": false,
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": false,
+    // Typescript
+    "typescript.autoImportSuggestions.enabled": false,
+    "typescript.format.insertSpaceBeforeFunctionParenthesis": false,
+    "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false
 }
