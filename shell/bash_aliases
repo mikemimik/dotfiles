@@ -16,5 +16,8 @@ alias flushdns="dscacheutil -flushcache"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 
+# restart macOS camera
+alias killcamera="sudo killall AppleCameraAssistant; sudo killall VDCAssistant"
+
 # NPM aliases
 alias npmglist="npm list -g --depth=0"
