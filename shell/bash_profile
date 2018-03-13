@@ -28,7 +28,7 @@ alias ls='ls -aF'
 alias ll='ls -alF'
 alias lsd='ls -l | grep "^d"'
 alias howbig='du -skh'
-cd() { builtin cd "$@"; ll; }
+cd() { builtin cd "$@"; clear; ll; }
 alias cd..='cd ../'
 alias ..='cd ../'
 alias ...='cd ../../'
