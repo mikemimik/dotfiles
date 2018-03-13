@@ -21,3 +21,30 @@ alias killcamera="sudo killall AppleCameraAssistant; sudo killall VDCAssistant"
 
 # NPM aliases
 alias npmglist="npm list -g --depth=0"
+
+# Docker aliases
+alias d=docker
+alias dc=docker-compose
+docker_exec() {
+    container=$1
+    shift
+    d exec -it $container $@ 
+}
+docker_bash() {
+    d exec -it $1 bash
+}
+alias dbash=docker_bash
+alias de=docker_exec
+docker_stop_and_remove() {
+    d stop $1 && d rm $1
+}
+alias dsr=docker_stop_and_remove
+alias dcl='dc logs -f'
+alias dpsa='d ps -a'
+alias dps='dpsa --format "table {{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}"'
+alias dpsp='dpsa --format "table {{.Names}}\t{{.Ports}}"'
+alias di='d images'
+alias dpsjson='dpsa --format "{ \"name\": {{json .Names}}, \"status\": {{json .Status}} }"'
+
+# Amazon AWS aliases
+alias a=aws
