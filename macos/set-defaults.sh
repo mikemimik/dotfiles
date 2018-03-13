@@ -110,6 +110,8 @@ file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
 
 # Show indicator lights for open applications in the Dock
 defaults write com.apple.dock show-process-indicators -bool true
+defaults write com.apple.dock static-only -bool TRUE
+# defaults write com.apple.dock pinning -string start
 
 # Add several spacers
 # defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
