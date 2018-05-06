@@ -2,9 +2,22 @@
     // Workbench
     "workbench.iconTheme": "material-icon-theme",
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.colorTheme": "Monokai",
+    "workbench.colorTheme": "Material Theme",
+    "workbench.colorCustomizations": {
+        "activityBarBadge.background": "#00BCD4",
+        "list.activeSelectionForeground": "#00BCD4",
+        "list.inactiveSelectionForeground": "#00BCD4",
+        "list.highlightForeground": "#00BCD4",
+        "scrollbarSlider.activeBackground": "#00BCD450",
+        "editorSuggestWidget.highlightForeground": "#00BCD4",
+        "textLink.foreground": "#00BCD4",
+        "progressBar.background": "#00BCD4",
+        "pickerGroup.foreground": "#00BCD4",
+        "tab.activeBorder": "#00BCD4",
+        "notificationLink.foreground": "#00BCD4"
+    },
     // Window
-    "window.zoomLevel": 0,
+    "window.zoomLevel": -1,
     "window.nativeTabs": true,
     // Terminal
     "terminal.external.osxExec": "iTerm.app",
@@ -14,15 +27,6 @@
     // - ESLint
     "eslint.enable": true,
     "eslint.autoFixOnSave": true,
-    "eslint.options": {
-        "configFile": "/Code/.eslintrc",
-        "rules": {
-            "space-before-function-paren": [
-                "error",
-                "never"
-            ]
-        }
-    },
     "eslint.validate": [
         "javascript",
         "javascriptreact"
@@ -37,6 +41,29 @@
     "dart.showTodos": true,
     "dart.showLintNames": true,
     "dart.lineLength": 100,
+    // - Standard Style
+    "standard.semistandard": true,
+    "standard.usePackageJson": true,
+    // - Material theme
+    "materialTheme.cache.workbench.settings": {
+        "themeColours": "Darker",
+        "accentPrevious": "Acid Lime",
+        "accent": "Cyan"
+    },
+    // - GitLens
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": false,
+        "suppressShowKeyBindingsNotice": true,
+        "suppressUpdateNotice": true,
+        "suppressWelcomeNotice": false
+    },
+    "gitlens.keymap": "alternate",
     // Editor
     "editor.stablePeek": true,
     "editor.renderIndentGuides": false,
@@ -44,12 +71,23 @@
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
+    "editor.tabSize": 2,
     // Javascript
     "javascript.validate.enable": false,
     "javascript.format.enable": false,
     "javascript.format.insertSpaceBeforeFunctionParenthesis": false,
+    // JSON
+    "json.format.enable": false,
     // Typescript
     "typescript.autoImportSuggestions.enabled": false,
     "typescript.format.insertSpaceBeforeFunctionParenthesis": false,
-    "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false
+    "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+    // File Associations
+    "files.associations": {
+        "*bash_profile*": "shellscript",
+        "*bash_aliases": "shellscript",
+        "*rc": "shellscript",
+        "*Dockerfile*": "dockerfile",
+        ".gitignore": "shellscript"
+    },
 }
