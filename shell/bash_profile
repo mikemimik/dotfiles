@@ -23,6 +23,15 @@ if [ -e "$HOME/.ssh/config" ]; then
     complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 fi
 
+# Add bash-git-prompt
+if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+    __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
+    source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
+fi
+
+# BASH-GIT-PROMPT OPTIONS
+GIT_PROMPT_THEME=Single_line_Dark
+
 # TERMINAL IMPROVEMENT CONFIGS
 alias ls='ls -aF'
 alias ll='ls -alF'
