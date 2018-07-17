@@ -16,6 +16,7 @@ export NVM_DIR="$HOME/.nvm"
 # Check if NVM exists then source it
 if [ -f "$NVM_DIR/nvm.sh" ]; then
     source "$NVM_DIR/nvm.sh"
+    source "$NVM_DIR/bash_completion"
 fi
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
