@@ -12,6 +12,10 @@ alias core-services="cd /Code/core-services"
 alias core-client="cd /Code/core-client"
 alias core-packages="cd /Code/npm-packages"
 
+# PERSONAL Computer aliases
+alias repos="cd ~/repos"
+alias dotfiles="cd ~/dotfiles"
+
 # Flush DNS cache
 alias flushdns="dscacheutil -flushcache"
 
