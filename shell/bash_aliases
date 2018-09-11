@@ -11,6 +11,7 @@ alias r='rslv'
 alias core-services="cd /Code/core-services"
 alias core-client="cd /Code/core-client"
 alias core-packages="cd /Code/npm-packages"
+alias cli-tool="cd /Code/dev-tooling/resolver-cli"
 
 # PERSONAL Computer aliases
 alias repos="cd ~/repos"
