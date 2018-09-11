@@ -15,7 +15,6 @@ alias cli-tool="cd /Code/dev-tooling/resolver-cli"
 
 # PERSONAL Computer aliases
 alias repos="cd ~/repos"
-alias dotfiles="cd ~/dotfiles"
 
 # Flush DNS cache
 alias flushdns="dscacheutil -flushcache"
