@@ -1,0 +1,70 @@
+# Set functions for working with bash
+
+escape() {
+  message=$1
+  echo "${message}"
+}
+
+# TODO(mperrotte): create function to find out where dotfiles repo was cloned to
+subcmd_setup_bash_do() {
+  cp ~/dotfiles/shell/bashrc ~/.bashrc
+  cp ~/dotfiles/shell/bash_profile ~/.bash_profile
+  cp ~/dotfiles/shell/bash_aliases ~/.bash_aliases
+  cp ~/dotfiles/shell/bash_functions ~/.bash_functions
+  echo "Bash setup complete."
+  return;
+}
+
+subcmd_setup_bash() {
+  echo "Are you sure you want to init bash dotfiles? (y/n)"
+  read confirm
+  case ${confirm} in
+    y | Y)
+      subcmd_setup_bash_do
+      ;;
+    n | N)
+      return;
+      ;;
+    *)
+      echo "Invalid respose; cancelling"
+      return;
+  esac
+}
+
+cmd_setup() {
+  sub_command=$1
+  case ${sub_command} in
+    bash)
+      subcmd_setup_bash
+      ;;
+    *)
+      echo "Usage: $0 {bash}"
+      return;
+  esac
+}
+
+dotfiles() {
+  command=$1
+  sub_command=$2
+
+  ##
+  # NOTE(mperrotte):
+  # if this function is used with no command then it should default
+  # to the "aliased" behaviour which is to change directory to
+  # the dotfiles folder
+  ##
+  if [ -z "${command}" ]; then
+    cd ~/dotfiles
+    return;
+  fi
+
+  case ${command} in
+    setup)
+      # Call setup function with sub command
+      cmd_setup ${sub_command}
+      ;;
+    *)
+      echo "Usage: $0 {setup}"
+      return;
+  esac
+}
