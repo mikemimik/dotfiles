@@ -3,6 +3,10 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
+
 # ENVIRONMENT CONFIGS
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
