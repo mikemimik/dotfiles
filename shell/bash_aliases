@@ -12,6 +12,7 @@ alias core-services="cd /Code/core-services"
 alias core-client="cd /Code/core-client"
 alias core-packages="cd /Code/npm-packages"
 alias resolver-cli="cd /Code/dev-tooling/resolver-cli"
+alias fdc="cd /Code/dev-tooling/fdc"
 
 # PERSONAL Computer aliases
 alias repos="cd ~/repos"
