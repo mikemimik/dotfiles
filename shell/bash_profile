@@ -15,6 +15,7 @@ export CLICOLOR_FORCE=1
 # PATH CONFIGS
 export PATH="$PATH:/usr/local/sbin"
 export PATH="$HOME/repos/flutter/bin:$PATH"
+export PATH="/usr/local/opt/curl/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 
 # Check if NVM exists then source it
