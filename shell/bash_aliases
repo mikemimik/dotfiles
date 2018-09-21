@@ -37,6 +37,9 @@ alias npmglist="npm list -g --depth=0"
 # Gatsby aliases
 alias gat=gatsby
 
+# Terraform aliases
+alias tf=terraform
+
 # Docker
 alias d=docker
 alias dc=docker-compose
