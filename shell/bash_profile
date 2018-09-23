@@ -39,8 +39,8 @@ fi
 GIT_PROMPT_THEME=Single_line_Dark
 
 # TERMINAL IMPROVEMENT CONFIGS
-alias ls='ls -aF'
-alias ll='ls -alF'
+alias ls='ls -aF --color=auto'
+alias ll='ls -alF --color=auto'
 alias lsd='ls -l | grep "^d"'
 alias howbig='du -skh'
 cd() { builtin cd "$@"; clear; ll; }
