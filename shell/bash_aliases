@@ -5,7 +5,6 @@ alias cask='brew cask'
 alias where='which'
 alias brwe='brew' #typoes
 
-
 # RESOLVER aliases
 alias r='rslv'
 alias core-services="cd /Code/core-services"
@@ -17,8 +16,9 @@ alias fdc="cd /Code/dev-tooling/fdc"
 # PERSONAL Computer aliases
 alias repos="cd ~/repos"
 
-# Flush DNS cache
+# Networking aliases
 alias flushdns="dscacheutil -flushcache"
+alias getip="curl icanhazip.com"
 
 # Show/hide all desktop icons (useful when presenting)
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
