@@ -40,6 +40,10 @@ alias gat=gatsby
 # Terraform aliases
 alias tf=terraform
 
+# Git aliases
+alias gs="git status"
+alias gc="git commit -m"
+
 # Docker
 alias d=docker
 alias dc=docker-compose
