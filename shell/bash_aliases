@@ -41,6 +41,9 @@ alias gat=gatsby
 # Terraform aliases
 alias tf=terraform
 
+# Kubernetes aliases
+alias k=kubectl
+
 # Git aliases
 alias gs="git status"
 alias gc="git commit -m"
