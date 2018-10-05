@@ -15,6 +15,9 @@ export CLICOLOR_FORCE=1
 # GOLANG CONFIG
 export GOPATH="$HOME/repos/go"
 
+# NVM CONFIG
+export NVM_DIR="$HOME/.nvm"
+
 # PATH CONFIGS
 declare -a pathArgs=(
     "$HOME/repos/flutter/bin"
