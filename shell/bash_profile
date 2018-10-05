@@ -16,11 +16,21 @@ export CLICOLOR_FORCE=1
 export GOPATH="$HOME/repos/go"
 
 # PATH CONFIGS
-export PATH="$PATH:/usr/local/sbin"
-export PATH="$PATH:$HOME/repos/flutter/bin"
-export PATH="$PATH:$GOPATH/bin"
-export PATH="$PATH:/usr/local/opt/curl/bin"
-export NVM_DIR="$HOME/.nvm"
+declare -a pathArgs=(
+    "$HOME/repos/flutter/bin"
+    "$GOPATH/bin"
+    "/usr/local/opt/curl/bin"
+    "$HOME/.nvm"
+)
+NEXT_PATH="/usr/local/bin:/usr/local/share:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
+for pathVar in ${pathArgs[*]};
+do
+    NEXT_PATH="${pathVar}:$NEXT_PATH"
+done
+export PATH="$NEXT_PATH"
+
+# NOTE(mperrotte): incase things break, this is the default PATH
+# export PATH="/usr/bin:/bin:/sbin:/usr/local/bin:/usr/local/sbin:/Users/mperrotte/.nvm"
 
 # Check if NVM exists then source it
 if [ -f "$NVM_DIR/nvm.sh" ]; then
