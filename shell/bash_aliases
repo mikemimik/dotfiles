@@ -75,6 +75,7 @@ alias dclean='docker images --no-trunc | grep "<none>" | awk '\''{ print $3 }'\'
 
 # Amazon AWS aliases
 alias a=aws
+alias aws-auth=aws-iam-authenticator
 
 ########################################
 # awscli / localstack
