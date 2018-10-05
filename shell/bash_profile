@@ -17,8 +17,8 @@ export GOPATH="$HOME/repos/go"
 
 # PATH CONFIGS
 export PATH="$PATH:/usr/local/sbin"
-export PATH="$HOME/repos/flutter/bin:$PATH"
-export PATH="$GOPATH/bin:$PATH"
+export PATH="$PATH:$HOME/repos/flutter/bin"
+export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:/usr/local/opt/curl/bin"
 export NVM_DIR="$HOME/.nvm"
 
