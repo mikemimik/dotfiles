@@ -55,12 +55,12 @@ alias gd="git diff"
 alias d=docker
 alias dc=docker-compose
 docker_bash() {
-    d exec -it $1 bash
+    d exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it $1 bash
 }
 docker_exec() {
     container=$1
     shift
-    d exec -it $container $@
+    d exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it $container $@
 }
 alias dbash=docker_bash
 alias de=docker_exec
