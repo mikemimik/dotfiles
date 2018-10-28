@@ -1,0 +1,52 @@
+# Homebrew Application list
+
+## Brew's
+- awscli
+- bash-git-prompt
+- findutils
+- git
+- go
+- htop
+- hyper
+- irssi
+- jq
+- kubernetes-cli
+- kubernetes-helm
+- openssl
+- python
+- ruby
+- telnet
+- terraform
+- heroku/brew/heroku
+
+## Cask's
+- 1password
+- alfred
+- amethyst                   // windows manager
+- bartender
+- dash
+- discord
+- dropbox
+- evernote
+- firefox-developer-edition
+- flux
+- fly                       // concourse cli
+- github                    // github desktop app
+- google-chrome
+- insomnia
+- itsycal
+- kap
+- karabiner-elements        // keyboard remapper
+- logitech-options
+- ngrok
+- skype
+- slack
+- sourcetree
+- specticle                 // windows manager
+- spotify
+- tableplus                 // database IDE tool
+- virtualbox
+- viscosity
+- visual-studio-code
+- vlc
+- zoomus
