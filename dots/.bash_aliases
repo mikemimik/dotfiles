@@ -1,9 +1,27 @@
 # Set personal aliases, overriding those provided by framework or bash_profile
 
+# TERMINAL IMPROVEMENT CONFIGS
+alias ls='ls -aFG'
+alias ll='ls -alFG'
+alias lsd='ls -l | grep "^d" --color'
+alias howqbig='du -skh'
+alias cd..='cd ../'
+alias ..='cd ../'
+alias ...='cd ../../'
+alias .3='cd ../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../../'
+alias ~='cd ~'
+alias f='open -a Finder ./'
+alias c='clear'
+
 # Convenience
 alias cask='brew cask'
 alias where='which'
 alias brwe='brew' #typoes
+
+# Dotfiles
+alias dotfiles=dotfiles
 
 # RESOLVER aliases
 alias r='rslv'
@@ -61,19 +79,8 @@ alias gd="git diff"
 # Docker
 alias d=docker
 alias dc=docker-compose
-docker_bash() {
-    d exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it $1 bash
-}
-docker_exec() {
-    container=$1
-    shift
-    d exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it $container $@
-}
 alias dbash=docker_bash
 alias de=docker_exec
-docker_stop_and_remove() {
-    d stop $1 && d rm $1
-}
 alias dsr=docker_stop_and_remove
 alias dcl='dc logs -f'
 alias dpsa='d ps -a'
@@ -86,26 +93,4 @@ alias dclean='docker images --no-trunc | grep "<none>" | awk '\''{ print $3 }'\'
 # Amazon AWS aliases
 alias a=aws
 alias aauth=aws-iam-authenticator
-
-########################################
-# awscli / localstack
-########################################
-aws_localstack() {
-    aws_service=$1
-    case $aws_service in
-        s3)
-            localstack_port=4572
-        ;;
-	ssm)
-	    localstack_port=4583
-	;;
-        lambda)
-            localstack_port=4574
-        ;;
-        *)
-            return 1;
-        ;;
-    esac
-    aws --endpoint-url=http://localhost:$localstack_port $*
-}
 alias al=aws_localstack

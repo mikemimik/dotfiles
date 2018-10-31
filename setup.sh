@@ -1,10 +1,12 @@
 #!/bin/bash
 
-echo "Initial setup of dotfile config / command..."
-cp ~/dotfiles/shell/bashrc ~/.bashrc
-cp ~/dotfiles/shell/bash_profile ~/.bash_profile
-cp ~/dotfiles/shell/bash_aliases ~/.bash_aliases
-cp ~/dotfiles/shell/bash_functions ~/.bash_functions
+echo "Initial setup of dotfiles..."
 
-echo "Initial setup of dotfile config complete."
-echo "Usage: dotfiles --help"
+CURRENT_DIR=$(pwd)
+
+chmod +wx ${CURRENT_DIR}/install/install.sh
+chmod -R +wx ${CURRENT_DIR}/bin
+${CURRENT_DIR}/install/install.sh
+
+echo "Initial setup of dotfiles complete."
+echo "Usage: dot-cli --help"
