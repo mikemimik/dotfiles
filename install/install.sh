@@ -13,17 +13,17 @@ echo "Installing casks..."
 echo "Symlinking files..."
 . "$DOTFILES_DIR/install/symlinks.sh"
 
-# Setup macos defaults
-echo "Executing macOS defaults script..."
-. "$DOTFILES_DIR/macos/defaults.sh"
+# Add keys from keychain to ssh agent
+ssh-add -A 2>/dev/null;
+
+# Clear cache
+# echo "Cleaning up..."
+# . "$DOTFILES_DIR/bin/dot-cli" clean
 
 # Setup dock icons
 # echo "Executing macOS dock script..."
 # . "$DOTFILES_DIR/macos/dock.sh"
 
-# Clear cache
-echo "Cleaning up..."
-. "$DOTFILES_DIR/bin/dot-cli" clean
-
-# Add keys from keychain to ssh agent
-ssh-add -A 2>/dev/null;
+# Setup macos defaults (causes restart, must be last action)
+echo "Executing macOS defaults script..."
+. "$DOTFILES_DIR/macos/defaults.sh"
