@@ -1,0 +1,130 @@
+#!/bin/bash
+
+BIN_NAME=$(basename "$0")
+COMMAND_NAME=$1
+SUB_COMMAND=$2
+
+ARROW="￫"
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NC='\033[0m'
+
+export DOTFILES_DIR EXTRA_DIR
+DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
+
+escape() {
+  message=$1
+  echo "${message}"
+}
+
+answer_is_yes() {
+  [[ "$REPLY" =~ ^[Yy]$ ]] \
+    && return 0 \
+    || return 1
+}
+
+print_question() {
+  # Print output in yellow
+  printf "\e[0;33m  [?] $1\e[0m"
+}
+
+print_error() {
+  # Print output in red
+  printf "\e[0;31m  [✖] $1 $2\e[0m\n"
+}
+
+print_success() {
+  # Print output in green
+  printf "\e[0;32m  [✔] $1\e[0m\n"
+}
+
+ask_for_confirmation() {
+  print_question "$1 (y/n) "
+  read -n 1
+  printf "\n"
+}
+change_directory() {
+  cd $1
+}
+
+sub_help() {
+  echo -e "${ARROW} Usage: ${YELLO}${BIN_NAME} <command>${NC}"
+  echo
+  echo "Commands:"
+  echo "    help          This help message"
+  echo "    update        Update packages and pkg managers (OS, brew, node, npm)"
+  echo "    clean         Clean up caches (brew, npm)"
+  echo "    symlinks      Run symlinks script"
+  echo "    brew          Run brew script"
+  # echo "    node          Run node setup script"
+  echo "    defaults      Run macOS defaults script"
+  echo "    dock          Run macOS dock script"
+}
+
+sub_update() {
+  # sudo softwareupdate -i -a
+  brew update
+  brew upgrade
+  echo -e "${GREEN}$ARROW Success! Update command finished.${NC}"
+}
+
+sub_clean() {
+  brew cleanup
+  npm cache clean --force
+  echo -e "${GREEN}$ARROW Success! Clean command finished.${NC}"
+}
+
+sub_symlinks() {
+  source "${DOTFILES_DIR}/install/symlinks.sh"
+  echo -e "${GREEN}$ARROW Success! Symlinks command finished.${NC}"
+}
+
+sub_brew() {
+  source "${DOTFILES_DIR}/install/brew.sh"
+  echo -e "${GREEN}$ARROW Success! Brew command finished.${NC}"
+}
+
+sub_defaults() {
+  source "${DOTFILES_DIR}/install/defaults.sh"
+  echo -e "${GREEN}$ARROW Success! MacOS defaults command finished.${NC}"
+}
+
+sub_dock() {
+  source "${DOTFILES_DIR}/install/dock.sh"
+  echo -e "${GREEN}$ARROW Success! MacOS dock command finished.${NC}"
+}
+
+case ${COMMAND_NAME} in
+  "" | "-h" | "--help")
+    sub_help
+    ;;
+  *)
+    shift
+    sub_${COMMAND_NAME} $@
+    if [ $? = 127 ]; then
+      echo -e "${RED}$ARROW Error: '${COMMAND_NAME}' is not a known command or has errors.${NC}" >&2
+      sub_help
+      exit 1
+    fi
+    ;;
+esac
+
+# # TODO(mperrotte): create function to find out where dotfiles repo was cloned to
+# subcmd_setup_bash_do() {
+#   cp ~/dotfiles/shell/bashrc ~/.bashrc
+#   cp ~/dotfiles/shell/bash_profile ~/.bash_profile
+#   cp ~/dotfiles/shell/bash_aliases ~/.bash_aliases
+#   cp ~/dotfiles/shell/bash_functions ~/.bash_functions
+#   source ~/.bashrc
+#   print_success "Bash setup complete."
+# }
+
+# subcmd_setup_bash() {
+#   ask_for_confirmation "Are you sure you want to init bash dotfiles?"
+#   if answer_is_yes; then
+#     subcmd_setup_bash_do
+#   else
+#     print_error "Aborting."
+#   fi
+# }
