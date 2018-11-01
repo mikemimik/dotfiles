@@ -59,7 +59,7 @@ sub_help() {
   echo "    brew          Run brew script"
   # echo "    node          Run node setup script"
   echo "    defaults      Run macOS defaults script"
-  echo "    dock          Run macOS dock script"
+  # echo "    dock          Run macOS dock script"
 }
 
 sub_update() {
@@ -86,14 +86,14 @@ sub_brew() {
 }
 
 sub_defaults() {
-  source "${DOTFILES_DIR}/install/defaults.sh"
+  source "${DOTFILES_DIR}/macos/defaults.sh"
   echo -e "${GREEN}$ARROW Success! MacOS defaults command finished.${NC}"
 }
 
-sub_dock() {
-  source "${DOTFILES_DIR}/install/dock.sh"
-  echo -e "${GREEN}$ARROW Success! MacOS dock command finished.${NC}"
-}
+# sub_dock() {
+#   source "${DOTFILES_DIR}/macos/dock.sh"
+#   echo -e "${GREEN}$ARROW Success! MacOS dock command finished.${NC}"
+# }
 
 case ${COMMAND_NAME} in
   "" | "-h" | "--help")
