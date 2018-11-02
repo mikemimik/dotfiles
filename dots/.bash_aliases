@@ -4,7 +4,7 @@
 alias ls='ls -aFG'
 alias ll='ls -alFG'
 alias lsd='ls -l | grep "^d" --color'
-alias howqbig='du -skh'
+alias howbig='du -skh'
 alias cd..='cd ../'
 alias ..='cd ../'
 alias ...='cd ../../'
