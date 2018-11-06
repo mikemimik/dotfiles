@@ -10,9 +10,9 @@
 osascript -e 'tell application "System Preferences" to quit'
 
 # Set computer name
-COMPUTERNAME="mperrotte"
-HOSTNAME="mperrotte"
-LOCALHOSTNAME="mperrotte"
+COMPUTERNAME="perrotte"
+HOSTNAME="perrotte"
+LOCALHOSTNAME="perrotte"
 
 # Ask for the administrator password upfront
 sudo -v
@@ -25,10 +25,10 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 
 # Set computer name (as done via System Preferences -> Sharing)
-#sudo scutil --set ComputerName $COMPUTERNAME
-#sudo scutil --set HostName $HOSTNAME
-#sudo scutil --set LocalHostName $LOCALHOSTNAME
-#sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $LOCALHOSTNAME
+sudo scutil --set ComputerName $COMPUTERNAME
+sudo scutil --set HostName $HOSTNAME
+sudo scutil --set LocalHostName $LOCALHOSTNAME
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $LOCALHOSTNAME
 
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
