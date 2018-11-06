@@ -6,18 +6,8 @@
         "when": "editorTextFocus"
     },
     {
-        "key": "alt+cmd+down",
-        "command": "-editor.action.insertCursorBelow",
-        "when": "editorTextFocus"
-    },
-    {
         "key": "ctrl+shift+cmd+up",
         "command": "editor.action.insertCursorAbove",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "alt+cmd+up",
-        "command": "-editor.action.insertCursorAbove",
         "when": "editorTextFocus"
     },
     {
@@ -26,18 +16,8 @@
         "when": "editorTextFocus"
     },
     {
-        "key": "ctrl+cmd+down",
-        "command": "-editor.action.moveLinesDownAction",
-        "when": "editorTextFocus"
-    },
-    {
         "key": "ctrl+cmd+up",
         "command": "editor.action.moveLinesUpAction",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+cmd+up",
-        "command": "-editor.action.moveLinesUpAction",
         "when": "editorTextFocus"
     },
     {
@@ -49,5 +29,17 @@
         "key": "cmd+k shift+right",
         "command": "workbench.action.moveEditorToNextGroup",
         "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+cmd+a",
+        "command": "workbench.action.addRootFolder"
+    },
+    {
+        "key": "shift+cmd+o",
+        "command": "workbench.action.openWorkspace"
+    },
+    {
+        "key": "shift+cmd+o",
+        "command": "-workbench.action.gotoSymbol"
     }
 ]
