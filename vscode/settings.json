@@ -1,8 +1,8 @@
 {
     // Workbench
-    "workbench.iconTheme": "material-icon-theme",
+    "workbench.iconTheme": "eq-material-theme-icons-darker",
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.colorTheme": "Material Theme",
+    "workbench.colorTheme": "Material Theme Darker High Contrast",
     "workbench.colorCustomizations": {
         "activityBarBadge.background": "#00BCD4",
         "list.activeSelectionForeground": "#00BCD4",
@@ -14,7 +14,15 @@
         "progressBar.background": "#00BCD4",
         "pickerGroup.foreground": "#00BCD4",
         "tab.activeBorder": "#00BCD4",
-        "notificationLink.foreground": "#00BCD4"
+        "notificationLink.foreground": "#00BCD4",
+        "editorWidget.resizeBorder": "#00BCD4",
+        "editorWidget.border": "#00BCD4",
+        "settings.modifiedItemIndicator": "#00BCD4",
+        "settings.headerForeground": "#00BCD4",
+        "panelTitle.activeBorder": "#00BCD4",
+        "breadcrumb.activeSelectionForeground": "#00BCD4",
+        "menu.selectionForeground": "#00BCD4",
+        "menubar.selectionForeground": "#00BCD4"
     },
     // Window
     "window.zoomLevel": -1,
@@ -39,17 +47,12 @@
     "dart.debugSdkLibraries": true,
     "dart.debugExternalLibraries": true,
     "dart.showTodos": true,
-    "dart.showLintNames": true,
     "dart.lineLength": 100,
     // - Standard Style
     "standard.semistandard": true,
     "standard.usePackageJson": true,
     // - Material theme
-    "materialTheme.cache.workbench.settings": {
-        "themeColours": "Darker",
-        "accentPrevious": "Acid Lime",
-        "accent": "Cyan"
-    },
+    "materialTheme.accent": "Cyan",
     // - GitLens
     "gitlens.advanced.messages": {
         "suppressCommitHasNoPreviousCommitWarning": false,
@@ -89,5 +92,5 @@
         "*rc": "shellscript",
         "*Dockerfile*": "dockerfile",
         ".gitignore": "shellscript"
-    },
+    }
 }
