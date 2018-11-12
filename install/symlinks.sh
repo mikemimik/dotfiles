@@ -1,3 +1,5 @@
+
+ln -sfv "$DOTFILES_DIR/dots/.git-prompt-colors.sh" ~
 ln -sfv "$DOTFILES_DIR/dots/.bash_exports" ~
 ln -sfv "$DOTFILES_DIR/dots/.bash_functions" ~
 ln -sfv "$DOTFILES_DIR/dots/.bash_aliases" ~
