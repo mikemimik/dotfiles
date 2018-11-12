@@ -16,7 +16,8 @@ fi
 # Add bash-git-prompt
 
 ## BASH-GIT-PROMPT OPTIONS
-GIT_PROMPT_THEME=Single_line_Dark
+# GIT_PROMPT_THEME=Single_line_Dark
+GIT_PROMPT_THEME=Custom
 
 if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
     __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
