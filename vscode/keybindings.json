@@ -36,10 +36,18 @@
     },
     {
         "key": "shift+cmd+o",
-        "command": "workbench.action.openWorkspace"
+        "command": "-workbench.action.gotoSymbol"
     },
     {
         "key": "shift+cmd+o",
-        "command": "-workbench.action.gotoSymbol"
+        "command": "workbench.action.openWorkspaceInNewWindow"
+    },
+    {
+        "key": "alt+\\",
+        "command": "workbench.action.splitEditor"
+    },
+    {
+        "key": "cmd+\\",
+        "command": "-workbench.action.splitEditor"
     }
 ]
