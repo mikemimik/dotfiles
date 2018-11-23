@@ -31,3 +31,7 @@ fi
 # [ ${CURRENT_KEYS} =~ (^| )$x($| ) ] &&
 # ssh-add -K ~/.ssh/id_rsa
 # ssh-add -K ~/.ssh/github_rsa
+
+
+# load rslv config
+source ~/.rslv/.rslvrc
