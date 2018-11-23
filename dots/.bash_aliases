@@ -25,6 +25,7 @@ alias dotfiles=dotfiles
 
 # RESOLVER aliases
 alias r='rslv'
+alias sshlogin=sshlogin
 
 ## Resolver repositories
 alias core-services="cd /Code/core-services"
