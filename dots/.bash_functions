@@ -1,5 +1,26 @@
 #!/bin/bash
 
+## VARIABLES
+ARROW="￫"
+NC='\033[0m'
+
+########################################
+# resolver -ssh
+########################################
+sshlogin () {
+    ACCOUNT=$1
+    IP_ADDRESS=$2
+    if [ "$#" -ne 2 ]; then
+        echo -e "${ARROW} Usage: ${FUNCNAME[0]} account destination${NC}"
+        echo
+        echo "Example: sshlogin staging 10.10.10.10"
+        return 1;
+    else
+        PATH="~/.ssh/${ACCOUNT}-keypair.pem"
+        ssh -l ec2-user -i ${PATH} ${IP_ADDRESS}
+    fi
+}
+
 ########################################
 # system
 ########################################
