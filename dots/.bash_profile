@@ -3,9 +3,9 @@
 [ -r ~/.bash_aliases ] && [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 
 # Check if NVM exists then source it
-if [ -f "$NVM_DIR/nvm.sh" ]; then
-    source "$NVM_DIR/nvm.sh"
-    source "$NVM_DIR/bash_completion"
+if [ -f "$NVM_INSTALL_DIR/nvm.sh" ]; then
+    source "${NVM_INSTALL_DIR}/nvm.sh"
+    source "${NVM_INSTALL_DIR}/etc/bash_completion.d/nvm"
 fi
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards

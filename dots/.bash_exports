@@ -6,6 +6,7 @@ export CLICOLOR_FORCE=1
 # TOOL ENVIRONMENT CONFIGS
 export GOPATH="$HOME/repos/go"
 export NVM_DIR="$HOME/.nvm"
+export NVM_INSTALL_DIR="/usr/local/opt/nvm"
 
 # CUSTOM EXPORTS
 DOTFILES_EXPORT="$HOME/dotfiles/bin"
