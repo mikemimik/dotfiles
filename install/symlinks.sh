@@ -11,12 +11,12 @@ ln -sfv "$DOTFILES_DIR/dots/.bashrc" ~
 # ln -sfv "$DOTFILES_DIR/dots/.inputrc" ~
 
 # VSCODE Snippet mapping
-vscode_snippets=$(ls ${DOTFILES_DIR}/vscode/snippets)
+vscode_snippets=$(ls ${DOTFILES_DIR}/apps/vscode/snippets)
 for snippet in ${vscode_snippets}; do
-  ln -sfv "${DOTFILES_DIR}/vscode/snippets/${snippet}" "${HOME}/Library/Application Support/Code/User/snippets"
+  ln -sfv "${DOTFILES_DIR}/apps/vscode/snippets/${snippet}" "${HOME}/Library/Application Support/Code/User/snippets"
 done
-ln -sfv "${DOTFILES_DIR}/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User"
-ln -sfv "${DOTFILES_DIR}/vscode/settings.json" "${HOME}/Library/Application Support/Code/User"
+ln -sfv "${DOTFILES_DIR}/apps/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User"
+ln -sfv "${DOTFILES_DIR}/apps/vscode/settings.json" "${HOME}/Library/Application Support/Code/User"
 
 # Exmaples for mapping
 # ln -sfv "$DOTFILES_DIR/editors/Default (OSX).sublime-keymap" "$HOME/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap"
