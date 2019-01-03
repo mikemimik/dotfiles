@@ -105,7 +105,7 @@ for app in ${user_action_apps[@]}; do
   if [ "${is_installed}" == "false" ]; then
     # TODO(mperrotte): add pause so user can take action
     brew cask install ${app}
-    read -n 1 -p "Press enter to continue."
+    # read -n 1 -p "Press enter to continue."
   fi
 done
 
