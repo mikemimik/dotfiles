@@ -43,7 +43,6 @@ apps=(
   jq
   kubernetes-cli
   kubernetes-helm
-  nvm
   openssl
   python
   tree
@@ -57,17 +56,48 @@ apps=(
 for app in ${apps[@]}; do
   is_installed="false"
   for installed_app in ${BREW_LIST[@]}; do
-    if [ ${app} == ${installed_app} ]; then
-      echo "${app} already installed"
-      is_installed="true"
-      break
+    # INFO(mperrotte): split the app name to see if it's a tap
+    IFS="/" read -ra splitApp <<< "${app}"
+    if [ "${#splitApp[@]}" == 1 ]; then
+      # INFO(mperrotte): if name length == 1, regular formula
+      if [ ${app} == ${installed_app} ]; then
+        echo "${app} already installed"
+        is_installed="true"
+        break
+      fi
+    else
+      lastIndex=${#splitApp[@]}
+      # INFO(mperrotte): get last index value
+      appName=${splitApp[lastIndex-1]}
+      if [ ${appName} == ${installed_app} ]; then
+        echo "${app} already installed"
+        is_installed="true"
+        break
+      fi
     fi
+
   done
 
   if [ "${is_installed}" == "false" ]; then
     brew install ${app}
   fi
 done
+
+# NOTE(mperrotte): nvm has some specific needs
+is_nvm_installed="false"
+for installed_app in ${BREW_LIST[@]}; do
+  if [ "nvm" == ${installed_app} ]; then
+    echo "nvm is already installed"
+    is_nvm_installed="true"
+    break
+  fi
+done
+
+if [ "${is_nvm_installed}" == "false" ]; then
+  brew install nvm
+  export NVM_DIR="$HOME/.nvm"
+  source /usr/local/opt/nvm/nvm.sh
+fi
 
 # NOTE(mperrotte): remove outdated versions
 brew cleanup
