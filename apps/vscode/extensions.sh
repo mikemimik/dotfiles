@@ -19,6 +19,7 @@ extensions=(
   PeterJausovec.vscode-docker
   Pivotal.vscode-concourse
   PKief.material-icon-theme
+  kddejong.vscode-cfn-lint
   wholroyd.HCL
 )
 
