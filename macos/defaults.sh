@@ -10,9 +10,10 @@
 osascript -e 'tell application "System Preferences" to quit'
 
 # Set computer name
-COMPUTERNAME="mperrotte"
-HOSTNAME="mperrotte"
-LOCALHOSTNAME="mperrotte"
+NAME="mperrotte"
+COMPUTERNAME=$NAME
+HOSTNAME=$NAME
+LOCALHOSTNAME=$NAME
 
 # Ask for the administrator password upfront
 sudo -v
