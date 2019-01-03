@@ -162,6 +162,9 @@ defaults write com.apple.dock show-process-indicators -bool true
 defaults write com.apple.dock static-only -bool true
 # defaults write com.apple.dock pinning -string start
 
+# Don’t animate opening applications from the Dock
+defaults write com.apple.dock launchanim -bool false
+
 # Minimize windows into their application’s icon
 defaults write com.apple.dock minimize-to-application -bool true
 
