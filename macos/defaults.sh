@@ -10,7 +10,7 @@
 osascript -e 'tell application "System Preferences" to quit'
 
 # Set computer name
-NAME="mperrotte"
+NAME="perrotte"
 COMPUTERNAME=$NAME
 HOSTNAME=$NAME
 LOCALHOSTNAME=$NAME
@@ -80,14 +80,19 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 defaults write -g ApplePressAndHoldEnabled -bool false
 
 # Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 1
-defaults write NSGlobalDomain InitialKeyRepeat -int 10
+# defaults write NSGlobalDomain KeyRepeat -int 1
+# defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
+# Set a pretty fast keyboard repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
+
+# NOTE(mperrotte): this doesn't seem to work
 # Use scroll gesture with the Cmd (⌘) modifier key to zoom
-defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 1048576
+# defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+# defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 1048576
 # Follow the keyboard focus while zoomed in
-defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
+# defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
 ###############################################################################
 # Screen                                                                      #
@@ -142,16 +147,25 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
-# Remove Dropbox’s green checkmark icons in Finder
-file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
-[ -e "${file}" ] && mv -f "${file}" "${file}.bak"
+# Remove Dropbox’s green checkmark icons in Finder (no longer works)
+# file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
+# [ -e "${file}" ] && mv -f "${file}" "${file}.bak"
+# unset file
+
+# Set Desktop as the default location for new Finder windows
+# For other paths, use `PfLo` and `file:///full/path/here/`
+defaults write com.apple.finder NewWindowTarget -string "PfLo"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 
 ###############################################################################
-# iTerm2                                                                        #
+# APPS: iTerm2, TextEdit                                                      #
 ###############################################################################
 
-# Don’t display the annoying prompt when quitting iTerm
+# iTerm2: Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+
+# TextEdit: Set plain text as default format in TextEdit
+defaults write com.apple.TextEdit RichText -int 0
 
 ###############################################################################
 # Dock                                                                        #
@@ -162,8 +176,11 @@ defaults write com.apple.dock show-process-indicators -bool true
 defaults write com.apple.dock static-only -bool true
 # defaults write com.apple.dock pinning -string start
 
-# Don’t animate opening applications from the Dock
-defaults write com.apple.dock launchanim -bool false
+# Don’t animate opening applications from the Dock (doesn't seem to work)
+# defaults write com.apple.dock launchanim -bool false
+
+# Set minimize animation to scale
+defaults write com.apple.dock mineffect scale
 
 # Minimize windows into their application’s icon
 defaults write com.apple.dock minimize-to-application -bool true
