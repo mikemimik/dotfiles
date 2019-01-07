@@ -33,6 +33,7 @@ apps=(
   dart
   ffmpeg
   findutils
+  gawk
   git
   go
   heroku/brew/heroku
