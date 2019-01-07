@@ -18,9 +18,10 @@ user_action_apps=(
 apps=(
   1password
   amethyst                    # windows manager
-  atom
+  # atom
   datagrip
   discord
+  docker
   # gyazo
   evernote
   # firefox
@@ -33,6 +34,7 @@ apps=(
   itsycal                     # Calendar app
   kap                         # GIF generator
   karabiner-elements          # keyboard remapper
+  kitematic
   ngrok
   skype
   slack
@@ -44,6 +46,7 @@ apps=(
   viscosity
   visual-studio-code
   vlc
+  whatsapp
   zoomus
 )
 
