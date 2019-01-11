@@ -41,6 +41,7 @@ apps=(
   sourcetree
   # kaleidoscope                # diff tool
   spotify
+  sublime-text
   tableplus                   # database IDE tool
   # tower                       # git GUI tool
   viscosity
