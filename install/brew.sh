@@ -29,6 +29,7 @@ BREW_LIST=$(brew list -1)
 apps=(
   awscli
   bash-git-prompt
+  bat
   curl
   dart
   ffmpeg

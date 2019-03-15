@@ -3,6 +3,7 @@
 # TERMINAL IMPROVEMENT CONFIGS
 alias ls='ls -aFG'
 alias ll='ls -alFG'
+alias llc='clear && ls -alFG'
 alias lsd='ls -l | grep "^d" --color'
 alias howbig='du -skh'
 alias cd..='cd ../'
@@ -14,6 +15,7 @@ alias .5='cd ../../../../../'
 alias ~='cd ~'
 alias f='open -a Finder ./'
 alias c='clear'
+alias cat='bat'
 
 # Convenience
 alias cask='brew cask'
