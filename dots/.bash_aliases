@@ -75,9 +75,12 @@ alias k=kubectl
 
 # Git aliases
 alias gs="git status"
+alias gsc="clear && git status"
 alias gc="git commit -m"
 alias ga="git add"
 alias gd="git diff"
+alias fetch="git fetch"
+alias prune="git fetch --prune"
 
 # Docker
 alias d=docker
