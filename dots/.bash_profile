@@ -34,6 +34,6 @@ fi
 
 
 # load rslv config
-if [ -f "~/.rslv/.rslvrc" ]; then
+if [ -f ~/.rslv/.rslvrc ]; then
     source ~/.rslv/.rslvrc
 fi
