@@ -94,7 +94,7 @@ alias dps='dpsa --format "table {{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Stat
 alias dpsp='dpsa --format "table {{.Names}}\t{{.Ports}}"'
 alias di='d images'
 alias dpsjson='dpsa --format "{ \"name\": {{json .Names}}, \"status\": {{json .Status}} }"'
-alias dclean='docker images --no-trunc | grep "<none>" | awk '\''{ print $3 }'\'' | gxargs -r docker rmi'
+alias dclean='docker images --no-trunc | grep "<none>" | awk '\''{ print $3 }'\'' | gxargs -r docker rmi --force'
 
 # Amazon AWS aliases
 alias a=aws
