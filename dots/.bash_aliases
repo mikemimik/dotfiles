@@ -81,6 +81,9 @@ alias ga="git add"
 alias gd="git diff"
 alias fetch="git fetch"
 alias prune="git fetch --prune"
+alias pull="git pull"
+alias fpp="fetch && prune && pull"
+alias fp="fetch && prune"
 
 # Docker
 alias d=docker
