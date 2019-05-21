@@ -16,8 +16,8 @@ sshlogin () {
         echo "Example: sshlogin staging 10.10.10.10"
         return 1;
     else
-        PATH="~/.ssh/${ACCOUNT}-keypair.pem"
-        ssh -l ec2-user -i ${PATH} ${IP_ADDRESS}
+        KEY_PATH="~/.ssh/${ACCOUNT}-keypair.pem"
+        ssh -l ec2-user -i ${KEY_PATH} ${IP_ADDRESS}
     fi
 }
 
