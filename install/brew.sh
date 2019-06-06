@@ -39,12 +39,12 @@ apps=(
   go
   heroku/brew/heroku
   htop
-  hyper
   iftop
   irssi
   jq
   kubernetes-cli
   kubernetes-helm
+  ncdu
   openssl
   python
   tree
