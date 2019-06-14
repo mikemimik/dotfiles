@@ -61,6 +61,9 @@ alias hidehiddenfiles="defaults write com.apple.finder AppleShowAllFiles NO && k
 # restart macOS camera
 alias killcamera="sudo killall AppleCameraAssistant; sudo killall VDCAssistant"
 
+# randomise wifi MAC address
+alias randommac=random_mac_address
+
 # NPM aliases
 alias npmglist="npm list -g --depth=0"
 
