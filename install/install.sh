@@ -1,4 +1,19 @@
-export DOTFILES_DIR EXTRA_DIR
+#!/bin/bash
+
+#### README ###################################################################
+#
+# This file is the entrypoint for the setup of this repository locally.
+#
+# _Environment Variables_
+# * DOTFILES_DIR: This value will be the absolute path to where ever this repo
+#                 was cloned to.
+# * CONTEXT: This variable can hold the context for an executing script or
+#            command. It should be a comma separated list of key/value pairs.
+#            Example: CONTEXT="key1=value1,key2=value2"
+#
+###############################################################################
+
+export DOTFILES_DIR CONTEXT
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
 
 # Install brew with packages & casks
@@ -14,7 +29,7 @@ echo ""
 # Bunch of symlinks
 echo ">>> Symlinking files..."
 echo ""
-. "$DOTFILES_DIR/install/symlinks.sh"
+. "$DOTFILES_DIR/install/dots.sh"
 
 # Add keys from keychain to ssh agent
 ssh-add -A 2>/dev/null;
