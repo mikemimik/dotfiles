@@ -28,6 +28,20 @@ cd() { builtin cd "$@"; clear; ls -alFG; }
 
 ql() { qlmanage -p "$*" >& /dev/null; }
 
+random_mac_address() {
+    NETWORK_ADAPTER=$1
+    if [ "$#" -ne 1 ]; then
+        echo -e "${ARRAY} USage: ${FUNCNAME[0]} network_addapter${NC}"
+        echo
+        echo "Example: wifimac en0"
+        return 1;
+    else
+        random_mac_address=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//')
+        sudo ifconfig ${NETWORK_ADAPTER} ether ${random_mac_address}
+        echo -e "Set MAC address of ${NETWORK_ADAPTER} to: ${random_mac_address}"
+    fi
+}
+
 ########################################
 # dotfiles
 ########################################
