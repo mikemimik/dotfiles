@@ -31,7 +31,7 @@ ql() { qlmanage -p "$*" >& /dev/null; }
 random_mac_address() {
     NETWORK_ADAPTER=$1
     if [ "$#" -ne 1 ]; then
-        echo -e "${ARRAY} USage: ${FUNCNAME[0]} network_addapter${NC}"
+        echo -e "${ARRAY} Usage: ${FUNCNAME[0]} network_adapter${NC}"
         echo
         echo "Example: wifimac en0"
         return 1;
