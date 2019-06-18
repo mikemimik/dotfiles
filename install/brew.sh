@@ -36,6 +36,7 @@ apps=(
   findutils
   gawk
   git
+  gnu-sed
   go
   heroku/brew/heroku
   htop
