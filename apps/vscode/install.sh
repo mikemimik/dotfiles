@@ -11,7 +11,7 @@
 ###############################################################################
 
 # VSCODE Snippet mapping
-vscode_snippets=$(ls ${DOTFILES_DIR}/apps/vscode/snippets)
+vscode_snippets=$(ls ${DOTFILES_DIR}/apps/vscode/snippets | strip_color)
 for snippet in ${vscode_snippets}; do
   ln -sfv "${DOTFILES_DIR}/apps/vscode/snippets/${snippet}" "${HOME}/Library/Application Support/Code/User/snippets"
 done

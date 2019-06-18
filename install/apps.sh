@@ -7,9 +7,12 @@
 #
 ###############################################################################
 
-apps=$(ls ${DOTFILES_DIR}/apps)
+apps=$(ls ${DOTFILES_DIR}/apps | strip_color)
 
 for app in ${apps}; do
-  install_file=${DOTFILES_DIR}/apps/${app}/install.sh
-  [ -f ${install_file} ] && . ${install_file}
+  if [ "${app}" != "README.md" ]; then
+    echo -e "Running installation script for ${app}..."
+    install_file=${DOTFILES_DIR}/apps/${app}/install.sh
+    [ -f ${install_file} ] && . ${install_file}
+  fi
 done

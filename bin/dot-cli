@@ -13,6 +13,12 @@ NC='\033[0m'
 export DOTFILES_DIR CONTEXT
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
 
+strip_color() {
+  while read data; do
+    gsed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"
+  done
+}
+
 escape() {
   message=$1
   echo "${message}"
