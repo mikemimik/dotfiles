@@ -42,6 +42,13 @@ random_mac_address() {
     fi
 }
 
+brew_dep_graph() {
+  tmpfile=$(mktemp /tmp/dotfiles-brew_dep_graph.XXXXXX)
+  mv ${tmpfile} ${tmpfile}.png
+  brew graph --installed --highlight-leaves | dot -Tpng -o${tmpfile}.png
+  open ${tmpfile}.png
+}
+
 ########################################
 # dotfiles
 ########################################

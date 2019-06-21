@@ -17,10 +17,11 @@ alias f='open -a Finder ./'
 alias c='clear'
 alias cat='bat'
 
-# Convenience
+# Brew / Cask aliases
 alias cask='brew cask'
 alias where='which'
 alias brwe='brew' #typoes
+alias brewdeps=brew_dep_graph
 
 # Dotfiles
 alias dotfiles=dotfiles
