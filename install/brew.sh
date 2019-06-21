@@ -32,8 +32,9 @@ apps=(
   bat
   curl
   dart
-  ffmpeg
+  dep
   findutils
+  fish
   gawk
   git
   gnu-sed
@@ -50,10 +51,14 @@ apps=(
   python
   tree
   ruby
+  siege
   telnet
   terraform
+  tree
   watson
   wget
+  wifi-password
+  yarn
 )
 
 for app in ${apps[@]}; do
