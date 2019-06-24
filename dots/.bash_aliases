@@ -88,6 +88,7 @@ alias prune="git fetch --prune"
 alias pull="git pull"
 alias fpp="fetch && prune && pull"
 alias fp="fetch && prune"
+alias co="git checkout"
 
 # Docker
 alias d=docker
