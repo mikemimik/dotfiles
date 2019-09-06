@@ -63,5 +63,13 @@
     {
         "key": "ctrl+space",
         "command": "editor.action.showSnippets"
+    },
+    {
+        "key": "alt+cmd+q",
+        "command": "workbench.action.quit"
+    },
+    {
+        "key": "cmd+q",
+        "command": "-workbench.action.quit"
     }
 ]

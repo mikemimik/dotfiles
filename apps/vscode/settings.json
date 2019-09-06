@@ -1,37 +1,38 @@
 {
     // Workbench
-    "workbench.iconTheme": "eq-material-theme-icons-darker",
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.colorTheme": "Material Theme Darker High Contrast",
-    "workbench.colorCustomizations": {
-        "activityBarBadge.background": "#00BCD4",
-        "list.activeSelectionForeground": "#00BCD4",
-        "list.inactiveSelectionForeground": "#00BCD4",
-        "list.highlightForeground": "#00BCD4",
-        "scrollbarSlider.activeBackground": "#00BCD450",
-        "editorSuggestWidget.highlightForeground": "#00BCD4",
-        "textLink.foreground": "#00BCD4",
-        "progressBar.background": "#00BCD4",
-        "pickerGroup.foreground": "#00BCD4",
-        "tab.activeBorder": "#00BCD4",
-        "notificationLink.foreground": "#00BCD4",
-        "editorWidget.resizeBorder": "#00BCD4",
-        "editorWidget.border": "#00BCD4",
-        "settings.modifiedItemIndicator": "#00BCD4",
-        "settings.headerForeground": "#00BCD4",
-        "panelTitle.activeBorder": "#00BCD4",
-        "breadcrumb.activeSelectionForeground": "#00BCD4",
-        "menu.selectionForeground": "#00BCD4",
-        "menubar.selectionForeground": "#00BCD4"
-    },
+    //     "workbench.iconTheme": "eq-material-theme-icons-darker",
+        "workbench.startupEditor": "newUntitledFile",
+    // "workbench.colorTheme": "Visual Studio Dark",
+    //     // "workbench.colorCustomizations": {
+    //     //     "activityBarBadge.background": "#00BCD4",
+    //     //     "list.activeSelectionForeground": "#00BCD4",
+    //     //     "list.inactiveSelectionForeground": "#00BCD4",
+    //     //     "list.highlightForeground": "#00BCD4",
+    //     //     "scrollbarSlider.activeBackground": "#00BCD450",
+    //     //     "editorSuggestWidget.highlightForeground": "#00BCD4",
+    //     //     "textLink.foreground": "#00BCD4",
+    //     //     "progressBar.background": "#00BCD4",
+    //     //     "pickerGroup.foreground": "#00BCD4",
+    //     //     "tab.activeBorder": "#00BCD4",
+    //     //     "notificationLink.foreground": "#00BCD4",
+    //     //     "editorWidget.resizeBorder": "#00BCD4",
+    //     //     "editorWidget.border": "#00BCD4",
+    //     //     "settings.modifiedItemIndicator": "#00BCD4",
+    //     //     "settings.headerForeground": "#00BCD4",
+    //     //     "panelTitle.activeBorder": "#00BCD4",
+    //     //     "breadcrumb.activeSelectionForeground": "#00BCD4",
+    //     //     "menu.selectionForeground": "#00BCD4",
+    //     //     "menubar.selectionForeground": "#00BCD4"
+    //     // },
     // Window
-    "window.zoomLevel": -1,
+    "window.zoomLevel": 0,
     "window.nativeTabs": true,
     // Terminal
     "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.copyOnSelection": true,
     // Plugin
     // - Material Icon Theme
-    "material-icon-theme.showUpdateMessage": false,
+    //     "material-icon-theme.showUpdateMessage": false,
     // - ESLint
     "eslint.enable": true,
     "eslint.autoFixOnSave": true,
@@ -40,37 +41,38 @@
         "javascriptreact"
     ],
     "eslint.run": "onSave",
-    // - Flow
-    "flow.useNPMPackagedFlow": true,
+    // // - Flow
+    // "flow.useNPMPackagedFlow": true,
     // - Dart Code
     "dart.sdkPath": "~/repos/flutter/bin/cache/dark-sdk",
     "dart.debugSdkLibraries": true,
     "dart.debugExternalLibraries": true,
     "dart.showTodos": true,
     "dart.lineLength": 100,
-    // - Standard Style
-    "standard.semistandard": true,
-    "standard.usePackageJson": true,
+    // // - Standard Style
+    // "standard.semistandard": true,
+    // "standard.usePackageJson": true,
     // - Material theme
-    "materialTheme.accent": "Cyan",
+    //     "materialTheme.accent": "Cyan",
     // - GitLens
-    "gitlens.advanced.messages": {
-        "suppressCommitHasNoPreviousCommitWarning": false,
-        "suppressCommitNotFoundWarning": false,
-        "suppressFileNotUnderSourceControlWarning": false,
-        "suppressGitVersionWarning": false,
-        "suppressLineUncommittedWarning": false,
-        "suppressNoRepositoryWarning": false,
-        "suppressResultsExplorerNotice": false,
-        "suppressShowKeyBindingsNotice": true,
-        "suppressUpdateNotice": true,
-        "suppressWelcomeNotice": false
-    },
-    "gitlens.keymap": "alternate",
+    //     "gitlens.advanced.messages": {
+    //         "suppressCommitHasNoPreviousCommitWarning": false,
+    //         "suppressCommitNotFoundWarning": false,
+    //         "suppressFileNotUnderSourceControlWarning": false,
+    //         "suppressGitVersionWarning": false,
+    //         "suppressLineUncommittedWarning": false,
+    //         "suppressNoRepositoryWarning": false,
+    //         "suppressResultsExplorerNotice": false,
+    //         "suppressShowKeyBindingsNotice": true,
+    //         "suppressUpdateNotice": true,
+    //         "suppressWelcomeNotice": false
+    //     },
+    //     "gitlens.keymap": "alternate",
     // Editor
-    "editor.stablePeek": true,
-    "editor.renderIndentGuides": false,
+    //     "editor.stablePeek": true,
+    "editor.renderIndentGuides": true,
     "editor.autoIndent": true,
+    "editor.renderWhitespace": "all",
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
@@ -82,15 +84,55 @@
     // JSON
     "json.format.enable": false,
     // Typescript
-    "typescript.autoImportSuggestions.enabled": false,
-    "typescript.format.insertSpaceBeforeFunctionParenthesis": false,
-    "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+    //     "typescript.autoImportSuggestions.enabled": false,
+    //     "typescript.format.insertSpaceBeforeFunctionParenthesis": false,
+    //     "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
     // File Associations
     "files.associations": {
         "*bash_profile*": "shellscript",
         "*bash_aliases": "shellscript",
         "*rc": "shellscript",
         "*Dockerfile*": "dockerfile",
-        ".gitignore": "shellscript"
-    }
+        ".gitignore": "shellscript",
+        ".bash_functions": "shellscript",
+        ".bash_exports": "shellscript",
+        "**/task-*.yml": "concourse-task-yaml"
+    },
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "[concourse-pipeline-yaml]": {
+    },
+    "editor.codeLens": false,
+    "gitlens.views.repositories.location": "gitlens",
+    "gitlens.views.fileHistory.location": "gitlens",
+    "gitlens.views.lineHistory.location": "gitlens",
+    "gitlens.views.compare.location": "gitlens",
+    "gitlens.views.search.location": "gitlens",
+    "go.useLanguageServer": true,
+    "atlascode.jira.workingSite": {
+        "baseUrlSuffix": "atlassian.net"
+    },
+    "yaml.schemas": {
+        "file:///Users/michael.perrotte/.vscode/extensions/atlassian.atlascode-1.4.3/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "atlascode.jira.workingProject": {
+        "id": "11408",
+        "name": "Build and Tooling",
+        "key": "TOOL"
+    },
+    "yaml.customTags": [
+        "!Ref scalar",
+        "!Sub scalar",
+        "!GetAtt scalar",
+        "!Condition scalar",
+        "!Join sequence",
+        "!Equals sequence",
+        "!And sequence",
+        "!Not sequence",
+        "!Or sequence"
+    ],
+    "atlascode.bitbucket.issues.monitorEnabled": false,
+    "atlascode.bitbucket.pipelines.explorerEnabled": false,
+    "atlascode.bitbucket.pipelines.monitorEnabled": false
 }
