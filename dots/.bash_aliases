@@ -46,9 +46,11 @@ alias resolver-config="cd /Code/npm-packages/modules/resolver-config"
 
 # PERSONAL Computer aliases
 alias repos="cd ~/repos"
+alias npminc="cd ~/npminc"
 
 # Networking aliases
 alias flushdns="dscacheutil -flushcache"
+alias flushdns="sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"
 alias getip="curl icanhazip.com"
 
 # Show/hide all desktop icons (useful when presenting)
