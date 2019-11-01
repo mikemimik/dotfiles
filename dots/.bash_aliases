@@ -91,6 +91,8 @@ alias pull="git pull"
 alias fpp="fetch && prune && pull"
 alias fp="fetch && prune"
 alias co="git checkout"
+alias unstage="git reset HEAD --"
+alias gl="git log --oneline"
 
 # Docker
 alias d=docker
