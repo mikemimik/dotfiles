@@ -10,8 +10,14 @@ GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 NC='\033[0m'
 
-export DOTFILES_DIR EXTRA_DIR
+export DOTFILES_DIR CONTEXT
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
+
+strip_color() {
+  while read data; do
+    gsed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"
+  done
+}
 
 escape() {
   message=$1
@@ -55,7 +61,8 @@ sub_help() {
   echo "    help          This help message"
   echo "    update        Update packages and pkg managers (OS, brew, node, npm)"
   echo "    clean         Clean up caches (brew, npm)"
-  echo "    symlinks      Run symlinks script"
+  echo "    dots          Run dots script; will symlink dot files"
+  echo "    apps          Run apps script; will configure applications"
   echo "    brew          Run brew script"
   # echo "    node          Run node setup script"
   echo "    defaults      Run macOS defaults script"
@@ -75,9 +82,14 @@ sub_clean() {
   echo -e "${GREEN}$ARROW Success! Clean command finished.${NC}"
 }
 
-sub_symlinks() {
-  source "${DOTFILES_DIR}/install/symlinks.sh"
-  echo -e "${GREEN}$ARROW Success! Symlinks command finished.${NC}"
+sub_dots() {
+  source "${DOTFILES_DIR}/install/dots.sh"
+  echo -e "${GREEN}$ARROW Success! Dots command finished.${NC}"
+}
+
+sub_apps() {
+  source "${DOTFILES_DIR}/install/apps.sh"
+  echo -e "${GREEN}$ARROW Success! Apps command finished.${NC}"
 }
 
 sub_brew() {

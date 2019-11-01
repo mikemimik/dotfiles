@@ -4,24 +4,28 @@
 
 CASK_LIST=$(brew cask list -1)
 
-user_action_apps=(
+
+system_security_privacy_apps=(
   alfred
   bartender
-  dash
-  dropbox
-  hammerspoon                 # automation scripting tool
-  iterm2
   homebrew/cask-drivers/logitech-options
   spectacle                   # windows manager
 )
 
-apps=(
+user_action_apps=(
   1password
+  dash
+  docker
+  dropbox
+  hammerspoon                 # automation scripting tool
+  iterm2
+)
+
+apps=(
   amethyst                    # windows manager
   # atom
-  datagrip
+  # datagrip
   discord
-  docker
   # gyazo
   evernote
   # firefox
@@ -38,7 +42,7 @@ apps=(
   ngrok
   skype
   slack
-  sourcetree
+  # sourcetree
   # kaleidoscope                # diff tool
   spotify
   sublime-text

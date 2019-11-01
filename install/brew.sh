@@ -17,7 +17,7 @@ brew tap dart-lang/dart
 brew update
 
 # NOTE(mperrotte): upgrade any already installed formulae
-brew upgrade --all
+brew upgrade
 
 ##
 # NOTE(mperrotte): Install packages I use on a day-to-day basis
@@ -28,14 +28,18 @@ BREW_LIST=$(brew list -1)
 
 apps=(
   awscli
+  bash
   bash-git-prompt
   bat
+  brew-graph
   curl
   dart
-  ffmpeg
+  dep
   findutils
+  fish
   gawk
   git
+  gnu-sed
   go
   heroku/brew/heroku
   htop
@@ -49,10 +53,15 @@ apps=(
   python
   tree
   ruby
+  siege
   telnet
   terraform
+  tree
   watson
   wget
+  wifi-password
+  # NOTE: need to install node first; or it default intalls `node` from homebrew
+  # yarn
 )
 
 for app in ${apps[@]}; do

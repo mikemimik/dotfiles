@@ -17,10 +17,11 @@ alias f='open -a Finder ./'
 alias c='clear'
 alias cat='bat'
 
-# Convenience
+# Brew / Cask aliases
 alias cask='brew cask'
 alias where='which'
 alias brwe='brew' #typoes
+alias brewdeps=brew_dep_graph
 
 # Dotfiles
 alias dotfiles=dotfiles
@@ -45,9 +46,11 @@ alias resolver-config="cd /Code/npm-packages/modules/resolver-config"
 
 # PERSONAL Computer aliases
 alias repos="cd ~/repos"
+alias npminc="cd ~/npminc"
 
 # Networking aliases
 alias flushdns="dscacheutil -flushcache"
+alias flushdns="sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"
 alias getip="curl icanhazip.com"
 
 # Show/hide all desktop icons (useful when presenting)
@@ -60,6 +63,9 @@ alias hidehiddenfiles="defaults write com.apple.finder AppleShowAllFiles NO && k
 
 # restart macOS camera
 alias killcamera="sudo killall AppleCameraAssistant; sudo killall VDCAssistant"
+
+# randomise wifi MAC address
+alias randommac=random_mac_address
 
 # NPM aliases
 alias npmglist="npm list -g --depth=0"
@@ -84,6 +90,9 @@ alias prune="git fetch --prune"
 alias pull="git pull"
 alias fpp="fetch && prune && pull"
 alias fp="fetch && prune"
+alias co="git checkout"
+alias unstage="git reset HEAD --"
+alias gl="git log --oneline"
 
 # Docker
 alias d=docker
@@ -103,3 +112,6 @@ alias dclean='docker images --no-trunc | grep "<none>" | awk '\''{ print $3 }'\'
 alias a=aws
 alias aauth=aws-iam-authenticator
 alias al=aws_localstack
+
+# OpenFaas aliases
+alias fast=faas-cli

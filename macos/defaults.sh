@@ -10,7 +10,7 @@
 osascript -e 'tell application "System Preferences" to quit'
 
 # Set computer name
-NAME="perrotte"
+NAME="mperrotte"
 COMPUTERNAME=$NAME
 HOSTNAME=$NAME
 LOCALHOSTNAME=$NAME
@@ -173,7 +173,12 @@ defaults write com.apple.TextEdit RichText -int 0
 
 # Show indicator lights for open applications in the Dock
 defaults write com.apple.dock show-process-indicators -bool true
+# Only show applications that are open
 defaults write com.apple.dock static-only -bool true
+# Don't show recent applications
+defaults write com.apple.dock show-recents -bool false
+# Clear recent applications list
+defaults write com.apple.dock recent-apps -array
 # defaults write com.apple.dock pinning -string start
 
 # Don’t animate opening applications from the Dock (doesn't seem to work)

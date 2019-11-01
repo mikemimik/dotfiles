@@ -31,6 +31,7 @@ fi
 ## BASH-GIT-PROMPT OPTIONS
 # GIT_PROMPT_THEME=Single_line_Dark
 GIT_PROMPT_THEME=Custom
+# GIT_PROMPT_FETCH_REMOTE_STATUS=0 # Disable fetching remote (stops kr from pinging my phone)
 
 if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
     __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
