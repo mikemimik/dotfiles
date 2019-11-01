@@ -2,6 +2,7 @@
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 export CLICOLOR_FORCE=1
+export GPG_TTY=$(tty) # Added for Krypton
 
 # TOOL ENVIRONMENT CONFIGS
 export GOPATH="$HOME/repos/go"
