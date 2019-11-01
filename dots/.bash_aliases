@@ -112,3 +112,6 @@ alias dclean='docker images --no-trunc | grep "<none>" | awk '\''{ print $3 }'\'
 alias a=aws
 alias aauth=aws-iam-authenticator
 alias al=aws_localstack
+
+# OpenFaas aliases
+alias fast=faas-cli
