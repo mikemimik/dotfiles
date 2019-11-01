@@ -17,7 +17,7 @@ brew tap dart-lang/dart
 brew update
 
 # NOTE(mperrotte): upgrade any already installed formulae
-brew upgrade --all
+brew upgrade
 
 ##
 # NOTE(mperrotte): Install packages I use on a day-to-day basis
@@ -28,8 +28,10 @@ BREW_LIST=$(brew list -1)
 
 apps=(
   awscli
+  bash
   bash-git-prompt
   bat
+  brew-graph
   curl
   dart
   dep
@@ -58,7 +60,8 @@ apps=(
   watson
   wget
   wifi-password
-  yarn
+  # NOTE: need to install node first; or it default intalls `node` from homebrew
+  # yarn
 )
 
 for app in ${apps[@]}; do
