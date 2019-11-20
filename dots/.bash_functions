@@ -22,6 +22,14 @@ sshlogin () {
 }
 
 ########################################
+# iterm2
+########################################
+function iterm2_print_user_vars() {
+    iterm2_set_user_var nodeVersion $(node --version)
+    iterm2_set_user_var npmVersion $(npm --version)
+}
+
+########################################
 # system
 ########################################
 cd() { builtin cd "$@"; clear; ls -alFG; }
