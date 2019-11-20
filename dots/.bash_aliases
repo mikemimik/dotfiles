@@ -115,3 +115,6 @@ alias al=aws_localstack
 
 # OpenFaas aliases
 alias fast=faas-cli
+
+# Taskbook aliases
+alias task=tb
