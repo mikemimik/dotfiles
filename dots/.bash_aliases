@@ -49,8 +49,8 @@ alias repos="cd ~/repos"
 alias npminc="cd ~/npminc"
 
 # Networking aliases
-alias flushdns="dscacheutil -flushcache"
-alias flushdns="sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"
+alias flushdns="sudo dscacheutil -flushcache"
+alias flushdnshard="sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"
 alias getip="curl icanhazip.com"
 
 # Show/hide all desktop icons (useful when presenting)
