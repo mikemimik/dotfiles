@@ -118,3 +118,6 @@ alias fast=faas-cli
 
 # Taskbook aliases
 alias task=tb
+
+# BearNotes aliases
+alias newnote=new_note
