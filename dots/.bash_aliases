@@ -80,19 +80,21 @@ alias tf=terraform
 alias k=kubectl
 
 # Git aliases
-alias gs="git status"
-alias gsc="clear && git status"
-alias gc="git commit -m"
-alias ga="git add"
-alias gd="git diff"
-alias fetch="git fetch"
-alias prune="git fetch --prune"
-alias pull="git pull"
-alias fpp="fetch && prune && pull"
-alias fp="fetch && prune"
-alias co="git checkout"
-alias unstage="git reset HEAD --"
-alias gl="git log --oneline"
+alias gs="git status"               # (gs) git staths shorthand
+alias gsc="clear && git status"     # (gsc) git status and clear shorthand
+alias gc="git commit -m"            # (gc) git commit shorthand
+alias gca="git commit --amend"      # (gca) ammend git commit shorthand
+alias ga="git add"                  # (ga) git add shorthand
+alias gd="git diff"                 # (gd) git diff shorthand
+alias fetch="git fetch"             # (fetch) fetch shorthand
+alias prune="git fetch --prune"     # (prune) fetch and prune shorthand
+alias pull="git pull"               # (pull) pull shorthand
+alias fpp="fetch && prune && pull"  # (fpp) fetch, prune, pull shorthand
+alias fp="fetch && prune"           # (fp) fetch and prune shorthand
+alias co="git checkout"             # (co) checkout shorthand
+alias unstage="git reset HEAD --"   # (unstage) work/file
+alias gl="git log --oneline"        # (gl) one line log
+alias wb="git branch -vv"           # (wb) which branch
 
 # Docker
 alias d=docker
