@@ -87,6 +87,9 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
+# Turn off mouse acceleration
+defaults write NSGlobalDomain com.apple.mouse.scaling -1
+
 # NOTE(mperrotte): this doesn't seem to work
 # Use scroll gesture with the Cmd (⌘) modifier key to zoom
 # defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
