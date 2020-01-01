@@ -11,3 +11,6 @@
 [tag]
   forceSignAnnotated = true
   gpgSign = true
+[color]
+  ui = true
+
