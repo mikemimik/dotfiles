@@ -66,7 +66,12 @@ let g:lightline = {
   \ 'colorscheme': 'wombat',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'readonly', 'filename', 'modified' ] ]
+  \             [ 'readonly', 'filename', 'modified' ],
+  \             [ 'gitbranch' ] ],
+  \   'right': [ [ 'linter', 'gitbranch' ] ]
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'gitbranch#name'
   \ },
   \ }
 
@@ -85,3 +90,11 @@ color seoul256
 " Plugin: (vim-javascript)
 ""Fix JSON syntax highlighting
 let g:vim_json_conceal = 0
+
+" Plugin: (ale)
+let g:ale_linters = {
+\   'javascript': ['standard'],
+\}
+let g:ale_fixers = {'javascript': ['standard']}
+let g:ale_fix_on_save = 1
+let g:ale_sign_column_always=1
