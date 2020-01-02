@@ -95,6 +95,8 @@ alias co="git checkout"             # (co) checkout shorthand
 alias unstage="git reset HEAD --"   # (unstage) work/file
 alias gl="git log --oneline"        # (gl) one line log
 alias wb="git branch -vv"           # (wb) which branch
+## Git interactive aliases
+alias gdp="git status -s | ipt -p -a | xargs git diff"
 
 # Docker
 alias d=docker
