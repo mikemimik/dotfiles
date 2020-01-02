@@ -25,6 +25,11 @@ if !has('gui_running')
   set t_Co=256
 endif
 
+" Custom Functions
+function Mdflat ()
+  :%s/\v\n  ([^-*])/ \1/g
+endfunction
+
 " Check if vim-plug is installed; install if not
 if empty(glob('~/.vim/autoload/plug.vim'))
   echo "Downloading junegunn/vim-plug to manage plugins..."
