@@ -42,12 +42,15 @@ endif
 call plug#begin()
 Plug 'junegunn/seoul256.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'itchyny/vim-gitbranch'
 
 " Functionality
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
+Plug 'dense-analysis/ale'
 
 " Syntax Highlighting
 Plug 'pangloss/vim-javascript'
