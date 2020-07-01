@@ -1,0 +1,23 @@
+{
+  "name": "dotfiles-cli",
+  "version": "1.0.0",
+  "description": "This folder contains the source code for the dotfiles cli in this repo. The cli is capable of running all the commands related to dotfiles; notably setting them up, and backing up anything that has been changed.",
+  "main": "index.js",
+  "bin": {
+    "dotfiles-cli": "cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Michael Perrotte <mike@npmjs.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "standard": "^12.0.1"
+  },
+  "dependencies": {
+    "@npmcli/promise-spawn": "^1.2.0",
+    "mkdirp": "^1.0.4",
+    "which": "^2.0.2"
+  }
+}

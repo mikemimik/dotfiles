@@ -1,0 +1,40 @@
+{
+  "system_security_action": [
+    "alfred",
+    "bartender",
+    "logitech-options",
+    "spectacle"
+  ],
+  "require_action": [
+    "1password",
+    "dash",
+    "docker",
+    "dropbox",
+    "hammerspoon",
+    "iterm2"
+  ],
+  "apps": [
+    "amethyst",
+    "discord",
+    "evernote",
+    "firefox-developer-edition",
+    "flux",
+    "google-chrome",
+    "insomnia",
+    "itsycal",
+    "kap",
+    "karabiner-elements",
+    "kitematic",
+    "ngrok",
+    "skype",
+    "slack",
+    "spotify",
+    "sublime-text",
+    "tableplus",
+    "viscosity",
+    "visual-studio-code",
+    "vlc",
+    "whatsapp",
+    "zoomus"
+  ]
+}
