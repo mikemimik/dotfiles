@@ -84,6 +84,7 @@ class InitCommand extends Command {
     const taps = JSON.parse(data)
     for (let x = 0; x < taps.length; x++) {
       try {
+        this.logger.info('TAP', `Installing ${taps[x]}...`)
         await this.brewCmd(['tap', taps[x]])
       } catch (e) {
         this.logger.error('TAP', `Failed to install tap: ${taps[x]}`)
@@ -92,6 +93,7 @@ class InitCommand extends Command {
   }
 
   async installBrews () {
+    this.logger.silly('Installing brews...')
     try {
       const listpath = resolve(repoDir, dotDir, 'brews.json')
       const data = await readfile(listpath, 'utf8')
@@ -102,6 +104,7 @@ class InitCommand extends Command {
       for (let x = 0; x < brews.length; x++) {
         if (!currentList.includes(brews[x])) {
           try {
+            this.logger.info('BREW', `Installing ${brews[x]}...`)
             const brewArgs = [ 'install', brews[x] ]
             const result = await this.brewCmd(brewArgs)
             // TODO: parse output from 'brew install'; could be useful to display
@@ -112,8 +115,9 @@ class InitCommand extends Command {
             this.logger.error('BREW', `Failed to install formula: ${brews[x]}`)
             this.logger.error('BREW', msg)
           }
+        } else {
+          this.logger.info('BREW', `Skipping, ${brews[x]}, already installed...`)
         }
-        this.logger.info('BREW', `Skipping, ${brews[x]}, already installed...`)
       }
     } catch (e) {
       // TODO: handle JSON parse error
@@ -125,6 +129,7 @@ class InitCommand extends Command {
   }
 
   async installCasks () {
+    this.logger.silly('Installing casks...')
     try {
       const listpath = resolve(repoDir, dotDir, 'casks.json')
       const data = await readfile(listpath, 'utf8')
@@ -136,6 +141,7 @@ class InitCommand extends Command {
       for (let x = 0; x < casks.apps.length; x++) {
         if (!currentList.includes(casks.apps[x])) {
           try {
+            this.logger.info('CASK', `Installing ${casks.apps[x]}...`)
             const caskArgs = ['cask', 'install', casks.apps[x]]
             const result = await this.brewCmd(caskArgs)
             // TODO: parse output from 'brew install'; could be useful to display
@@ -146,8 +152,9 @@ class InitCommand extends Command {
             this.logger.error('CASK', `Failed to install formula: ${casks.apps[x]}`)
             this.logger.error(msg)
           }
+        } else {
+          this.logger.info('CASK', `Skipping, ${casks.apps[x]}, already installed...`)
         }
-        this.logger.info('CASK', `Skipping, ${casks.apps[x]}, already installed...`)
       }
 
       // INFO: install casks; require user action
@@ -165,12 +172,15 @@ class InitCommand extends Command {
   }
 
   async symlinkDots () {
+    this.logger.silly('Installing symlinks...')
     try {
       const listpath = resolve(repoDir, 'dots')
       const files = await readdir(listpath, 'utf8')
       console.log(files)
       for (let x = 0; x < files.length; x++) {
         const file = files[x]
+        // TODO: check if the file already exists
+        // TODO: delete it if it does; probably back it up
         await symlink(`${listpath}/${file}`, `${homeDir}/${file}`)
       }
     } catch (e) {
