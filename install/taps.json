@@ -1,4 +1,6 @@
 [
   "heroku/brew",
-  "dart-lang/dart"
+  "dart-lang/dart",
+  "homebrew/cask-versions",
+  "homebrew/cask-drivers"
 ]
