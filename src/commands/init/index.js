@@ -94,10 +94,17 @@ class InitCommand extends Command {
     const tapPath = resolve(repoDir, dotDir, 'taps.json')
     const data = await readfile(tapPath, 'utf8')
     const taps = JSON.parse(data)
+
+    const currentList = await this.listTaps()
+
     for (let x = 0; x < taps.length; x++) {
       try {
-        this.logger.info('TAP', `Installing ${taps[x]}...`)
-        await this.brewCmd(['tap', taps[x]])
+        if (!currentList.includes(taps[x])) {
+          this.logger.info('TAP', `Installing ${taps[x]}...`)
+          await this.brewCmd(['tap', taps[x]])
+        } else {
+          this.logger.info('TAP', `Skipping ${taps[x]}, already installed...`)
+        }
       } catch (e) {
         this.logger.error('TAP', `Failed to install tap: ${taps[x]}`)
       }
@@ -147,7 +154,7 @@ class InitCommand extends Command {
       const data = await readfile(listpath, 'utf8')
       const casks = JSON.parse(data)
 
-      const currentList = await this.brewCmd(['cask', 'list'])
+      const currentList = await this.listCasks()
 
       // INFO: install cask apps
       for (let x = 0; x < casks.apps.length; x++) {
