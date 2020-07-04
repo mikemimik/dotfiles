@@ -4,9 +4,9 @@ echo "Initial setup of dotfiles..."
 
 CURRENT_DIR=$(pwd)
 
-chmod +wx ${CURRENT_DIR}/install/install.sh
-chmod -R +wx ${CURRENT_DIR}/bin
-${CURRENT_DIR}/install/install.sh
+# Create file if it doesn't exist (nvm needs it to finish successfully)
+touch ~/.bashrc
 
-echo "Initial setup of dotfiles complete."
-echo "Usage: dot-cli --help"
+# Install `nvm`
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+
