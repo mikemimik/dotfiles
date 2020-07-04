@@ -200,7 +200,15 @@ class InitCommand extends Command {
         const file = files[x]
         // TODO: check if the file already exists
         // TODO: delete it if it does; probably back it up
-        await symlink(`${listpath}/${file}`, `${homeDir}/${file}`)
+        try {
+          await lstat(`${listpath}/${file}`)
+          // File exists, remove it then link
+          await spawn(`mv ${listpath}/${file} ${listpath}/${file}.bak`)
+          await symlink(`${listpath}/${file}`, `${homeDir}/${file}`)
+        } catch (e) {
+          // Failed to stat; file doesn't exist; go ahead and link
+          await symlink(`${listpath}/${file}`, `${homeDir}/${file}`)
+        }
       }
     } catch (e) {
       console.error('something blew up')
