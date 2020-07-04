@@ -10,9 +10,11 @@ const fs = require('fs')
 const writefile = promisify(fs.writeFile)
 const readfile = promisify(fs.readFile)
 const readlink = promisify(fs.readlink)
+const readdir = promisify(fs.readdir)
+const symlink = promisify(fs.symlink)
 const lstat = promisify(fs.lstat)
 
-const { configDir, repoDir, dotDir } = require('../../config')
+const { configDir, repoDir, dotDir, homeDir } = require('../../config')
 
 class InitCommand extends Command {
   async initialize () {
@@ -162,6 +164,21 @@ class InitCommand extends Command {
     }
   }
 
+  async symlinkDots () {
+    try {
+      const listpath = resolve(repoDir, 'dots')
+      const files = await readdir(listpath, 'utf8')
+      console.log(files)
+      for (let x = 0; x < files.length; x++) {
+        const file = files[x]
+        await symlink(`${listpath}/${file}`, `${homeDir}/${file}`)
+      }
+    } catch (e) {
+      console.error('something blew up')
+      console.error(e)
+    }
+  }
+
   async execute () {
     this.logger.silly(this.name, 'execute')
     // TODO: determine what it means to initialize 'dotfiles'
@@ -182,7 +199,7 @@ class InitCommand extends Command {
       await this.installTaps()
       await this.installBrews()
       await this.installCasks()
-      // await this.symlinkDots()
+      await this.symlinkDots()
     } catch (e) {
       console.error(e)
     }
