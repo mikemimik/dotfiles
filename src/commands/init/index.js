@@ -76,6 +76,18 @@ class InitCommand extends Command {
     const result = await this.brewCmd([ 'list' ])
     return result.split('\n')
   }
+  async listCasks () {
+    // TODO: wrap in try/catch
+    this.logger.silly('Fetching list of current casks...')
+    const result = await this.brewCmd([ 'cask', 'list' ])
+    return result.split('\n')
+  }
+  async listTaps () {
+    // TODO: wrap in try/catch
+    this.logger.silly('Fetching list of current taps...')
+    const result = await this.brewCmd([ 'tap' ])
+    return result.split('\n')
+  }
 
   async installTaps () {
     this.logger.silly('Installing taps...')
