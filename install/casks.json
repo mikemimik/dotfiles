@@ -7,9 +7,11 @@
   ],
   "require_action": [
     "1password",
+    "karabiner-elements",
     "dash",
     "docker",
-    "dropbox"
+    "dropbox",
+    "zoomus"
   ],
   "apps": [
     "amethyst",
@@ -23,7 +25,6 @@
     "iterm2",
     "itsycal",
     "kap",
-    "karabiner-elements",
     "kitematic",
     "ngrok",
     "skype",
@@ -34,7 +35,6 @@
     "viscosity",
     "visual-studio-code",
     "vlc",
-    "whatsapp",
-    "zoomus"
+    "whatsapp"
   ]
 }
