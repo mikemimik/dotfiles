@@ -25,6 +25,7 @@ alias brewdeps=brew_dep_graph
 
 # Dotfiles
 alias dotfiles=dotfiles
+alias rebash="source ~/.bashrc"
 
 # RESOLVER aliases
 alias r='rslv'
