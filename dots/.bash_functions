@@ -108,12 +108,13 @@ function new_note() {
     local open_note="open_note=yes"
     local edit="edit=yes"
     local text_tag="%23DevJournal%2Fnpm"
+    local text_water="%F0%9F%92%A7x0%0A"
     local text_space="%0A%0A%0A%0A"
     local text_tasks="%23%23%20Tasks${text_space}"
     local text_todos="%23%23%20Todos${text_space}"
     local text_mood="%23%23%20Mood${text_space}"
     local text_forward="%23%23%20Forward"
-    local text="text=${text_tag}%0A%0A${text_tasks}${text_todos}${text_mood}${text_forward}%0A"
+    local text="text=${text_tag}%0A%0A${text_water}${text_tasks}${text_todos}${text_mood}${text_forward}%0A"
     open "${url}?${title}&${open_note}&${edit}&${text}"
 }
 
