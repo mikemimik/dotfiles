@@ -48,6 +48,7 @@ alias resolver-config="cd /Code/npm-packages/modules/resolver-config"
 # PERSONAL Computer aliases
 alias repos="cd ~/repos"
 alias npminc="cd ~/npminc"
+alias shopify="cd ~/shopify"
 
 # Networking aliases
 alias flushdns="sudo dscacheutil -flushcache"
@@ -94,8 +95,11 @@ alias fpp="fetch && prune && pull"  # (fpp) fetch, prune, pull shorthand
 alias fp="fetch && prune"           # (fp) fetch and prune shorthand
 alias co="git checkout"             # (co) checkout shorthand
 alias unstage="git reset HEAD --"   # (unstage) work/file
-alias gl="git log --oneline"        # (gl) one line log
+alias gl="git log -n 10 --oneline"  # (gl) one line log
+alias gitback="git rebase -i HEAD~15" # interactive rebase last 15 commits
 alias wb="git branch -vv"           # (wb) which branch
+# GitHub Specific
+alias copull="checkout_pull"
 ## Git interactive aliases
 alias gdp="git status -s | ipt -p -a | xargs git diff"
 
