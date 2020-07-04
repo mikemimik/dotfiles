@@ -9,9 +9,7 @@
     "1password",
     "dash",
     "docker",
-    "dropbox",
-    "hammerspoon",
-    "iterm2"
+    "dropbox"
   ],
   "apps": [
     "amethyst",
@@ -20,7 +18,9 @@
     "firefox-developer-edition",
     "flux",
     "google-chrome",
+    "hammerspoon",
     "insomnia",
+    "iterm2",
     "itsycal",
     "kap",
     "karabiner-elements",
