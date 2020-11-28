@@ -22,6 +22,81 @@ sshlogin () {
 }
 
 ########################################
+# Git
+########################################
+function isRemote() {
+    if git remote | grep -q "$1"; then
+        true
+    else
+        false
+    fi
+}
+
+function isNumber() {
+    if echo "$1" | grep -E -q '^[0-9]+$'; then
+        true
+    else
+        false
+    fi
+}
+
+function checkout_pull() {
+    local remote
+    local pullNum
+    local ref
+
+    local usage=$(cat <<-EOM
+${ARROW} Usage: ${FUNCNAME[0]} [remote] | remote pull_number
+
+    Example: ${FUNCNAME[0]} 1235
+    Example: ${FUNCNAME[0]} origin 3254
+    Example: ${FUNCNAME[0]} upstream 9876
+EOM
+    )
+
+    case "$#" in
+        1)
+            remote="origin"
+            pullNum="$1"
+            ref="pull/${pullNum}/head"
+
+            if isNumber "${pullNum}"; then
+                git fetch "${remote}" "${ref}"
+                git checkout FETCH_HEAD
+            else
+                echo -e "pull_number: must be an integer value"
+                echo -e "${usage}"
+                return 1
+            fi
+            ;;
+        2)
+            remote="$1"
+            pullNum="$2"
+            ref="pull/${pullNum}/head"
+
+            if ! isNumber "${pullNum}"; then
+                echo -e "pull_number: must be an integer value"
+                echo -e "${usage}"
+                return 1
+            else
+                if ! isRemote "${remote}"; then
+                    echo -e "remote: must be a valid git remote"
+                    echo -e "${usage}"
+                    return 1
+                else
+                    git fetch "${remote}" "${ref}"
+                    git checkout FETCH_HEAD
+                fi
+            fi
+            ;;
+        *)
+            echo -e "${usage}"
+            return 1
+            ;;
+    esac
+}
+
+########################################
 # BearNotes
 ########################################
 function new_note() {
@@ -33,12 +108,13 @@ function new_note() {
     local open_note="open_note=yes"
     local edit="edit=yes"
     local text_tag="%23DevJournal%2Fnpm"
+    local text_water="%F0%9F%92%A7x0%0A"
     local text_space="%0A%0A%0A%0A"
     local text_tasks="%23%23%20Tasks${text_space}"
     local text_todos="%23%23%20Todos${text_space}"
     local text_mood="%23%23%20Mood${text_space}"
     local text_forward="%23%23%20Forward"
-    local text="text=${text_tag}%0A%0A${text_tasks}${text_todos}${text_mood}${text_forward}%0A"
+    local text="text=${text_tag}%0A%0A${text_water}${text_tasks}${text_todos}${text_mood}${text_forward}%0A"
     open "${url}?${title}&${open_note}&${edit}&${text}"
 }
 
