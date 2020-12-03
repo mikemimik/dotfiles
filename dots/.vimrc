@@ -1,40 +1,54 @@
 set nocompatible
+set timeoutlen=400
 syntax on
 
 "-- Key mappings --
 let mapleader=','
-map t :vert term<CR>
-map <S-t> :term<CR>
+"map t :vert term<CR>
+"map <S-t> :term<CR>
 
 "-- insert mode --
-inoremap <Leader>, <Esc>  " exit->normal
-inoremap <Leader>p "*p    " paste<-clipboard
-inoremap <Leader>yy "*yy  " yank->clipboard
+"" exit->normal
+inoremap <Leader>, <Esc><left>
+" yank->clipboard
+inoremap <Leader>yy "*yy
+inoremap <Leader>p <C-o>"*p
 
 "-- normal mode --
-nnoremap <Leader>p "*p    " paste<-clipboard
-nnoremap <Leader>yy "*yy  " yank->clipboard
+" paste<-clipboard
+nnoremap <Leader>p "*p
+" yank->clipboard
+nnoremap <Leader>yy "*yy
+" cutline->clipboard
+nnoremap <Leader>D "*D
 
 "-- visual mode --
-xnoremap <Leader>, <Esc>  " exit->normal
-xnoremap <Leader>y "*y    " yank->clipboard
-xnoremap <Leader>p "*p    " paste<-clipboard
+" exit->normal
+xnoremap <Leader>, <Esc>
+" yank->clipboard
+xnoremap <Leader>y "*y
+" paste<-clipboard
+xnoremap <Leader>p "*p
+" cut->clipboard
+xnoremap <Leader>d "*d
 "xnoremap <S-l> $
 
 "-- Visual help stuff --
 set mouse=a
-set lcs=tab:>-,eol:$
-set hlsearch              "" highlight all occourances of search found
-" set ruler               "" This is set by Plugin: itchyny/lightline.vim
-" highlight Comment ctermfg=green ""Change comment lines to a lime green
-" set cursorcolumn ""Show column at cursors location
+set lcs=tab:>-,eol:$,space:.
+"" highlight all occourances of search found
+set hlsearch
+"set ruler"" This is set by Plugin: itchyny/lightline.vim
+"set cursorcolumn ""Show column at cursors location
 set cursorline ""Show row at cursors location
+set colorcolumn=80
 set laststatus=2 ""Shows full status bar at bottom
 set noshowmode ""Removes mode from bottom status bar line
 set foldmethod=syntax
 set foldcolumn=1
 let javaScript_fold=1
 set foldlevelstart=99
+set completeopt+=menuone,noinsert
 
 "-- Formatting --
 set tabstop=2
@@ -44,10 +58,15 @@ set expandtab
 set autoindent
 set number
 set backspace=indent,eol,start
+"" trim trailing whitespace on :w
+autocmd BufWritePre * %s/\s\+$//e
 
 if !has('gui_running')
   set t_Co=256
 endif
+
+"-- File Extentions --
+autocmd BufNewFile,BufRead *.env.development set syntax=sh
 
 "-- Custom Functions --
 function Mdflat ()
@@ -76,11 +95,15 @@ Plug 'Yggdroot/indentLine'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'dense-analysis/ale'
+Plug 'lifepillar/vim-mucomplete'
+Plug 'raimondi/delimitmate'
+Plug 'airblade/vim-gitgutter'
 
 "-- Syntax Highlighting --
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'junegunn/limelight.vim'
 
 call plug#end()
 
@@ -91,14 +114,13 @@ let g:lightline = {
   \ 'colorscheme': 'wombat',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'readonly', 'filename', 'modified' ],
-  \             [ 'gitbranch' ] ],
+  \             [ 'gitbranch', 'readonly', 'modified' ],
+  \             [ 'absolutepath' ] ],
   \   'right': [ [ 'lineinfo', 'percent' ],
-  \              [ 'fileformat', 'fileencoding', 'filetype' ],
-  \              [ 'linter', 'gitbranch' ] ]
+  \              [ 'linter', 'filetype' ] ],
   \ },
   \ 'component_function': {
-  \   'gitbranch': 'gitbranch#name'
+  \   'gitbranch': 'gitbranch#name',
   \ },
   \ }
 
@@ -144,4 +166,22 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
  \ 'Clean'     :'✔︎',
  \ 'Unknown'   :'?',
  \ }
+
+"--- Plugin: (mucomplete) ---
+let g:mucomplete#enable_auto_at_startup = 1
+
+"--- Plugin: (delimitMate) ---
+let g:delimitMate_expand_cr = 1
+
+"--- Plugin: (limelight) ---
+autocmd VimEnter * Limelight
+let g:limelight_default_coefficient = 0.3
+let g:limelight_paragraph_span = 1
+let g:limelight_priority = -1
+
+"-- Highligh Color --
+"" highlight color must be set down here, after other syntax colors have been
+"" set. Otherwise the below commands would just be overridden.
+highlight ColorColumn ctermbg=88
+"highlight Comment ctermfg=green ""Change comment lines to a lime green
 
