@@ -104,6 +104,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 call plug#end()
 
@@ -148,6 +150,9 @@ let g:ale_fixers = {'javascript': ['standard']}
 let g:ale_fix_on_save = 1
 let g:ale_sign_column_always=1
 
+" Plugin: (vim-markdown)
+let g:vim_markdown_folding_disabled = 1
+
 "--- Plugin: (NERDTree) ---
 map <Leader>b :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
@@ -184,4 +189,3 @@ let g:limelight_priority = -1
 "" set. Otherwise the below commands would just be overridden.
 highlight ColorColumn ctermbg=88
 "highlight Comment ctermfg=green ""Change comment lines to a lime green
-
