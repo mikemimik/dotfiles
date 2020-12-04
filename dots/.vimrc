@@ -21,6 +21,7 @@ nnoremap <Leader>p "*p
 nnoremap <Leader>yy "*yy
 " cutline->clipboard
 nnoremap <Leader>D "*D
+nnoremap <C-p> :Ag<CR>
 
 "-- visual mode --
 " exit->normal
@@ -36,6 +37,7 @@ xnoremap <Leader>d "*d
 "-- Visual help stuff --
 set mouse=a
 set lcs=tab:>-,eol:$,space:.
+set nowrap
 "" highlight all occourances of search found
 set hlsearch
 "set ruler"" This is set by Plugin: itchyny/lightline.vim
@@ -98,6 +100,8 @@ Plug 'dense-analysis/ale'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'raimondi/delimitmate'
 Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 "-- Syntax Highlighting --
 Plug 'pangloss/vim-javascript'
@@ -174,15 +178,31 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 
 "--- Plugin: (mucomplete) ---
 let g:mucomplete#enable_auto_at_startup = 1
+set shortmess+=c
+set belloff+=ctrlg
 
 "--- Plugin: (delimitMate) ---
 let g:delimitMate_expand_cr = 1
 
 "--- Plugin: (limelight) ---
-autocmd VimEnter * Limelight
+"autocmd VimEnter * Limelight
 let g:limelight_default_coefficient = 0.3
 let g:limelight_paragraph_span = 1
 let g:limelight_priority = -1
+
+"--- Plugin: (fzf) ---
+let g:fzf_layout = {
+ \ 'window': {
+ \   'width': 0.8,
+ \   'height': 0.6,
+ \ },
+ \ }
+let g:fzf_buffers_jump = 1
+
+command! -bang -nargs=* Ag
+    \ call fzf#vim#grep(
+    \ 'ag --column --numbers --noheading --color --files-with-matches --'.shellescape(<q-args>), 1,
+    \ fzf#vim#with_preview(), <bang>0)
 
 "-- Highligh Color --
 "" highlight color must be set down here, after other syntax colors have been
