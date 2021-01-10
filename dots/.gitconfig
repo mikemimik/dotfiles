@@ -1,16 +1,16 @@
 [user]
   email = mike@npmjs.com
   name = Michael Perrotte
+
 [core]
   pager = diff-so-fancy | less --tabs=4 -RFX
   sshCommand = "ssh -i ~/.ssh/mperrotte-20190909 -F /dev/null"
+
 [github]
   user = mikemimik
-[gpg]
-  program = /usr/local/bin/krgpg
-[tag]
-  forceSignAnnotated = true
-  gpgSign = true
+
 [color]
   ui = true
 
+[pull]
+	ff = only
