@@ -90,7 +90,7 @@ alias ga="git add"                  # (ga) git add shorthand
 alias gd="git diff"                 # (gd) git diff shorthand
 alias fetch="git fetch"             # (fetch) fetch shorthand
 alias prune="git fetch --prune"     # (prune) fetch and prune shorthand
-alias pull="git pull"               # (pull) pull shorthand
+alias pull="git pull --ff-only"     # (pull) pull shorthand
 alias fpp="fetch && prune && pull"  # (fpp) fetch, prune, pull shorthand
 alias fp="fetch && prune"           # (fp) fetch and prune shorthand
 alias co="git checkout"             # (co) checkout shorthand
@@ -101,7 +101,7 @@ alias wb="git branch -vv"           # (wb) which branch
 # GitHub Specific
 alias copull="checkout_pull"
 ## Git interactive aliases
-alias gdp="git status -s | ipt -p -a | xargs git diff"
+alias gdp="git status -s | ipt -p | xargs git diff"
 
 # Docker
 alias d=docker
@@ -111,7 +111,7 @@ alias de=docker_exec
 alias dsr=docker_stop_and_remove
 alias dcl='dc logs -f'
 alias dpsa='d ps -a'
-alias dps='dpsa --format "table {{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}"'
+alias dps='dpsa --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}"'
 alias dpsp='dpsa --format "table {{.Names}}\t{{.Ports}}"'
 alias di='d images'
 alias dpsjson='dpsa --format "{ \"name\": {{json .Names}}, \"status\": {{json .Status}} }"'
