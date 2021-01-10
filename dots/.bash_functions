@@ -137,6 +137,12 @@ function iterm2_print_user_vars() {
 ########################################
 # system
 ########################################
+strip_color() {
+  while read data; do
+    gsed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"
+  done
+}
+
 cd() { builtin cd "$@"; clear; ls -alFG; }
 
 ql() { qlmanage -p "$*" >& /dev/null; }
