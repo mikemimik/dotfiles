@@ -107,6 +107,7 @@ EOM
 # BearNotes
 ########################################
 function new_note() {
+    local company="bidvine"
     local url="bear://x-callback-url/create"
     local month="$(date "+%b")"
     local day="$(date "+%d")"
@@ -114,7 +115,7 @@ function new_note() {
     local title="title=${month}%20${day}%2C%20${year}"
     local open_note="open_note=yes"
     local edit="edit=yes"
-    local text_tag="%23DevJournal%2Fnpm"
+    local text_tag="%23DevJournal%2F${company}"
     local text_water="%F0%9F%92%A7x0%0A"
     local text_space="%0A%0A%0A%0A"
     local text_tasks="%23%23%20Tasks${text_space}"
@@ -176,13 +177,13 @@ dotfiles() {
 # docker
 ########################################
 docker_bash() {
-    d exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it $1 bash
+    docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it $1 bash
 }
 
 docker_exec() {
     container=$1
     shift
-    d exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it $container $@
+    docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it $container $@
 }
 
 docker_stop_and_remove() {
