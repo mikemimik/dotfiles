@@ -1,5 +1,5 @@
 [user]
-  email = mike@npmjs.com
+  email = mike@mikecorp.ca
   name = Michael Perrotte
 
 [core]
@@ -9,8 +9,18 @@
 [github]
   user = mikemimik
 
+[gpg]
+  program = /usr/local/bin/krgpg
+
+[tag]
+  forceSignAnnotated = true
+  gpgSign = true
+
 [color]
   ui = true
+
+[color "status"]
+  changed = yellow
 
 [pull]
 	ff = only
