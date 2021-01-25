@@ -31,7 +31,6 @@ jobs:
           prerelease: false
       - name: Get Tag
         id: git_info
-        run: echo ::set-output name=TAG::${GITHUB_REF/refs/tags/}
         run: echo "GIT_TAG=$(git describe --tags)" >> $GITHUB_ENV
       - name: Upload Release Assets
         id: upload-release-asset
