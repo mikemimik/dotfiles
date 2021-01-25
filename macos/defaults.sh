@@ -10,7 +10,7 @@
 osascript -e 'tell application "System Preferences" to quit'
 
 # Set computer name
-NAME="mperrotte"
+NAME="mcp-auth0"
 COMPUTERNAME=$NAME
 HOSTNAME=$NAME
 LOCALHOSTNAME=$NAME
