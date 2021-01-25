@@ -20,7 +20,7 @@ $ npm install -g @mikemimik/dotfiles
 $ dotfiles COMMAND
 running command...
 $ dotfiles (-v|--version|version)
-@mikemimik/dotfiles/0.1.0 darwin-x64 node-v14.15.1
+@mikemimik/dotfiles/0.1.1 darwin-x64 node-v14.15.1
 $ dotfiles --help [COMMAND]
 USAGE
   $ dotfiles COMMAND
@@ -69,5 +69,5 @@ EXAMPLES
   $ dotfiles symlinks --force
 ```
 
-_See code: [src/commands/symlinks/index.js](https://github.com/mikemimik/dotfiles/blob/v0.1.0/src/commands/symlinks/index.js)_
+_See code: [src/commands/symlinks/index.js](https://github.com/mikemimik/dotfiles/blob/v0.1.1/src/commands/symlinks/index.js)_
 <!-- commandsstop -->
