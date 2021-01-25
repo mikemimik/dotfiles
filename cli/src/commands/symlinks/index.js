@@ -1,13 +1,14 @@
-const { basename, resolve } = require('path')
+const { basename, dirname, resolve } = require('path')
 const { flags } = require('@oclif/command')
 const { promisify } = require('util')
 const dedent = require('dedent')
 const fs = require('fs')
 
 const readlink = promisify(fs.readlink)
-const rename = promisify(fs.rename)
 const symlink = promisify(fs.symlink)
+const rename = promisify(fs.rename)
 const unlink = promisify(fs.unlink)
+const mkdir = promisify(fs.mkdir)
 const lstat = promisify(fs.lstat)
 
 const BaseCommand = require('../../lib/base')
@@ -122,6 +123,10 @@ class SymlinkCommand extends BaseCommand {
   async symlink(filepath, linkpath, opts = {}) {
     if (opts.force) {
       await unlink(linkpath)
+    }
+    if (dirname(linkpath) !== homeDir) {
+      // Need to make directories
+      await mkdir(dirname(linkpath), { recursive: true })
     }
     await symlink(filepath, linkpath)
   }
