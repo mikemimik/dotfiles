@@ -3,8 +3,8 @@
 [ -r ~/.bash_aliases ] && [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 
 # Check if NVM exists then source it
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_INSTALL_DIR/nvm.sh" ] && source "$NVM_INSTALL_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_INSTALL_DIR/etc/bash_completion.d/nvm" ] && source "$NVM_INSTALL_DIR/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 if [ -e "$HOME/.ssh/config" ]; then
@@ -45,4 +45,3 @@ fi
 
 # Load iterm2 integration script
 test -e "${HOME}/.iterm2_shell_integration.sh" && source "${HOME}/.iterm2_shell_integration.sh"
-
