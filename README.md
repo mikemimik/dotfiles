@@ -2,7 +2,23 @@
 
 My collection of dotfiles for all the tools I use in my day-to-day as a developer and macOS user.
 
+## Dependencies
+- Install [homebrew](https://brew.sh/) before installing this tool.
+```shell
+$ brew update
+```
+- An ssh key which is attached to your GitHub account needs to be active on the
+machine.
+```shell
+# This should list out a key which is active in your GitHub account
+$ ssh-add -l
+```
+
 ## Install
+With homebrew installed, install tap:
+```shell
+$ brew tap mikemimik/brew
+```
 
 On fresh installation of macOS:
 ```shell
