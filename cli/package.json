@@ -59,7 +59,6 @@
     "prepack": "oclif-dev manifest && oclif-dev readme",
     "test": "nyc mocha --forbid-only \"test/**/*.test.js\"",
     "version": "oclif-dev readme && git add README.md",
-    "postversion": "git add package.json package-lock.json && git commit -m \"v${npm_package_version}\"",
     "prepublishOnly": "git push origin --follow-tags"
   }
 }
