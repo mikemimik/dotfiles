@@ -3,10 +3,8 @@
 [ -r ~/.bash_aliases ] && [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 
 # Check if NVM exists then source it
-if [ -f "$NVM_INSTALL_DIR/nvm.sh" ]; then
-    source "${NVM_INSTALL_DIR}/nvm.sh"
-    source "${NVM_INSTALL_DIR}/etc/bash_completion.d/nvm"
-fi
+[ -s "$NVM_INSTALL_DIR/nvm.sh" ] && source "$NVM_INSTALL_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_INSTALL_DIR/etc/bash_completion.d/nvm" ] && source "$NVM_INSTALL_DIR/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 if [ -e "$HOME/.ssh/config" ]; then
@@ -31,7 +29,6 @@ fi
 ## BASH-GIT-PROMPT OPTIONS
 # GIT_PROMPT_THEME=Single_line_Dark
 GIT_PROMPT_THEME=Custom
-# GIT_PROMPT_FETCH_REMOTE_STATUS=0 # Disable fetching remote (stops kr from pinging my phone)
 
 if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
     __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
@@ -46,8 +43,5 @@ fi
 # ssh-add -K ~/.ssh/id_rsa
 # ssh-add -K ~/.ssh/github_rsa
 
-
-# load rslv config
-if [ -f ~/.rslv/.rslvrc ]; then
-    source ~/.rslv/.rslvrc
-fi
+# Load iterm2 integration script
+test -e "${HOME}/.iterm2_shell_integration.sh" && source "${HOME}/.iterm2_shell_integration.sh"

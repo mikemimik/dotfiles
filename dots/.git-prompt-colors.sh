@@ -9,8 +9,8 @@ override_git_prompt_colors() {
   GIT_PROMPT_CHANGED="${Yellow}✚ "
   GIT_PROMPT_STAGED="${Magenta}●"
 
-  GIT_PROMPT_START_USER="_LAST_COMMAND_INDICATOR_ ${BoldGreen}\h:${BoldBlue}\W${ResetColor}"
-  GIT_PROMPT_START_ROOT="_LAST_COMMAND_INDICATOR_ ${BoldRed}\h:${BoldBlue}\W${ResetColor}"
+  GIT_PROMPT_START_USER="_LAST_COMMAND_INDICATOR_ ${Green}\u${Green}@${Green}\h:${BoldBlue}\W${ResetColor}"
+  GIT_PROMPT_START_ROOT="_LAST_COMMAND_INDICATOR_ ${BoldRed}\u@\h:${BoldBlue}\W${ResetColor}"
 
   GIT_PROMPT_END_USER="${ResetColor}\n> "
   GIT_PROMPT_END_ROOT=" # ${ResetColor}"

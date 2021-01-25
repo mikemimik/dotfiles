@@ -18,13 +18,14 @@ alias c='clear'
 alias cat='bat'
 
 # Brew / Cask aliases
-alias cask='brew cask'
+alias cask='brew_cask'
 alias where='which'
 alias brwe='brew' #typoes
 alias brewdeps=brew_dep_graph
 
 # Dotfiles
 alias dotfiles=dotfiles
+alias rebash="source ~/.bashrc"
 
 # RESOLVER aliases
 alias r='rslv'
@@ -47,10 +48,11 @@ alias resolver-config="cd /Code/npm-packages/modules/resolver-config"
 # PERSONAL Computer aliases
 alias repos="cd ~/repos"
 alias npminc="cd ~/npminc"
+alias shopify="cd ~/shopify"
 
 # Networking aliases
-alias flushdns="dscacheutil -flushcache"
-alias flushdns="sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"
+alias flushdns="sudo dscacheutil -flushcache"
+alias flushdnshard="sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"
 alias getip="curl icanhazip.com"
 
 # Show/hide all desktop icons (useful when presenting)
@@ -80,19 +82,26 @@ alias tf=terraform
 alias k=kubectl
 
 # Git aliases
-alias gs="git status"
-alias gsc="clear && git status"
-alias gc="git commit -m"
-alias ga="git add"
-alias gd="git diff"
-alias fetch="git fetch"
-alias prune="git fetch --prune"
-alias pull="git pull"
-alias fpp="fetch && prune && pull"
-alias fp="fetch && prune"
-alias co="git checkout"
-alias unstage="git reset HEAD --"
-alias gl="git log --oneline"
+alias gs="git status"               # (gs) git staths shorthand
+alias gsc="clear && git status"     # (gsc) git status and clear shorthand
+alias gc="git commit -m"            # (gc) git commit shorthand
+alias gca="git commit --amend"      # (gca) ammend git commit shorthand
+alias ga="git add"                  # (ga) git add shorthand
+alias gd="git diff"                 # (gd) git diff shorthand
+alias fetch="git fetch"             # (fetch) fetch shorthand
+alias prune="git fetch --prune"     # (prune) fetch and prune shorthand
+alias pull="git pull --ff-only"     # (pull) pull shorthand
+alias fpp="fetch && prune && pull"  # (fpp) fetch, prune, pull shorthand
+alias fp="fetch && prune"           # (fp) fetch and prune shorthand
+alias co="git checkout"             # (co) checkout shorthand
+alias unstage="git reset HEAD --"   # (unstage) work/file
+alias gl="git log -n 10 --oneline"  # (gl) one line log
+alias gitback="git rebase -i HEAD~15" # interactive rebase last 15 commits
+alias wb="git branch -vv"           # (wb) which branch
+# GitHub Specific
+alias copull="checkout_pull"
+## Git interactive aliases
+alias gdp="git status -s | ipt -p | xargs git diff"
 
 # Docker
 alias d=docker
@@ -102,7 +111,7 @@ alias de=docker_exec
 alias dsr=docker_stop_and_remove
 alias dcl='dc logs -f'
 alias dpsa='d ps -a'
-alias dps='dpsa --format "table {{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}"'
+alias dps='dpsa --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}"'
 alias dpsp='dpsa --format "table {{.Names}}\t{{.Ports}}"'
 alias di='d images'
 alias dpsjson='dpsa --format "{ \"name\": {{json .Names}}, \"status\": {{json .Status}} }"'
@@ -115,3 +124,9 @@ alias al=aws_localstack
 
 # OpenFaas aliases
 alias fast=faas-cli
+
+# Taskbook aliases
+alias task=tb
+
+# BearNotes aliases
+alias newnote=new_note
