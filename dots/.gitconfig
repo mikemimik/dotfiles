@@ -9,13 +9,6 @@
 [github]
   user = mikemimik
 
-[gpg]
-  program = /usr/local/bin/krgpg
-
-[tag]
-  forceSignAnnotated = true
-  gpgSign = true
-
 [color]
   ui = true
 
