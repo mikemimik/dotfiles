@@ -12,7 +12,7 @@ let mapleader=','
 inoremap <Leader>, <Esc><left>
 " yank->clipboard
 inoremap <Leader>yy "*yy
-inoremap <Leader>p <C-o>"*p
+inoremap <Leader>p <C-o><left><C-o>"*p
 
 "-- normal mode --
 " paste<-clipboard
@@ -21,7 +21,15 @@ nnoremap <Leader>p "*p
 nnoremap <Leader>yy "*yy
 " cutline->clipboard
 nnoremap <Leader>D "*D
-nnoremap <C-p> :Ag<CR>
+nnoremap <C-p> :AgFiles<CR>
+nnoremap <C-f> :AgInFiles<CR>
+nnoremap tn :tabnext<CR>
+nnoremap tp :tabprevious<CR>
+nnoremap tN :tabnew<CR>
+nnoremap tmn :tabmove +1<CR>
+nnoremap tmp :tabmove -1<CR>
+" open terminal across the bottom
+nnoremap <C-a> :botright terminal ++rows=15<CR>
 
 "-- visual mode --
 " exit->normal
@@ -68,7 +76,7 @@ if !has('gui_running')
 endif
 
 "-- File Extentions --
-autocmd BufNewFile,BufRead *.env.development set syntax=sh
+autocmd BufNewFile,BufRead *.env.* set syntax=sh
 
 "-- Custom Functions --
 function Mdflat ()
@@ -160,7 +168,7 @@ let g:vim_markdown_folding_disabled = 1
 "--- Plugin: (NERDTree) ---
 map <Leader>b :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "--- Plugin: (NERDTreeGitStatus) ---
 let g:NERDTreeGitStatusIndicatorMapCustom = {
@@ -199,10 +207,19 @@ let g:fzf_layout = {
  \ }
 let g:fzf_buffers_jump = 1
 
-command! -bang -nargs=* Ag
-    \ call fzf#vim#grep(
-    \ 'ag --column --numbers --noheading --color --files-with-matches --'.shellescape(<q-args>), 1,
-    \ fzf#vim#with_preview(), <bang>0)
+command! -bang -nargs=? -complete=dir AgInFiles call fzf#vim#ag(<q-args>,
+      \ fzf#vim#with_preview({
+      \ 'options': '--delimiter : --nth 4..',
+      \ 'dir': getcwd(),
+      \ }), <bang>0)
+
+command! -bang -nargs=? -complete=dir AgFiles call fzf#run(
+      \ fzf#wrap('ag-files', fzf#vim#with_preview({
+      \ 'source': 'ag --files-with-matches --color --hidden',
+      \ 'options': '--ansi',
+      \ 'dir': getcwd(),
+      \ }), <bang>0)
+      \ )
 
 "-- Highligh Color --
 "" highlight color must be set down here, after other syntax colors have been
