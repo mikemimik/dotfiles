@@ -1,7 +1,7 @@
 {
   "name": "@mikemimik/dotfiles",
   "description": "Dotfiles CLI Tool",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Michael Perrotte @mikemimik",
   "bin": {
     "dotfiles": "./bin/run"
@@ -59,7 +59,6 @@
     "prepack": "oclif-dev manifest && oclif-dev readme",
     "test": "nyc mocha --forbid-only \"test/**/*.test.js\"",
     "version": "oclif-dev readme && git add README.md package.json package-lock.json",
-    "postversion": "npm publish",
     "prepublishOnly": "git push origin --follow-tags"
   }
 }
