@@ -16,11 +16,11 @@ Dotfiles CLI Tool
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g dotfiles
+$ npm install -g @mikemimik/dotfiles
 $ dotfiles COMMAND
 running command...
 $ dotfiles (-v|--version|version)
-dotfiles/0.0.0 darwin-x64 node-v14.15.1
+@mikemimik/dotfiles/0.1.0 darwin-x64 node-v14.15.1
 $ dotfiles --help [COMMAND]
 USAGE
   $ dotfiles COMMAND
@@ -29,46 +29,8 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`dotfiles brew:update`](#dotfiles-brewupdate)
-* [`dotfiles hello`](#dotfiles-hello)
 * [`dotfiles help [COMMAND]`](#dotfiles-help-command)
-* [`dotfiles init`](#dotfiles-init)
 * [`dotfiles symlinks`](#dotfiles-symlinks)
-
-## `dotfiles brew:update`
-
-Update list of brew formulas that are stored in the dotfiles repo with
-
-```
-USAGE
-  $ dotfiles brew:update
-
-DESCRIPTION
-  the currently installed formula on this machine.
-
-EXAMPLE
-  $ dotfiles brew:update
-```
-
-_See code: [src/commands/brew/update.js](https://github.com/mikemimik/dotfiles/blob/v0.0.0/src/commands/brew/update.js)_
-
-## `dotfiles hello`
-
-Describe the command here
-
-```
-USAGE
-  $ dotfiles hello
-
-OPTIONS
-  -n, --name=name  name to print
-
-DESCRIPTION
-  ...
-  Extra documentation goes here
-```
-
-_See code: [src/commands/hello.js](https://github.com/mikemimik/dotfiles/blob/v0.0.0/src/commands/hello.js)_
 
 ## `dotfiles help [COMMAND]`
 
@@ -86,15 +48,6 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.1/src/commands/help.ts)_
-
-## `dotfiles init`
-
-```
-USAGE
-  $ dotfiles init
-```
-
-_See code: [src/commands/init.js](https://github.com/mikemimik/dotfiles/blob/v0.0.0/src/commands/init.js)_
 
 ## `dotfiles symlinks`
 
@@ -116,5 +69,5 @@ EXAMPLES
   $ dotfiles symlinks --force
 ```
 
-_See code: [src/commands/symlinks/index.js](https://github.com/mikemimik/dotfiles/blob/v0.0.0/src/commands/symlinks/index.js)_
+_See code: [src/commands/symlinks/index.js](https://github.com/mikemimik/dotfiles/blob/v0.1.0/src/commands/symlinks/index.js)_
 <!-- commandsstop -->
