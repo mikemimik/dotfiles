@@ -1,0 +1,41 @@
+name: Release; dotfiles-cli
+
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    name: Release dotfiles-cli
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Install Dependencies
+        working-directory: ./cli
+        run: npm install
+      - name: Build Project
+        working-directory: ./cli
+        run: npm run package-cli
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - name: Upload Release Assets
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./cli/dist/dotfiles-${{ github.ref }}/dotfiles-${{ github.ref }}-darwin-x64.tar.gz
+          asset_name: dotfiles-${{ github.ref }}-darwin-x64.tar.gz
+          asset_content_type: application/zip
