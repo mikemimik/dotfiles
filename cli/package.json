@@ -53,6 +53,7 @@
   },
   "repository": "mikemimik/dotfiles",
   "scripts": {
+    "package-cli": "oclif-dev pack",
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint .",
     "prepack": "oclif-dev manifest && oclif-dev readme",
