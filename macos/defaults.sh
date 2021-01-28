@@ -212,7 +212,7 @@ sudo pmset -c sleep 30 # Power Adapter
 
 # Display sleep: 60 min
 sudo pmset -b displaysleep 60 # Battery
-sudo mset -c displaysleep 60 # Power Adapter
+sudo pmset -c displaysleep 60 # Power Adapter
 
 # Put the hard disk(s) to sleep when possible: 60 min
 sudo pmset -b disksleep 60 # Battery
