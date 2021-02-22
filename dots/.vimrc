@@ -176,6 +176,7 @@ let g:vim_markdown_folding_disabled = 1
 
 "--- Plugin: (NERDTree) ---
 map <Leader>b :NERDTreeToggle<CR>
+map <Leader>E :NERDTreeFocus<CR>
 let NERDTreeShowHidden=1
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
