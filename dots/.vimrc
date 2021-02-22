@@ -5,53 +5,64 @@ syntax on
 "-- Key mappings --
 let mapleader=','
 
-"-- insert mode --
-"" exit->normal
-inoremap <Leader>, <Esc><left>
-" yank->clipboard
-inoremap <Leader>yy "*yy
-inoremap <Leader>p <C-o><left><C-o>"*p
+" save file
+nnoremap <Leader>s :w<CR>
 
-"-- normal mode --
-" paste<-clipboard
-nnoremap <Leader>p "*p
-" yank->clipboard
+" exit->normal
+inoremap <Leader>, <Esc>
+xnoremap <Leader>, <Esc>
+
+" yank to system clipboard
+inoremap <Leader>yy "*yy
 nnoremap <Leader>yy "*yy
-" cutline->clipboard
+
+" cut line to system clipboard
 nnoremap <Leader>D "*D
+
+" paste from system clipboard
+inoremap <Leader>p <C-o><left><C-o>"*p
+nnoremap <Leader>p "*p
+
+" yank to register
+xnoremap <Leader>y "*y
+" paste from register
+xnoremap <Leader>p "*p
+" cut to register
+xnoremap <Leader>d "*d
+
+" move lines up and down
+inoremap <s-j> <Esc>:m .+1<CR>==gi
+inoremap <s-k> <Esc>:m .-2<CR>==gi
+nnoremap <s-j> :m .+1<CR>==
+nnoremap <s-K> :m .-2<CR>==
+vnoremap <s-j> :m '>+1<CR>gv=gv
+vnoremap <s-k> :m '<-2<CR>gv=gv
+
+" search for files
 nnoremap <C-p> :AgFiles<CR>
 nnoremap <C-f> :AgInFiles<CR>
+
+" manage tabs
 nnoremap tn :tabnext<CR>
 nnoremap tp :tabprevious<CR>
 nnoremap tN :tabnew<CR>
 nnoremap tmn :tabmove +1<CR>
 nnoremap tmp :tabmove -1<CR>
+
 " open terminal across the bottom
 nnoremap <C-a> :botright terminal ++rows=15<CR>
-
-"-- visual mode --
-" exit->normal
-xnoremap <Leader>, <Esc>
-" yank->clipboard
-xnoremap <Leader>y "*y
-" paste<-clipboard
-xnoremap <Leader>p "*p
-" cut->clipboard
-xnoremap <Leader>d "*d
-"xnoremap <S-l> $
 
 "-- Visual help stuff --
 set mouse=a
 set lcs=tab:>-,eol:$,space:.
 set nowrap
-"" highlight all occourances of search found
-set hlsearch
-"set ruler"" This is set by Plugin: itchyny/lightline.vim
-"set cursorcolumn ""Show column at cursors location
-set cursorline ""Show row at cursors location
+set hlsearch        " highlight all occourances of search found
+"set ruler          " This is set by Plugin: itchyny/lightline.vim
+"set cursorcolumn   " Show column at cursors location
+set cursorline      " Show row at cursors location
 set colorcolumn=80
-set laststatus=2 ""Shows full status bar at bottom
-set noshowmode ""Removes mode from bottom status bar line
+set laststatus=2    " Shows full status bar at bottom
+set noshowmode      " Removes mode from bottom status bar line
 set foldmethod=syntax
 set foldcolumn=1
 let javaScript_fold=1
@@ -119,9 +130,9 @@ Plug 'plasticboy/vim-markdown'
 
 call plug#end()
 
-"-- Plugin Specific Configuration --
+"-- PLUGIN SPECIFIC CONFIGURATION --
 "--- Plugin: (lightline) ---
-""Set colour theme, and status bar items
+" Set colour theme, and status bar items
 let g:lightline = {
   \ 'colorscheme': 'wombat',
   \ 'active': {
@@ -137,7 +148,7 @@ let g:lightline = {
   \ }
 
 "--- Plugin: (seoul256) ---
-""Color Theme Settings
+" Color Theme Settings
 " seoul256 (dark):
 "   Range:   233 (darkest) ~ 239 (lightest)
 "   Default: 237
