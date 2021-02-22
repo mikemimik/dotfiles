@@ -4,8 +4,6 @@ syntax on
 
 "-- Key mappings --
 let mapleader=','
-"map t :vert term<CR>
-"map <S-t> :term<CR>
 
 "-- insert mode --
 "" exit->normal
