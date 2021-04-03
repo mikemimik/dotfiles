@@ -41,10 +41,21 @@ alias rebash="source ~/.bashrc"
 # ssh aliases
 alias sshlogin=sshlogin
 
+## Auth0 repositories
+alias cruise-spa="cd ~/auth0/auth0-demo-cruise-spa"
+alias travel-spa="cd ~/auth0/auth0-demo-travel-spa"
+alias deploy-tool="cd ~/auth0/auth0-demo-deploy-tool"
+alias travel-config="cd ~/auth0/auth0-demo-travel-config"
+alias platform="cd ~/auth0/auth0-demo-platform"
+alias functionaltests="cd ~/auth0/demo-platform-functionaltests"
+alias property0="cd ~/auth0/auth0-demo-property0"
+
 # PERSONAL Computer aliases
 alias repos="cd ~/repos"
 alias npminc="cd ~/npminc"
 alias shopify="cd ~/shopify"
+alias auth0="cd ~/auth0"
+alias atuh0="cd ~/auth0" #typoes
 
 # Networking aliases
 alias flushdns="sudo dscacheutil -flushcache"
