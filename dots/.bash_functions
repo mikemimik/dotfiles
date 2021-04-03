@@ -143,7 +143,11 @@ strip_color() {
   done
 }
 
-cd() { builtin cd "$@"; clear; ls -alFG; }
+cd() {
+  builtin cd "$@"
+  clear
+  gls -alp --color=auto --group-directories-first
+}
 
 ql() { qlmanage -p "$*" >& /dev/null; }
 
