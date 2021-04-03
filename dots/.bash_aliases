@@ -1,9 +1,10 @@
 # Set personal aliases, overriding those provided by framework or bash_profile
 
 # TERMINAL IMPROVEMENT CONFIGS
-alias ls='ls -aFG'
-alias ll='ls -alFG'
-alias llc='clear && ls -alFG'
+COMMON_FLAGS="--color=auto --group-directories-first"
+alias ls='gls -ap $COMMON_FLAGS'
+alias ll='gls -alp $COMMON_FLAGS'
+alias llc='clear && gls -alp $COMMON_FLAGS'
 alias lsd='ls -l | grep "^d" --color'
 alias howbig='du -skh'
 alias cd..='cd ../'
@@ -101,7 +102,13 @@ alias wb="git branch -vv"           # (wb) which branch
 # GitHub Specific
 alias copull="checkout_pull"
 ## Git interactive aliases
-alias gdp="git status -s | ipt -p | xargs git diff"
+alias gdp="git status -s | ipt -p | tee >(pbcopy) | xargs git diff"
+alias wbp="git branch -vv | ipt -u | cut -d ' ' -f 1 | xargs git checkout"
+alias gstash="git stash list"
+alias gstashapply="git stash list | ipt -u | cut -d ':' -f 1 | xargs git stash apply --index"
+alias gstasha="gstashapply"
+alias gstashshow="git stash list | ipt -u | cut -d ':' -f 1 | xargs git stash show -p"
+alias gstashs="gstashshow"
 
 # Docker
 alias d=docker
