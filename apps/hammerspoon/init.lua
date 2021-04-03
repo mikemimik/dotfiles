@@ -21,7 +21,7 @@ function generatePositions(columns, rows)
   print("width:", mainFrame.w)
   print("height:", mainFrame.h)
   local colBreak = mainFrame.w / columns
-  local halfScreen = colBreak * (columns / 2)
+  local halfScreen = mainFrame.w / 2
   print("colBreak:", colBreak)
   local positions = {
     left = { },
@@ -32,12 +32,7 @@ function generatePositions(columns, rows)
   -- Set LEFT position
   -----------------------------
   print("GENERATING LEFT POSITIONS")
-  local leftColLimit
-  if (columns > 2) then
-    leftColLimit = columns / 2 - 1
-  else
-    leftColLimit = 0
-  end
+  local leftColLimit = (columns / 2) - 1
   for col = 0, leftColLimit do
     local startX = colBreak * col
     local leftRect = hs.geometry.rect(startX, 23.0, colBreak, mainFrame.h)
@@ -67,6 +62,8 @@ function generatePositions(columns, rows)
   )
   positions["left"][#positions["left"] + 1] = thirdLeftRect
   positions["left"][#positions["left"] + 1] = fullLeftRect
+  -- positions["left"][leftColLimit + 1] = thirdLeftRect
+  -- positions["left"][leftColLimit + 2] = fullLeftRect
 
   for row = 0, rows - 1 do
     local key = string.format("row%dleft", row)
@@ -131,7 +128,7 @@ function generatePositions(columns, rows)
     fullRightStart = 0
   end
   local fullRightRect = hs.geometry.rect(
-    fullRightStart,
+    halfScreen,
     23.0,
     halfScreen,
     mainFrame.h
@@ -182,7 +179,7 @@ function generatePositions(columns, rows)
   positions["full"] = fullScreenRect
 
   -- TESTING
-  -- print("positions: ", inspect(positions))
+  print("positions: ", inspect(positions))
   return positions
 end
 
@@ -285,58 +282,41 @@ function shiftWindow(win, pos)
   -- TODO: Check if window is off screen (Spotify)
 end
 
-moveLeftHandler = function()
-  print("handle shift - left")
+function moveHandler(loc, prettyName)
+  local output = loc
+  if (prettyName ~= nil) then
+    output = prettyName
+  end
+  print("handle shift - %s", output)
   local win = findWindow()
   local curFrame = findCurrentFrame(win)
-  local nextFrame = findNextPosition(win, curFrame, "left")
+  local nextFrame = findNextPosition(win, curFrame, loc)
   shiftWindow(win, nextFrame)
   print("done shift")
+end
+
+moveLeftHandler = function()
+  moveHandler("left")
 end
 
 moveTopLeftHandler = function()
-  print("handle shift - top left")
-  local win = findWindow()
-  local curFrame = findCurrentFrame(win)
-  local nextFrame = findNextPosition(win, curFrame, "row0left")
-  shiftWindow(win, nextFrame)
-  print("done shift")
+  moveHandler("row0left", "top left")
 end
 
 moveBottomLeftHandler = function()
-  print("handle shift - bottom left")
-  local win = findWindow()
-  local curFrame = findCurrentFrame(win)
-  local nextFrame = findNextPosition(win, curFrame, "row1left")
-  shiftWindow(win, nextFrame)
-  print("done shift")
+  moveHandler("row1left", "bottom left")
 end
 
 moveRightHandler = function()
-  print("handle shift - right")
-  local win = findWindow()
-  local curFrame = findCurrentFrame(win)
-  local nextFrame = findNextPosition(win, curFrame, "right")
-  shiftWindow(win, nextFrame)
-  print("done shift")
+  moveHandler("right")
 end
 
 moveTopRightHandler = function()
-  print("handle shift - top right")
-  local win = findWindow()
-  local curFrame = findCurrentFrame(win)
-  local nextFrame = findNextPosition(win, curFrame, "row0right")
-  shiftWindow(win, nextFrame)
-  print("done shift")
+  moveHandler("row0right", "top right")
 end
 
 moveBottomRightHandler = function()
-  print("handle shift - bottom right")
-  local win = findWindow()
-  local curFrame = findCurrentFrame(win)
-  local nextFrame = findNextPosition(win, curFrame, "row1right")
-  shiftWindow(win, nextFrame)
-  print("done shift")
+  moveHandler("row1right", "bottom right")
 end
 
 moveCenterHandler = function()
