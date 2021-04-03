@@ -1,3 +1,4 @@
+set encoding=UTF-8
 set nocompatible
 set timeoutlen=400
 syntax on
@@ -6,51 +7,63 @@ syntax on
 let mapleader=','
 
 " save file
-nnoremap <Leader>s :w<CR>
+nnoremap <leader>s :w<CR>
 
 " exit->normal
-inoremap <Leader>, <Esc>
-xnoremap <Leader>, <Esc>
+inoremap <leader>, <esc><right>
+xnoremap <leader>, <esc><right>
 
 " yank to system clipboard
-inoremap <Leader>yy "*yy
-nnoremap <Leader>yy "*yy
+inoremap <leader>yy "*yy
+nnoremap <leader>yy "*yy
 
 " cut line to system clipboard
-nnoremap <Leader>D "*D
+nnoremap <leader>D "*D
 
 " paste from system clipboard
-inoremap <Leader>p <C-o><left><C-o>"*p
-nnoremap <Leader>p "*p
+inoremap <leader>p <c-o>"*p
+nnoremap <leader>p "*p
 
 " yank to register
-xnoremap <Leader>y "*y
+xnoremap <leader>y "*y
 " paste from register
-xnoremap <Leader>p "*p
+xnoremap <leader>p "*p
 " cut to register
-xnoremap <Leader>d "*d
+xnoremap <leader>d "*d
 
 " move lines up and down
-inoremap <s-j> <Esc>:m .+1<CR>==gi
-inoremap <s-k> <Esc>:m .-2<CR>==gi
+" inoremap <s-j> <Esc>:m .+1<CR>==gi
+" inoremap <s-k> <Esc>:m .-2<CR>==gi
 nnoremap <s-j> :m .+1<CR>==
 nnoremap <s-K> :m .-2<CR>==
 vnoremap <s-j> :m '>+1<CR>gv=gv
 vnoremap <s-k> :m '<-2<CR>gv=gv
 
+" move screen up and down
+nnoremap <c-j> <c-e>
+nnoremap <c-k> <c-y>
+
 " search for files
-nnoremap <C-p> :AgFiles<CR>
-nnoremap <C-f> :AgInFiles<CR>
+nnoremap <c-p> :AgFiles<CR>
+nnoremap <c-f> :AgInFiles<CR>
 
 " manage tabs
+nnoremap tN :tabnew<CR>
 nnoremap tn :tabnext<CR>
 nnoremap tp :tabprevious<CR>
-nnoremap tN :tabnew<CR>
 nnoremap tmn :tabmove +1<CR>
 nnoremap tmp :tabmove -1<CR>
 
+" manage windows
+nnoremap <leader>wl <c-w><right>
+nnoremap <leader>wh <c-w><left>
+nnoremap <leader>wj <c-w><down>
+nnoremap <leader>wk <c-w><up>
+nnoremap <leader>wn :rightb vnew<CR>
+nnoremap <leader>wN :rightb new<CR>
+
 " open terminal across the bottom
-nnoremap <C-a> :botright terminal ++rows=15<CR>
+nnoremap <c-a> :botright terminal ++rows=15<CR>
 
 "-- Visual help stuff --
 set mouse=a
@@ -79,6 +92,7 @@ set number
 set backspace=indent,eol,start
 "" trim trailing whitespace on :w
 autocmd BufWritePre * %s/\s\+$//e
+command! -nargs=* Wrap set wrap linebreak nolist
 
 if !has('gui_running')
   set t_Co=256
@@ -90,6 +104,29 @@ autocmd BufNewFile,BufRead *.env.* set syntax=sh
 "-- Custom Functions --
 function Mdflat ()
   :%s/\v\n  ([^-*])/ \1/g
+endfunction
+
+function IsTreeLast ()
+  "- only one window in current buffer
+  "- window is managed by NERDTree
+  "- window is a TabTree
+  if (winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree())
+    return 1
+  endif
+endfunction
+
+function ShouldCloseNERDTree ()
+  "- is only NERDTree
+  "- there are more tabs
+  if (IsTreeLast() && tabpagenr('$') > 1)
+    return 1
+  endif
+endfunction
+
+function IsGitMsg()
+  if (expand('%:t') == "COMMIT_EDITMSG") || (expand('%:t') == "git-rebase-todo")
+    return 1
+  endif
 endfunction
 
 " Check if vim-plug is installed; install if not
@@ -112,6 +149,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/indentLine'
 Plug 'preservim/nerdtree'
+" Plug 'ryanoasis/vim-devicons'
+" Plug 'vwxyutarooo/nerdtree-devicons-syntax'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'dense-analysis/ale'
 Plug 'lifepillar/vim-mucomplete'
@@ -138,7 +177,7 @@ let g:lightline = {
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'gitbranch', 'readonly', 'modified' ],
-  \             [ 'absolutepath' ] ],
+  \             [ 'filename' ] ],
   \   'right': [ [ 'lineinfo', 'percent' ],
   \              [ 'linter', 'filetype' ] ],
   \ },
@@ -160,7 +199,7 @@ let g:seoul256_background = 234
 color seoul256
 
 "--- Plugin: (vim-javascript) ---
-""Fix JSON syntax highlighting
+" Fix JSON syntax highlighting
 let g:vim_json_conceal = 0
 
 "--- Plugin: (ale) ---
@@ -171,14 +210,28 @@ let g:ale_fixers = {'javascript': ['standard']}
 let g:ale_fix_on_save = 1
 let g:ale_sign_column_always=1
 
-" Plugin: (vim-markdown)
+"--- Plugin: (vim-markdown)
 let g:vim_markdown_folding_disabled = 1
 
 "--- Plugin: (NERDTree) ---
-map <Leader>b :NERDTreeToggle<CR>
-map <Leader>E :NERDTreeFocus<CR>
+map <leader>b :NERDTreeToggle<CR>
+map <leader>E :NERDTreeFocus<CR>
 let NERDTreeShowHidden=1
+" open NERDTree when vim starts; move cursor to main window
+" autocmd VimEnter * if !(IsGitMsg()) | NERDTree | wincmd p
+
+" Exit Vim if NERDTree is the only window left.
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
+" Open the existing NERDTree on each new tab.
+autocmd BufWinEnter * silent NERDTreeMirror
+
+" Close the existing NERDTree if on windows left; not main tab
+autocmd BufEnter * if (IsTreeLast() && ShouldCloseNERDTree()) |  quit | endif
 
 "--- Plugin: (NERDTreeGitStatus) ---
 let g:NERDTreeGitStatusIndicatorMapCustom = {
@@ -193,6 +246,28 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
  \ 'Clean'     :'✔︎',
  \ 'Unknown'   :'?',
  \ }
+
+"--- Plugin: (font-icons) ---
+let g:webdevicons_enable = 1
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+let s:colors = {
+  \ 'brown'       : "905532",
+  \ 'aqua'        : "3AFFDB",
+  \ 'blue'        : "689FB6",
+  \ 'darkBlue'    : "44788E",
+  \ 'purple'      : "834F79",
+  \ 'lightPurple' : "834F79",
+  \ 'red'         : "AE403F",
+  \ 'beige'       : "F5C06F",
+  \ 'yellow'      : "F09F17",
+  \ 'orange'      : "D4843E",
+  \ 'darkOrange'  : "F16529",
+  \ 'pink'        : "CB6F6F",
+  \ 'salmon'      : "EE6E73",
+  \ 'green'       : "8FAA54",
+  \ 'lightGreen'  : "31B53E",
+  \ 'white'       : "FFFFFF"
+\ }
 
 "--- Plugin: (mucomplete) ---
 let g:mucomplete#enable_auto_at_startup = 1
@@ -209,12 +284,13 @@ let g:limelight_paragraph_span = 1
 let g:limelight_priority = -1
 
 "--- Plugin: (fzf) ---
-let g:fzf_layout = {
- \ 'window': {
- \   'width': 0.8,
- \   'height': 0.6,
- \ },
- \ }
+" let g:fzf_layout = {
+"  \ 'window': {
+"  \   'width': 0.8,
+"  \   'height': 0.6,
+"  \ },
+"  \ }
+let g:fzf_preview_window = ['up:50%']
 let g:fzf_buffers_jump = 1
 
 command! -bang -nargs=? -complete=dir AgInFiles call fzf#vim#ag(<q-args>,
@@ -223,8 +299,16 @@ command! -bang -nargs=? -complete=dir AgInFiles call fzf#vim#ag(<q-args>,
       \ 'dir': getcwd(),
       \ }), <bang>0)
 
+" command! -bang -nargs=? -complete=dir AgInFiles call fzf#run(
+"       \ fzf#wrap('ag-in-files', fzf#vim#with_preview({
+"       \ 'source': 'ag --color --hidden',
+"       \ 'options': '--ansi --delimiter : --nth 4..',
+"       \ 'dir': getcwd(),
+"       \ }), <bang>0)
+"       \ )
+
 command! -bang -nargs=? -complete=dir AgFiles call fzf#run(
-      \ fzf#wrap('ag-files', fzf#vim#with_preview({
+      \ fzf#wrap(fzf#vim#with_preview({
       \ 'source': 'ag --files-with-matches --color --hidden',
       \ 'options': '--ansi',
       \ 'dir': getcwd(),
