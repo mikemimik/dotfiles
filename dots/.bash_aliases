@@ -92,6 +92,10 @@ alias kcs="kubectl config view -o json | jq -r '.contexts[].name' | ipt | xargs 
 alias kc="kubectl config current-context"
 alias ek="eksctl"
 
+# Gatekeeper aliases
+alias gkterm="gk exec --profile cs-tf-solutions"
+alias gkconsole="gk console --profile cs-tf-solutions"
+
 # Git aliases
 alias gs="git status"               # (gs) git staths shorthand
 alias gsc="clear && git status"     # (gsc) git status and clear shorthand
