@@ -32,24 +32,21 @@ alias rebash="source ~/.bashrc"
 alias r='rslv'
 alias sshlogin=sshlogin
 
-## Resolver repositories
-alias core-services="cd /Code/core-services"
-alias core-client="cd /Code/core-client"
-alias core-packages="cd /Code/npm-packages"
-alias resolver-cli="cd /Code/dev-tooling/resolver-cli"
-alias fdc="cd /Code/dev-tooling/fdc"
-alias concourse-lax="cd /Code/dev-tooling/concourse-lax"
-alias ops-cli="cd /Code/dev-tooling/ops-cli"
-alias resolver-server-common="cd /Code/npm-packages/modules/resolver-server-common"
-alias resolver-data-client="cd /Code/npm-packages/clients/resolver-data-client"
-alias resolver-user-client="cd /Code/npm-packages/clients/resolver-user-client"
-alias resolver-object-client="cd /Code/npm-packages/clients/resolver-object-client"
-alias resolver-config="cd /Code/npm-packages/modules/resolver-config"
+## Auth0 repositories
+alias cruise-spa="cd ~/auth0/auth0-demo-cruise-spa"
+alias travel-spa="cd ~/auth0/auth0-demo-travel-spa"
+alias deploy-tool="cd ~/auth0/auth0-demo-deploy-tool"
+alias travel-config="cd ~/auth0/auth0-demo-travel-config"
+alias platform="cd ~/auth0/auth0-demo-platform"
+alias functionaltests="cd ~/auth0/demo-platform-functionaltests"
+alias property0="cd ~/auth0/auth0-demo-property0"
 
 # PERSONAL Computer aliases
 alias repos="cd ~/repos"
 alias npminc="cd ~/npminc"
 alias shopify="cd ~/shopify"
+alias auth0="cd ~/auth0"
+alias atuh0="cd ~/auth0" #typoes
 
 # Networking aliases
 alias flushdns="sudo dscacheutil -flushcache"
