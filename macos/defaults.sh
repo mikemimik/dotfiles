@@ -160,6 +160,9 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 defaults write com.apple.finder NewWindowTarget -string "PfLo"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 
+# Don't show/create .DS_Store files
+defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+
 ###############################################################################
 # APPS: iTerm2, TextEdit                                                      #
 ###############################################################################
