@@ -9,7 +9,14 @@ override_git_prompt_colors() {
   GIT_PROMPT_CHANGED="${Yellow}✚ "
   GIT_PROMPT_STAGED="${Magenta}●"
 
+  # Conditionally set the host property. If on localhost the hostname will
+  # match the serial number of the computer. If it does not match then HOST
+  # will be the result of running the 'hostname' command.
   local HOST="\h"
+  if [ "$(hostname)" == "C02DW6KTMD6P" ]; then
+    HOST="local"
+  fi
+
   GIT_PROMPT_START_USER="_LAST_COMMAND_INDICATOR_ ${Green}\u${Green}@${Green}${HOST}:${BoldBlue}\W${ResetColor}"
   GIT_PROMPT_START_ROOT="_LAST_COMMAND_INDICATOR_ ${BoldRed}\u@\h:${BoldBlue}\W${ResetColor}"
 
