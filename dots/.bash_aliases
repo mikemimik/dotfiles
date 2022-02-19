@@ -63,6 +63,7 @@ alias demo0-cli="cd ~/auth0/demo0-cli"
 alias demo0-landing-pages="cd ~/auth0/demo0-landing-pages"
 alias demo0-legacy-auth="cd ~/auth0/demo0-legacy-auth"
 alias demo0-edge-lambda="cd ~/auth0/demo0-edge-lambda"
+alias demo0-audit-processor="cd ~/auth0/demo0-audit-processor"
 
 # PERSONAL Computer aliases
 alias repos="cd ~/repos"
