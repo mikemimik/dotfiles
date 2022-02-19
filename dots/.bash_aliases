@@ -35,7 +35,7 @@ alias brwe='brew' #typoes
 alias brewdeps=brew_dep_graph
 
 # Dotfiles
-alias dotfiles=dotfiles
+# alias dotfiles=dotfiles
 alias rebash="source ~/.bashrc"
 
 # ssh aliases
