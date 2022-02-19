@@ -105,6 +105,11 @@ set backspace=indent,eol,start
 "" trim trailing whitespace on :w
 autocmd BufWritePre * %s/\s\+$//e
 command! -nargs=* Wrap set wrap linebreak nolist
+command! -nargs=* Unwrap set nowrap nolinebreak nolist
+command! -nargs=* File :echo @%
+command! -nargs=0 Show :NERDTreeFind<CR>
+command! -nargs=* Cull call CloseHiddenBuffers()
+command! -nargs=* Fmt call FmtVisibleBuffers()
 
 if !has('gui_running')
   set t_Co=256
@@ -141,6 +146,42 @@ function IsGitMsg()
   endif
 endfunction
 
+function FmtVisibleBuffers()
+  let buflist = []
+  for t in range(tabpagenr('$'))
+    for b in tabpagebuflist(t + 1)
+      call extend(buflist, [b])
+    endfor
+  endfor
+  " echon buflist
+  execute 'silent !npm run format > /dev/null'
+  execute 'redraw!'
+  execute '' . join(reverse(buflist), ',') . 'bufdo edit'
+endfunction
+
+function! CloseHiddenBuffers()
+  " figure out which buffers are visible in any tab
+  let visible = {}
+  for t in range(tabpagenr('$'))
+    for b in tabpagebuflist(t + 1)
+      let visible[b] = 1
+    endfor
+  endfor
+  " close any buffer that are loaded and not visible
+  let l:tally = 0
+  for b in range(1, bufnr('$'))
+    " echon "## b:" . b . " - " . has_key(visible, b) . " "
+  echon "## b:" . b . " - " . bufloaded(b) . " "
+    if bufloaded(b) && !has_key(visible, b)
+      " echon "##b:" . b . " - "
+      let l:tally += 1
+      " exe 'bw ' . b
+    endif
+  endfor
+  " echon "Deleted " . l:tally . " buffers"
+endfunction
+
+
 " Check if vim-plug is installed; install if not
 if empty(glob('~/.vim/autoload/plug.vim'))
   echo "Downloading junegunn/vim-plug to manage plugins..."
@@ -167,7 +208,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'dense-analysis/ale'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'raimondi/delimitmate'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -224,11 +265,13 @@ let g:ale_fix_on_save = 1
 let g:ale_sign_column_always=1
 
 "--- Plugin: (vim-markdown)
-let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_folding_disabled = 0
+let g:vim_markdown_conceal_code_blocks = 0
 
 "--- Plugin: (NERDTree) ---
 map <leader>b :NERDTreeToggle<CR>
 map <leader>E :NERDTreeFocus<CR>
+let NERDTreeIgnore=['\.swp$']
 let NERDTreeShowHidden=1
 " open NERDTree when vim starts; move cursor to main window
 " autocmd VimEnter * if !(IsGitMsg()) | NERDTree | wincmd p
@@ -236,15 +279,15 @@ let NERDTreeShowHidden=1
 " Exit Vim if NERDTree is the only window left.
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+" " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+" autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+"     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * silent NERDTreeMirror
 
-" Close the existing NERDTree if on windows left; not main tab
-autocmd BufEnter * if (IsTreeLast() && ShouldCloseNERDTree()) |  quit | endif
+" " Close the existing NERDTree if on windows left; not main tab
+" autocmd BufEnter * if (IsTreeLast() && ShouldCloseNERDTree()) |  quit | endif
 
 "--- Plugin: (NERDTreeGitStatus) ---
 let g:NERDTreeGitStatusIndicatorMapCustom = {
