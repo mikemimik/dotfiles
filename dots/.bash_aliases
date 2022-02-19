@@ -75,6 +75,7 @@ alias atuh0="cd ~/auth0" #typoes
 alias flushdns="sudo dscacheutil -flushcache"
 alias flushdnshard="sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"
 alias getip="curl icanhazip.com"
+alias curltime=curltime
 
 # Show/hide all desktop icons (useful when presenting)
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
