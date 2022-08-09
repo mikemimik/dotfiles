@@ -129,9 +129,25 @@ function new_note() {
 ########################################
 # iterm2
 ########################################
+function get_current_context_cluster_name() {
+  local name=$(kubectl config view -o json \
+   | jq \
+      -r \
+      --arg CTX "$(kubectl config current-context)" \
+      '.contexts[] | select(.name | contains($CTX)) | .context.cluster'
+    )
+  local hasSlash="[\/]"
+  if [[ $name =~ $hasSlash ]]; then
+    echo $(echo $name | awk '{ split($1, a, "/"); print a[2]; }')
+  else
+    echo $name
+  fi
+}
+
 function iterm2_print_user_vars() {
     iterm2_set_user_var nodeVersion $(node --version)
     iterm2_set_user_var npmVersion $(npm --version)
+    iterm2_set_user_var kubeContext $(get_current_context_cluster_name)
 }
 
 ########################################
