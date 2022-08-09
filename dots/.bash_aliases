@@ -85,6 +85,9 @@ alias tf=terraform
 
 # Kubernetes aliases
 alias k=kubectl
+alias kz=kustomize
+alias kcs="kubectl config view -o json | jq -r '.contexts[].name' | ipt | xargs kubectl config use"
+alias kc="kubectl config current-context"
 
 # Git aliases
 alias gs="git status"               # (gs) git staths shorthand
