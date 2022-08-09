@@ -67,6 +67,12 @@ alias demo0-landing-pages="cd ~/auth0/demo0-landing-pages"
 alias demo0-legacy-auth="cd ~/auth0/demo0-legacy-auth"
 alias demo0-edge-lambda="cd ~/auth0/demo0-edge-lambda"
 alias demo0-audit-processor="cd ~/auth0/demo0-audit-processor"
+alias demo0-property0="cd ~/auth0/demo0-property0"
+alias lightkeeper="cd ~/auth0/lightkeeper"
+alias kes-services="cd ~/auth0/kes-services"
+alias kes-base="cd ~/auth0/kes-base"
+alias dev-cli="cd ~/auth0/auth0-dev-cli"
+alias dev-cli-config="cd ~/auth0/auth0-dev-cli-config"
 
 # PERSONAL Computer aliases
 alias repos="cd ~/repos"
