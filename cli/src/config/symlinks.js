@@ -6,6 +6,8 @@
  * target of the symlink. This path is *with respect to* the home directory.
  */
 module.exports = {
+  'apps/karabiner/karabiner.json': '.config/karabiner/karabiner.json',
+  'apps/karabiner/assets/complex_modifications/local.json': '.config/karabiner/assets/complex_modifications/local.json',
   'apps/hammerspoon/init.lua': '.hammerspoon/init.lua',
   'apps/hammerspoon/inspect.lua': '.hammerspoon/inspect.lua',
   'dots/.agignore': '.agignore',
