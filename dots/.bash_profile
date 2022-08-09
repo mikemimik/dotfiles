@@ -11,6 +11,11 @@ if [ -e "$HOME/.ssh/config" ]; then
     complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 fi
 
+# Add kubectl autocomplete for Docker.app binary
+source <(kubectl completion bash)
+source <(eksctl completion bash)
+source <(kustomize completion bash)
+
 # Add completion for commands
 HOMEBREW_PREFIX=$(brew --prefix)
 [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]] && . "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
