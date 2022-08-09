@@ -196,6 +196,12 @@ defaults write com.apple.dock minimize-to-application -bool true
 # Set the icon size of Dock items to 36 pixels
 defaults write com.apple.dock tilesize -int 26
 
+# Set orientation to left
+defaults write com.apple.dock orientation -string "left"
+
+# Auto hide the dock
+defaults write com.apple.dock autohide -bool true
+
 # Add several spacers
 # defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
 
