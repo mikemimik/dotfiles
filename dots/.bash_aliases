@@ -118,8 +118,8 @@ alias kc="kubectl config current-context"
 alias ek="eksctl"
 
 # Gatekeeper aliases
-alias gkterm="gk exec --profile cs-tf-solutions"
-alias gkconsole="gk console --profile cs-tf-solutions"
+alias gkterm="gkexec"
+alias gkconsole=gkconsole
 
 # Git aliases
 alias gs="git status"               # (gs) git staths shorthand
