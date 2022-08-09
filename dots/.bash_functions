@@ -45,6 +45,37 @@ sshlogin () {
 }
 
 ########################################
+# Auth0
+########################################
+function gkprofile() {
+  echo $(cat ~/.gk/aws \
+    | gawk 'BEGIN { RS=""; FS="\n"; OFS=" " } { split($2, account, "="); if (NR > 1) print $1, account[2] }' \
+    | ipt -u \
+    | gawk '{ print $1 }' \
+    | sed -e 's/\[//g' -e 's/\]//g'
+  )
+}
+
+function gkconsole() {
+  local profile=$(gkprofile)
+
+  if [ "$profile" == "" ]; then
+    echo ""
+    return 1;
+  fi
+
+  gk console --profile ${profile}
+}
+
+function gkexec() {
+  local profile=$(gkprofile)
+
+  gk exec \
+    --profile ${profile} \
+    --aws-token-minimal-valid-time 4h
+}
+
+########################################
 # Homebrew
 ########################################
 function brew_cask() {
