@@ -104,6 +104,7 @@ alias fp="fetch && prune"           # (fp) fetch and prune shorthand
 alias co="git checkout"             # (co) checkout shorthand
 alias unstage="git reset HEAD --"   # (unstage) work/file
 alias gl="git log -n 10 --oneline"  # (gl) one line log
+alias glp='git log --oneline | ipt -u | awk '\''{ print $1 }'\'' | xargs git show'
 alias gitback="git rebase -i HEAD~15" # interactive rebase last 15 commits
 alias wb="git branch -vv"           # (wb) which branch
 # GitHub Specific
