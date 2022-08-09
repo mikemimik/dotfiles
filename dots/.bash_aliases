@@ -17,6 +17,10 @@ alias ~='cd ~'
 alias f='open -a Finder ./'
 alias c='clear'
 alias cat='bat'
+alias getloc="pwd | pbcopy"
+
+alias terminit="nvm use; clear"
+alias hello="ping www.google.ca"
 
 # Brew / Cask aliases
 alias cask='brew_cask'
