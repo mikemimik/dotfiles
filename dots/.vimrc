@@ -1,6 +1,6 @@
 set encoding=UTF-8
-set nocompatible
-set timeoutlen=400
+" set nocompatible
+set timeoutlen=200
 syntax on
 
 "-- Key mappings --
@@ -62,8 +62,20 @@ nnoremap <leader>wk <c-w><up>
 nnoremap <leader>wn :rightb vnew<CR>
 nnoremap <leader>wN :rightb new<CR>
 
+"" move window far right
+nnoremap <leader>wL <c-w>L
+"" move window far left
+nnoremap <leader>wH <c-w>H
+"" move window very bottom
+nnoremap <leader>wJ <c-w>J
+"" move window very top
+nnoremap <leader>wK <c-w>K
+
 " open terminal across the bottom
 nnoremap <c-a> :botright terminal ++rows=15<CR>
+
+" search word under cursor
+nnoremap <silent> # :let @/= '\<' . expand('<cword>') . '\>' <bar> set hls <cr>
 
 "-- Visual help stuff --
 set mouse=a
@@ -166,6 +178,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
 
