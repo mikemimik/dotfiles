@@ -29,17 +29,27 @@ BREW_LIST=$(brew list -1)
 apps=(
   awscli
   bash
+  bash-completion@2
   bash-git-prompt
   bat
-  brew-graph
+  # brew-graph
+  colordiff
+  coreutils
   curl
-  dart
-  dep
+  diff-so-fancy
+  diffutils
+  dnsmasq
+  # dart
+  # dep
   findutils
+  fzf
   fish
   gawk
+  gcc
+  gh
   git
   gnu-sed
+  gnu-tar
   go
   heroku/brew/heroku
   htop
@@ -50,12 +60,14 @@ apps=(
   kubernetes-helm
   ncdu
   openssl
-  python
+  python@3.9
   tree
   ruby
   siege
   telnet
   terraform
+  the_silver_searcher
+  tmux
   tree
   watson
   wget
