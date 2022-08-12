@@ -1,5 +1,4 @@
-dotfiles
-========
+# dotfiles
 
 Dotfiles CLI Tool
 
@@ -10,11 +9,15 @@ Dotfiles CLI Tool
 [![License](https://img.shields.io/npm/l/dotfiles.svg)](https://github.com/mikemimik/dotfiles/blob/master/package.json)
 
 <!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
+
+- [Usage](#usage)
+- [Commands](#commands)
 <!-- tocstop -->
+
 # Usage
+
 <!-- usage -->
+
 ```sh-session
 $ npm install -g @mikemimik/dotfiles
 $ dotfiles COMMAND
@@ -26,14 +29,18 @@ USAGE
   $ dotfiles COMMAND
 ...
 ```
+
 <!-- usagestop -->
+
 # Commands
+
 <!-- commands -->
-* [`dotfiles brew:update`](#dotfiles-brewupdate)
-* [`dotfiles hello`](#dotfiles-hello)
-* [`dotfiles help [COMMAND]`](#dotfiles-help-command)
-* [`dotfiles init`](#dotfiles-init)
-* [`dotfiles symlinks`](#dotfiles-symlinks)
+
+- [`dotfiles brew:update`](#dotfiles-brewupdate)
+- [`dotfiles hello`](#dotfiles-hello)
+- [`dotfiles help [COMMAND]`](#dotfiles-help-command)
+- [`dotfiles init`](#dotfiles-init)
+- [`dotfiles symlinks`](#dotfiles-symlinks)
 
 ## `dotfiles brew:update`
 
@@ -117,4 +124,5 @@ EXAMPLES
 ```
 
 _See code: [src/commands/symlinks/index.js](https://github.com/mikemimik/dotfiles/blob/v0.1.6/src/commands/symlinks/index.js)_
+
 <!-- commandsstop -->
