@@ -6,3 +6,6 @@
 /yarn.lock
 node_modules
 .DS_Store
+*.vim
+*.swp
+*.swo
