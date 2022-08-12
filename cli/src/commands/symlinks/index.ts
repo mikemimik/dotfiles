@@ -1,46 +1,35 @@
-const { basename, dirname, resolve } = require('path')
-const { flags } = require('@oclif/command')
-const { promisify } = require('util')
-const dedent = require('dedent')
-const fs = require('fs')
+import { basename, dirname, resolve } from "path";
+import { Flags } from "@oclif/core";
+const { promisify } = require("util");
+const dedent = require("dedent");
+import fsPromises from "fs/promises";
 
-const readlink = promisify(fs.readlink)
-const symlink = promisify(fs.symlink)
-const rename = promisify(fs.rename)
-const unlink = promisify(fs.unlink)
-const mkdir = promisify(fs.mkdir)
-const lstat = promisify(fs.lstat)
+const { readlink, symlink, rename, unlink, mkdir, lstat } = fsPromises;
 
-const BaseCommand = require('../../lib/base')
-const symlinks = require('../../config/symlinks')
-const {
-  repoDir,
-  homeDir,
-} = require('../../config')
+import BaseCommand from "../../lib/base";
+import symlinks from "../../config/symlinks";
+import { repoDir, homeDir } from "../../config";
 
 class SymlinkCommand extends BaseCommand {
   static flags = {
-    force: flags.boolean({
-      char: 'f',
-      description: 'force symlink creation',
+    force: Flags.boolean({
+      char: "f",
+      description: "force symlink creation",
     }),
-  }
+  };
 
-  static args = []
+  static args = [];
 
   static description = dedent`
     Create symlinks between files in the home directory, and the symlinks kept
     in the dotfiles repository. These relationships can be found in the
     config/symlinks.json file.
-  `
+  `;
 
-  static examples = [
-    '$ dotfiles symlinks',
-    '$ dotfiles symlinks --force',
-  ]
+  static examples = ["$ dotfiles symlinks", "$ dotfiles symlinks --force"];
 
   async run() {
-    this.log('symlink command...')
+    this.log("symlink command...");
 
     // TODO: something great
     // - load list of symlinked items
@@ -57,13 +46,13 @@ class SymlinkCommand extends BaseCommand {
     //    - link location is incorrect; remove link
     //    - link location is correct; do nothing
 
-    const promiseLinks = []
-    for (const [ source, target ] of Object.entries(symlinks)) {
-      const filepath = resolve(repoDir, source)
-      const linkpath = resolve(homeDir, target)
-      promiseLinks.push(this.manageFile(filepath, linkpath))
+    const promiseLinks = [];
+    for (const [source, target] of Object.entries(symlinks)) {
+      const filepath = resolve(repoDir, source);
+      const linkpath = resolve(homeDir, target);
+      promiseLinks.push(this.manageFile(filepath, linkpath));
     }
-    await Promise.all(promiseLinks)
+    await Promise.all(promiseLinks);
   }
 
   /***
@@ -74,9 +63,9 @@ class SymlinkCommand extends BaseCommand {
    * @param {string} linkpath linkpath (target) of a symlink
    * @returns {boolean} Boolean value of equality of path locations
    */
-  async isValidLinkpath(filepath, linkpath) {
-    const rp = await readlink(linkpath)
-    return (rp === resolve(repoDir, filepath))
+  async isValidLinkpath(filepath: string, linkpath: string) {
+    const rp = await readlink(linkpath);
+    return rp === resolve(repoDir, filepath);
   }
 
   /***
@@ -85,16 +74,17 @@ class SymlinkCommand extends BaseCommand {
    * @param {string} linkpath linkpath (target) of a symlink
    * @returns {(null|fs.Stats)} Result from lstat or null.
    */
-  async doesFileExist(linkpath) {
+  async doesFileExist(linkpath: string) {
     try {
-      const stat = await lstat(linkpath)
-      return stat
+      const stat = await lstat(linkpath);
+      return stat;
     } catch (error) {
-      if (error.code === 'ENOENT') {
+      // @ts-ignore
+      if (error.code === "ENOENT") {
         // File doesn't exist
-        return null
+        return null;
       }
-      this.error(error)
+      this.error(<Error>error);
     }
   }
 
@@ -103,12 +93,12 @@ class SymlinkCommand extends BaseCommand {
    *
    * @param {string} filepath path to the file to be renamed
    */
-  async rename(filepath) {
+  async rename(filepath: string) {
     try {
-      await rename(filepath, `${filepath}.bak`)
+      await rename(filepath, `${filepath}.bak`);
     } catch (error) {
       // Probably an access error
-      this.error(error)
+      this.error(<Error>error);
     }
   }
 
@@ -120,41 +110,45 @@ class SymlinkCommand extends BaseCommand {
    * @param {Object} [opts] options object
    * @param {boolean} [opts.force] force symlink creation
    */
-  async symlink(filepath, linkpath, opts = {}) {
+  async symlink(
+    filepath: string,
+    linkpath: string,
+    opts: { force?: boolean } = {}
+  ) {
     if (opts.force) {
-      await unlink(linkpath)
+      await unlink(linkpath);
     }
     if (dirname(linkpath) !== homeDir) {
       // Need to make directories
-      await mkdir(dirname(linkpath), { recursive: true })
+      await mkdir(dirname(linkpath), { recursive: true });
     }
-    await symlink(filepath, linkpath)
+    await symlink(filepath, linkpath);
   }
 
-  async manageFile(filepath, linkpath) {
-    const filename = basename(filepath)
-    this.log(`linking ${filename} to ${linkpath} ...`)
+  async manageFile(filepath: string, linkpath: string) {
+    const filename = basename(filepath);
+    this.log(`linking ${filename} to ${linkpath} ...`);
 
-    const stat = await this.doesFileExist(linkpath)
+    const stat = await this.doesFileExist(linkpath);
     if (stat) {
       // File exists
       if (stat.isSymbolicLink()) {
         // Validate symbolic link
-        const isValid = await this.isValidLinkpath(filepath, linkpath)
+        const isValid = await this.isValidLinkpath(filepath, linkpath);
         if (!isValid) {
-          await this.symlink(filepath, linkpath, { force: true })
+          await this.symlink(filepath, linkpath, { force: true });
         }
         // Symbolic link path is correct; do nothing
       } else {
         // Not symbolic link; rename, and link
-        await this.rename(linkpath) // backup file
-        await this.symlink(filepath, linkpath)
+        await this.rename(linkpath); // backup file
+        await this.symlink(filepath, linkpath);
       }
     } else {
       // linkpath doesn't exist; symlink it
-      await this.symlink(filepath, linkpath)
+      await this.symlink(filepath, linkpath);
     }
   }
 }
 
-module.exports = SymlinkCommand
+module.exports = SymlinkCommand;
