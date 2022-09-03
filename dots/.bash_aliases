@@ -19,7 +19,9 @@ alias c='clear'
 alias cat='bat'
 alias getloc="pwd | pbcopy"
 
-alias terminit="nvm use; clear"
+alias vim="nvim"
+
+alias terminit="rebash; nvm use; clear"
 alias hello="ping www.google.ca"
 
 # Brew / Cask aliases
@@ -104,6 +106,7 @@ alias fp="fetch && prune"           # (fp) fetch and prune shorthand
 alias co="git checkout"             # (co) checkout shorthand
 alias unstage="git reset HEAD --"   # (unstage) work/file
 alias gl="git log -n 10 --oneline"  # (gl) one line log
+alias glf="git log -n 10 --pretty='format:%C(auto)%h %<(1)%C(cyan)%an %C(auto)%s'" # (gl) fancy one line log
 alias glp='git log --oneline | ipt -u | awk '\''{ print $1 }'\'' | xargs git show'
 alias gitback="git rebase -i HEAD~15" # interactive rebase last 15 commits
 alias wb="git branch -vv"           # (wb) which branch
