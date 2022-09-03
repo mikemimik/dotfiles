@@ -1,21 +1,23 @@
 -- Entrypoint
-inspect = require 'inspect'
+local inspect = require 'inspect'
 
 -- Gobals
 -- mainScreen = hs.screen.mainScreen()
-usbWatcher = nil
-delay = nil
+local usbWatcher = nil
+local delay = nil
 
 -- Defaults
 hs.window.animationDuration = 0.00
 
 -- COLUMNS: must be an even number
-COLUMNS = 4
-ROWS = 2
+local COLUMNS = 4
+local ROWS = 2
 
-POSITIONS = {}
+local MENU_HEIGHT = 25.0
 
-function generatePositions(columns, rows, frame)
+local POSITIONS = {}
+
+local function generatePositions(columns, rows, frame)
   print("screen:", frame)
   print("width:", frame.w)
   print("height:", frame.h)
@@ -34,7 +36,7 @@ function generatePositions(columns, rows, frame)
   local leftColLimit = (columns / 2) - 1
   for col = 0, leftColLimit do
     local startX = colBreak * col
-    local leftRect = hs.geometry.rect(startX, 23.0, colBreak, frame.h)
+    local leftRect = hs.geometry.rect(startX, MENU_HEIGHT, colBreak, frame.h)
     positions["left"][col] = leftRect
     for row = 0, rows - 1 do
       local key = string.format("row%dleft", row)
@@ -42,7 +44,7 @@ function generatePositions(columns, rows, frame)
 
       local rect = hs.geometry.rect(
         startX,
-        23.0 + ((frame.h / rows) * row),
+        MENU_HEIGHT + ((frame.h / rows) * row),
         colBreak,
         frame.h / rows
       )
@@ -52,10 +54,10 @@ function generatePositions(columns, rows, frame)
   -----------------------------
   --- Set LEFT _full_/_third_ position
   -----------------------------
-  local fullLeftRect = hs.geometry.rect(0.0, 23.0, halfScreen, frame.h)
+  local fullLeftRect = hs.geometry.rect(0.0, MENU_HEIGHT, halfScreen, frame.h)
   local thirdLeftRect = hs.geometry.rect(
     0.0,
-    23.0,
+    MENU_HEIGHT,
     (halfScreen) * (2 / 3),
     frame.h
   )
@@ -69,14 +71,14 @@ function generatePositions(columns, rows, frame)
     -- Create full section, half screen ROW
     local fullRect = hs.geometry.rect(
       0.0,
-      23.0 + ((frame.h / rows) * row),
+      MENU_HEIGHT + ((frame.h / rows) * row),
       halfScreen,
       frame.h / rows
     )
     -- Create third section, half screen ROW
     local thirdRect = hs.geometry.rect(
       0.0,
-      23.0 + ((frame.h / rows) * row),
+      MENU_HEIGHT + ((frame.h / rows) * row),
       (halfScreen) * (2 / 3),
       frame.h / rows
     )
@@ -102,7 +104,7 @@ function generatePositions(columns, rows, frame)
     -- C'c = 0, C'c = 1, C'c = 2
     local index = (columns - 1) - col
     local startX = colBreak * col
-    local rightRect = hs.geometry.rect(startX, 23.0, colBreak, frame.h)
+    local rightRect = hs.geometry.rect(startX, MENU_HEIGHT, colBreak, frame.h)
     positions["right"][index] = rightRect
     for row = 0, rows - 1 do
       local key = string.format("row%dright", row)
@@ -110,7 +112,7 @@ function generatePositions(columns, rows, frame)
 
       local rect = hs.geometry.rect(
         startX,
-        23.0 + ((frame.h / rows) * row),
+        MENU_HEIGHT + ((frame.h / rows) * row),
         colBreak,
         frame.h / rows
       )
@@ -128,13 +130,13 @@ function generatePositions(columns, rows, frame)
   end
   local fullRightRect = hs.geometry.rect(
     halfScreen,
-    23.0,
+    MENU_HEIGHT,
     halfScreen,
     frame.h
   )
   local thirdRightRect = hs.geometry.rect(
     fullRightStart + ((halfScreen) * (1 / 3)),
-    23.0,
+    MENU_HEIGHT,
     (halfScreen) * (2 / 3),
     frame.h
   )
@@ -146,14 +148,14 @@ function generatePositions(columns, rows, frame)
     -- Create full section, half screen ROW
     local fullRect = hs.geometry.rect(
       fullRightStart,
-      23.0 + ((frame.h / rows) * row),
+      MENU_HEIGHT + ((frame.h / rows) * row),
       halfScreen,
       frame.h / rows
     )
     -- Create third section, half screen ROW
     local thirdRect = hs.geometry.rect(
       fullRightStart + ((halfScreen) * (1 / 3)),
-      23.0 + ((frame.h / rows) * row),
+      MENU_HEIGHT + ((frame.h / rows) * row),
       (halfScreen) * (2 / 3),
       frame.h / rows
     )
@@ -174,7 +176,7 @@ function generatePositions(columns, rows, frame)
   -----------------------------
   -- Set FULL position
   -----------------------------
-  local fullScreenRect = hs.geometry.rect(0.0, 23.0, frame.w, frame.h)
+  local fullScreenRect = hs.geometry.rect(0.0, MENU_HEIGHT, frame.w, frame.h)
   positions["full"] = fullScreenRect
 
   -- TESTING
@@ -182,7 +184,7 @@ function generatePositions(columns, rows, frame)
   return positions
 end
 
-function similar(key, a, b)
+local function similar(key, a, b)
   local diff = nil
   if (a[key] > b[key]) then
     diff = a[key] - b[key]
@@ -193,20 +195,20 @@ function similar(key, a, b)
   -- print('~', key, diff, isSimilar) -- TESTING
   return isSimilar
 end
-function similarWidth(a, b)
+local function similarWidth(a, b)
   return similar("w", a, b)
 end
-function similarHeight(a, b)
+local function similarHeight(a, b)
   return similar("h", a, b)
 end
-function similarCenter(a, b)
+local function similarCenter(a, b)
   local diff = a:distance(b)
   local isSimilar = (math.abs(diff) < 50)
   -- print('~', 'c', diff, isSimilar) -- TESTING
   return isSimilar
 end
 
-function indexOf (array, item)
+local function indexOf (array, item)
   print("array:", array)
   print("length:", #array)
   print("item:", item)
@@ -238,21 +240,21 @@ function indexOf (array, item)
   return result
 end
 
-function findWindow()
+local function findWindow()
   print("finding window...")
   local win = hs.window.focusedWindow()
   print("window:", win)
   return win
 end
 
-function findCurrentFrame(win)
+local function findCurrentFrame(win)
   print("finding current frame...")
   local frame = win:frame()
   print("curFrame:", frame)
   return frame
 end
 
-function findNextPosition(win, frame, direction)
+local function findNextPosition(win, frame, direction)
   print("finding next position...")
   local nextFrame = frame
   local nextIndex = nil
@@ -274,14 +276,14 @@ function findNextPosition(win, frame, direction)
   return nextFrame
 end
 
-function shiftWindow(win, pos)
+local function shiftWindow(win, pos)
   print("shifting window...")
   print("pos:", pos)
   win:setFrame(pos)
   -- TODO: Check if window is off screen (Spotify)
 end
 
-function moveHandler(loc, prettyName)
+local function moveHandler(loc, prettyName)
   local output = loc
   if (prettyName ~= nil) then
     output = prettyName
@@ -294,31 +296,31 @@ function moveHandler(loc, prettyName)
   print("done shift")
 end
 
-moveLeftHandler = function()
+local moveLeftHandler = function()
   moveHandler("left")
 end
 
-moveTopLeftHandler = function()
+local moveTopLeftHandler = function()
   moveHandler("row0left", "top left")
 end
 
-moveBottomLeftHandler = function()
+local moveBottomLeftHandler = function()
   moveHandler("row1left", "bottom left")
 end
 
-moveRightHandler = function()
+local moveRightHandler = function()
   moveHandler("right")
 end
 
-moveTopRightHandler = function()
+local moveTopRightHandler = function()
   moveHandler("row0right", "top right")
 end
 
-moveBottomRightHandler = function()
+local moveBottomRightHandler = function()
   moveHandler("row1right", "bottom right")
 end
 
-moveCenterHandler = function()
+local moveCenterHandler = function()
   print("handle shift - center")
   local win = findWindow()
   local screenName = win:screen():name()
@@ -330,17 +332,17 @@ moveCenterHandler = function()
   print("done shift")
 end
 
-moveFullHandler = function()
+local moveFullHandler = function()
   print("handle shift - full")
   local win = findWindow()
   local screenName = win:screen():name()
-  local curFrame = findCurrentFrame(win)
+  -- local curFrame = findCurrentFrame(win)
   local fullFrame = POSITIONS[screenName]["full"]
   shiftWindow(win, fullFrame)
   print("done shift")
 end
 
-keys = {
+local keys = {
   moveLeft = {
     modifier = { "cmd", "alt" },
     key = "left",
@@ -383,8 +385,15 @@ keys = {
   }
 }
 
+local function moveSpace(spaceNum)
+  return function ()
+    local spaces = hs.spaces.spacesForScreen()
+    hs.spaces.gotoSpace(spaces[spaceNum])
+    hs.spaces.closeMissionControl()
+  end
+end
 
-function setWideGrid(columns, rows, screen)
+local function setWideGrid(columns, rows, screen)
   local frame = screen:frame();
   print("screen:", screen)
   print("frame:", frame)
@@ -395,7 +404,7 @@ function setWideGrid(columns, rows, screen)
   return generatePositions(columns, rows, frame)
 end
 
-function setWindowManagement()
+local function setWindowManagement()
   hs.hotkey.bind(keys.moveLeft.modifier, keys.moveLeft.key, keys.moveLeft.func)
   hs.hotkey.bind(keys.moveTopLeft.modifier, keys.moveTopLeft.key, keys.moveTopLeft.func)
   hs.hotkey.bind(keys.moveBottomLeft.modifier, keys.moveBottomLeft.key, keys.moveBottomLeft.func)
@@ -414,9 +423,13 @@ function setWindowManagement()
   hs.hotkey.bind({ "cmd", "shift", "," }, ".", function ()
     hs.reload()
   end)
+  hs.hotkey.bind({ "alt" }, "1", moveSpace(1))
+  hs.hotkey.bind({ "alt" }, "2", moveSpace(2))
+  hs.hotkey.bind({ "alt" }, "3", moveSpace(3))
+  hs.hotkey.bind({ "alt" }, "4", moveSpace(4))
 end
 
-function setScreenWatcher()
+local function setScreenWatcher()
   local screenKey = "screen"
   local identifier = string.format("%sCallback", screenKey)
   local primaryScreen = hs.screen.primaryScreen()
@@ -428,7 +441,7 @@ function setScreenWatcher()
   return screenKey
 end
 
-function manageConfigReload()
+local function manageConfigReload()
   local identifier = setScreenWatcher()
 
   delay = hs.timer.delayed.new(6, function()
@@ -436,7 +449,7 @@ function manageConfigReload()
     hs.settings.set(identifier, nextScreenId)
   end)
 
-  function usbDeviceCallback(data)
+  local function usbDeviceCallback(_)
     -- TESTING
     -- print('data:', inspect(data))
     delay:start()
@@ -446,7 +459,7 @@ function manageConfigReload()
   usbWatcher:start()
 end
 
-function manageWindowManagement()
+local function manageWindowManagement()
   local allScreens = hs.screen.allScreens()
 
   for index=1, #allScreens do
