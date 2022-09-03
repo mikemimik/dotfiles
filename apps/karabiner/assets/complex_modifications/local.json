@@ -79,12 +79,6 @@
       "description": "Change left_control+hjkl to arrow keys",
       "manipulators": [
         {
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": [ "^com\\.googlecode\\.iterm2$" ]
-            }
-          ],
           "from": {
             "key_code": "h",
             "modifiers": {
@@ -104,12 +98,6 @@
           "type": "basic"
         },
         {
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": [ "^com\\.googlecode\\.iterm2$" ]
-            }
-          ],
           "from": {
             "key_code": "j",
             "modifiers": {
@@ -129,12 +117,6 @@
           "type": "basic"
         },
         {
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": [ "^com\\.googlecode\\.iterm2$" ]
-            }
-          ],
           "from": {
             "key_code": "k",
             "modifiers": {
@@ -154,12 +136,6 @@
           "type": "basic"
         },
         {
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": [ "^com\\.googlecode\\.iterm2$" ]
-            }
-          ],
           "from": {
             "key_code": "l",
             "modifiers": {
@@ -174,6 +150,50 @@
           "to": [
             {
               "key_code": "right_arrow"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Disable cmd+tab",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "tab",
+            "modifiers": {
+              "mandatory": [
+                "left_command"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "vk_none"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "tab",
+            "modifiers": {
+              "mandatory": [
+                "left_command",
+                "left_shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "vk_none"
             }
           ],
           "type": "basic"
