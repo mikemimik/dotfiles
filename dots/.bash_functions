@@ -237,7 +237,7 @@ dotfiles() {
     if [ "$#" -eq 0 ]; then
         cd ~/dotfiles
     else
-        dot-cli $@
+        ${NVM_BIN}/dotfiles $@
     fi
 }
 
