@@ -35,6 +35,7 @@ module.exports = {
   'apps/karabiner/assets/complex_modifications/local.json': '.config/karabiner/assets/complex_modifications/local.json',
   'apps/hammerspoon/init.lua': '.hammerspoon/init.lua',
   'apps/hammerspoon/inspect.lua': '.hammerspoon/inspect.lua',
+  'apps/hammerspoon/Spoons/Hyper.spoon/init.lua': '.hammerspoon/Spoons/Hyper.spoon/init.lua',
   'dots/.agignore': '.agignore',
   'dots/.bash_aliases': '.bash_aliases',
   'dots/.bash_exports': '.bash_exports',
