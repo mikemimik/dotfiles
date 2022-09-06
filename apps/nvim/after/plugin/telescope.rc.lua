@@ -74,13 +74,13 @@ nnoremap("\\\\", function()
   builtin.buffers()
 end)
 
-nnoremap("<leader>e", function()
+nnoremap("<leader>z", function()
   builtin.diagnostics({
     layout_strategy = "vertical",
   })
 end)
 
-nnoremap("<leader>E", function()
+nnoremap("<leader>e", function()
   telescope.extensions.file_browser.file_browser({
     path = "%:p:h",
     cwd = telescope_buffer_dir(),

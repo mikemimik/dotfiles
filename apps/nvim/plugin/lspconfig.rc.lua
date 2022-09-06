@@ -121,7 +121,7 @@ lspconfig.sumneko_lua.setup(config({
   settings = {
     Lua = {
       diagnostics = {
-        globals = { "vim", "hs" },
+        globals = { "vim", "hs", "spoon" },
       },
       workspace = {
         library = vim.api.nvim_get_runtime_file("", true),
