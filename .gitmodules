@@ -1,0 +1,3 @@
+[submodule "apps/hammerspoon/Spoons/Hyper.spoon"]
+	path = apps/hammerspoon/Spoons/Hyper.spoon
+	url = git@github.com:evantravers/Hyper.spoon.git
