@@ -488,3 +488,54 @@ manageWindowManagement()
 
 -- Manage Config Reload
 manageConfigReload()
+
+hs.loadSpoon("Hyper")
+Config = {}
+Config.applications = {
+  ["com.googlecode.iterm2"] = {
+    bundleID = "com.googlecode.iterm2",
+    hyperKey = "j",
+    tags = { "coding" },
+    layouts = {
+      { nil, 1, hs.layout.maximized },
+    },
+  },
+  ["com.google.Chrome"] = {
+    bundleID = "com.google.Chrome",
+    hyperKey = "k",
+    tags = { "browsers" },
+    layouts = {
+      { nil, 1, hs.layout.maximized },
+      { "Confluence", 1, hs.layout.maximized },
+    },
+  },
+  ["com.tinyspeck.slackmacgap"] = {
+    bundleID = "com.tinyspeck.slackmacgap",
+    hyperKey = "h",
+    tags = { "distraction", "communication", "chat" },
+    layouts = {
+      { nil, 1, hs.layout.maximized },
+      { nil, 2, hs.layout.maximized },
+    },
+  },
+  ["net.shinyfrog.bear"] = {
+    bundleID = "net.shinyfrog.bear",
+    hyperKey = "l",
+    tags = { "planning" },
+    layouts = {},
+  },
+}
+Hyper = spoon.Hyper
+
+Hyper:bindHotKeys({hyperKey = {{}, "F19"}})
+
+hs.fnutils.each(Config.applications, function(appConfig)
+  if appConfig.hyperKey then
+    Hyper:bind({}, appConfig.hyperKey, function() hs.application.launchOrFocusByBundleID(appConfig.bundleID) end)
+  end
+  if appConfig.localBindings then
+    hs.fnutils.each(appConfig.localBindings, function(key)
+      Hyper:bindPassThrough(key, appConfig.bundleID)
+    end)
+  end
+end)
