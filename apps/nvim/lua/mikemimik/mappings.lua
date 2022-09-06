@@ -33,8 +33,8 @@ nnoremap("<s-k>", ":m .-2<cr>==")
 vnoremap("<s-j>", ":m '>+1<cr>gv=gv")
 vnoremap("<s-k>", ":m '<-2<cr>gv=gv")
 
-nnoremap("<up>", "20k")
-nnoremap("<down>", "20j")
+nnoremap("<up>", "<c-y>")
+nnoremap("<down>", "<c-e>")
 
 -- search word under cursor
 nnoremap(
