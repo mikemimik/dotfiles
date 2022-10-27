@@ -1,7 +1,7 @@
 local status, lspkind = pcall(require, "lspkind")
 if (not status) then return end
 
-print("after/plugin.lspkind.rc -- loading")
+-- print("after/plugin.lspkind.rc -- loading")
 lspkind.init({
   mode = "symbol",
   preset = "default",
@@ -34,4 +34,4 @@ lspkind.init({
   },
 })
 
-print("after/plugin.lspkind.rc -- loaded")
+-- print("after/plugin.lspkind.rc -- loaded")

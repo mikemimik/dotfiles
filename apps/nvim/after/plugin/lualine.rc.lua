@@ -1,7 +1,7 @@
 local status, lualine = pcall(require, "lualine")
 if (not status) then return end
 
-print("after/plugin.lualine.rc -- loading")
+-- print("after/plugin.lualine.rc -- loading")
 
 lualine.setup({
   options = {
@@ -51,4 +51,4 @@ lualine.setup({
   },
 })
 
-print("after/plugin.lualine.rc -- loaded")
+-- print("after/plugin.lualine.rc -- loaded")

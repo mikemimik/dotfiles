@@ -1,7 +1,7 @@
 local status, ts = pcall(require, "nvim-treesitter.configs")
 if (not status) then return end
 
-print("after/plugin.treesitter.rc -- loading")
+-- print("after/plugin.treesitter.rc -- loading")
 ts.setup {
   ensure_installed = {
     "yaml",
@@ -17,4 +17,4 @@ ts.setup {
   },
 }
 
-print("after/plugin.treesitter.rc -- loaded")
+-- print("after/plugin.treesitter.rc -- loaded")

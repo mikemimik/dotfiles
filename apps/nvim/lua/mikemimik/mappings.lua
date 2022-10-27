@@ -1,4 +1,4 @@
-print("mikemimik.mappings -- loading")
+-- print("mikemimik.mappings -- loading")
 local Remap = require("mikemimik.keymap")
 local nnoremap = Remap.nnoremap
 local vnoremap = Remap.vnoremap
@@ -47,4 +47,4 @@ nnoremap(
   { silent = true }
 )
 
-print("mikemimik.mappings -- loaded")
+-- print("mikemimik.mappings -- loaded")

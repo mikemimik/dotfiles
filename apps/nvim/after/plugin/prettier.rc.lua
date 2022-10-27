@@ -1,7 +1,7 @@
 local status, prettier = pcall(require, "prettier")
 if (not status) then return end
 
-print("after/plugin.prettier.rc -- loading")
+-- print("after/plugin.prettier.rc -- loading")
 prettier.setup({
   bin = "prettierd",
   filtypes = {
@@ -19,4 +19,4 @@ prettier.setup({
   -- },
 })
 
-print("after/plugin.prettier.rc -- loaded")
+-- print("after/plugin.prettier.rc -- loaded")

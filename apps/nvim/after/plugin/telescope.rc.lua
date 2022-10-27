@@ -1,7 +1,7 @@
 local status, telescope = pcall(require, "telescope")
 if (not status) then return end
 
-print("after/plugin.telescope.rc -- loading")
+-- print("after/plugin.telescope.rc -- loading")
 local nnoremap = require("mikemimik.keymap").nnoremap
 
 local actions = require("telescope.actions")
@@ -94,4 +94,4 @@ nnoremap("<leader>e", function()
   })
 end)
 
-print("after/plugin.telescope.rc -- loaded")
+-- print("after/plugin.telescope.rc -- loaded")

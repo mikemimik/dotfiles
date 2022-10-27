@@ -4,7 +4,7 @@ if (not status) then return end
 local null_status, _ = pcall(require, "null-ls")
 if (not null_status) then return end
 
-print("plugin.lspconfig.rc -- loading")
+-- print("plugin.lspconfig.rc -- loading")
 local nnoremap = require("mikemimik.keymap").nnoremap
 local xnoremap = require("mikemimik.keymap").xnoremap
 
@@ -131,4 +131,4 @@ lspconfig.sumneko_lua.setup(config({
   },
 }))
 
-print("plugin.lspconfig.rc -- loaded")
+-- print("plugin.lspconfig.rc -- loaded")

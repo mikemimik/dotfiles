@@ -1,2 +1,2 @@
-print("after/plugin.z-last -- end")
-print("end")
+-- print("after/plugin.z-last -- end")
+-- print("end")

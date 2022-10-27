@@ -1,4 +1,4 @@
-print("mikemimik.plugins -- loading")
+-- print("mikemimik.plugins -- loading")
 
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -69,5 +69,5 @@ return packer.startup(function(use)
     packer.sync()
   end
 
-  print("mikemimik.plugins -- loaded")
+  -- print("mikemimik.plugins -- loaded")
 end)

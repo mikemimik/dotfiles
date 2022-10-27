@@ -1,4 +1,4 @@
-print("mikemimik.init -- loading")
+-- print("mikemimik.init -- loading")
 require("mikemimik.mappings")
 require("mikemimik.plugins")
 
@@ -68,4 +68,4 @@ autocmd({ "BufNewFile", "BufRead" }, {
     vim.opt.syntax = "sh"
   end,
 })
-print("mikemimik.init -- loaded")
+-- print("mikemimik.init -- loaded")

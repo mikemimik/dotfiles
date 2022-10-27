@@ -1,7 +1,7 @@
 local status, saga = pcall(require, "lspsaga")
 if (not status) then return end
 
-print("plugin.lspsaga.rc -- loading")
+-- print("plugin.lspsaga.rc -- loading")
 local nnoremap = require("mikemimik.keymap").nnoremap
 
 saga.init_lsp_saga({
@@ -21,4 +21,4 @@ nnoremap("gd", ":Lspsaga lsp_finder<cr>", opts)
 nnoremap("]1", ":Lspsaga diagnostic_jump_next<cr>", opts)
 nnoremap("[1", ":Lspsaga diagnostic_jump_prev<cr>", opts)
 
-print("plugin.lspsaga.rc -- loaded")
+-- print("plugin.lspsaga.rc -- loaded")
