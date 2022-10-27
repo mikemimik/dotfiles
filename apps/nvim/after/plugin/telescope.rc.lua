@@ -16,8 +16,9 @@ table.insert(grep_args, "!.git/*")
 telescope.setup({
   defaults = {
     prompt_prefix = " > ",
+    layout_strategy = "vertical",
     layout_config = {
-      height = 0.5,
+      height = 0.7,
     },
     mappings = {
       n = {
