@@ -91,6 +91,7 @@ require("null-ls").setup({
     require("null-ls").builtins.completion.luasnip,
     require("null-ls").builtins.formatting.prettierd,
     require("null-ls").builtins.diagnostics.actionlint, -- requires https://github.com/rhysd/actionlint
+    require("null-ls").builtins.code_actions.shellcheck, -- requires https://github.com/koalaman/shellcheck
   },
 })
 
