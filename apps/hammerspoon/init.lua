@@ -494,7 +494,7 @@ Config = {}
 Config.applications = {
   ["com.googlecode.iterm2"] = {
     bundleID = "com.googlecode.iterm2",
-    hyperKey = "j",
+    hyperKey = "k",
     tags = { "coding" },
     layouts = {
       { nil, 1, hs.layout.maximized },
@@ -502,7 +502,7 @@ Config.applications = {
   },
   ["com.google.Chrome"] = {
     bundleID = "com.google.Chrome",
-    hyperKey = "k",
+    hyperKey = "j",
     tags = { "browsers" },
     layouts = {
       { nil, 1, hs.layout.maximized },
@@ -524,6 +524,28 @@ Config.applications = {
     tags = { "planning" },
     layouts = {},
   },
+  ["us.zoom.xos"] = {
+    bundleID = "us.zoom.xos",
+    hyperKey = "y",
+    tags = { "communication", "meetings" },
+    layouts = {},
+  },
+  ["com.spotify.client"] = {
+    bundleID = "com.spotify.client",
+    hyperKey = "p",
+    tags = {},
+    layouts = {},
+  },
+  ["com.reincubate.macos.cam"] = {
+    bundleID = "com.reincubate.macos.cam",
+    hyperKey = "b",
+    tags = { "communication", "meetings" },
+  },
+  ["com.apple.MobileSMS"] = {
+    bundleID = "com.apple.MobileSMS",
+    hyperKey = "m",
+    tags = { "communication" },
+  },
 }
 Hyper = spoon.Hyper
 
@@ -531,7 +553,24 @@ Hyper:bindHotKeys({hyperKey = {{}, "F19"}})
 
 hs.fnutils.each(Config.applications, function(appConfig)
   if appConfig.hyperKey then
-    Hyper:bind({}, appConfig.hyperKey, function() hs.application.launchOrFocusByBundleID(appConfig.bundleID) end)
+    Hyper:bind({}, appConfig.hyperKey, function()
+      hs.application.launchOrFocusByBundleID(appConfig.bundleID)
+    end)
+
+    Hyper:bind({ "shift" }, appConfig.hyperKey, function()
+      -- save current space
+      local currentSpace = hs.spaces.focusedSpace()
+      -- launch or focus the app
+      hs.application.launchOrFocusByBundleID(appConfig.bundleID)
+      -- save windowId
+      local window = hs.window.focusedWindow()
+      -- move window to 'current space'
+      hs.spaces.moveWindowToSpace(window, currentSpace)
+      -- refocus the space
+      hs.timer.delayed.new(0.3, function()
+        hs.application.launchOrFocusByBundleID(appConfig.bundleID)
+      end):start()
+    end)
   end
   if appConfig.localBindings then
     hs.fnutils.each(appConfig.localBindings, function(key)
