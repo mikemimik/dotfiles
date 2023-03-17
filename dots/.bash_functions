@@ -5,6 +5,13 @@ ARROW="￫"
 NC='\033[0m'
 
 ########################################
+# common
+########################################
+function errcho(){
+  >&2 echo $@;
+}
+
+########################################
 # resolver -ssh
 ########################################
 sshlogin () {
@@ -45,6 +52,20 @@ function isNumber() {
     else
         false
     fi
+}
+
+function first_push() {
+  local branch=""
+  branch="$(git rev-parse --abbrev-ref HEAD)"
+
+  if  git rev-parse --abbrev-ref '@{u}' > /dev/null 2>&1
+  then
+    # This branch is tracking a remove branch
+    errcho "Already tracking remote branch push normally with \`git push\`"
+  else
+    # NOT TRACKING remote branch
+    git push -u origin "${branch}"
+  fi
 }
 
 function checkout_pull() {
