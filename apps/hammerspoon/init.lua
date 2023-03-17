@@ -546,6 +546,11 @@ Config.applications = {
     hyperKey = "m",
     tags = { "communication" },
   },
+  ["com.culturedcode.ThingsMac"] = {
+    bundleID = "com.culturedcode.ThingsMac",
+    hyperKey = "t",
+    tags = { "planning" },
+  },
 }
 Hyper = spoon.Hyper
 
