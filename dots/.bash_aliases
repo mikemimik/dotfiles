@@ -86,10 +86,11 @@ alias gat=gatsby
 alias tf=terraform
 
 # Kubernetes aliases
-alias k=kubectl
-alias kz=kustomize
+alias k="kubectl"
+alias kz="kustomize"
 alias kcs="kubectl config view -o json | jq -r '.contexts[].name' | ipt | xargs kubectl config use"
 alias kc="kubectl config current-context"
+alias ek="eksctl"
 
 # Git aliases
 alias gs="git status"               # (gs) git staths shorthand
@@ -98,6 +99,7 @@ alias gc="git commit -m"            # (gc) git commit shorthand
 alias gca="git commit --amend"      # (gca) ammend git commit shorthand
 alias ga="git add"                  # (ga) git add shorthand
 alias gd="git diff"                 # (gd) git diff shorthand
+alias gfp="first_push"              # (gfp) git first push
 alias fetch="git fetch"             # (fetch) fetch shorthand
 alias prune="git fetch --prune"     # (prune) fetch and prune shorthand
 alias pull="git pull --ff-only"     # (pull) pull shorthand
