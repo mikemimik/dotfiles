@@ -15,6 +15,7 @@ fi
 source <(kubectl completion bash)
 source <(eksctl completion bash)
 source <(kustomize completion bash)
+source <(op completion bash)
 
 # Add completion for commands
 HOMEBREW_PREFIX=$(brew --prefix)
