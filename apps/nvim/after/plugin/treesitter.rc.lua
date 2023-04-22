@@ -10,6 +10,8 @@ ts.setup {
     "javascript",
   },
   sync_install = false,
+  -- requires `tree-sitter` cli installed
+  auto_install = true,
 
   highlight = {
     enable = true,
