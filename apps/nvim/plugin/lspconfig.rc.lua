@@ -1,8 +1,10 @@
 local status, lspconfig = pcall(require, "lspconfig")
 if (not status) then return end
 
-local null_status, _ = pcall(require, "null-ls")
+local null_status, null_ls = pcall(require, "null-ls")
 if (not null_status) then return end
+
+local log = require("mikemimik.log").new({ plugin = "lspconfig" })
 
 -- print("plugin.lspconfig.rc -- loading")
 local nnoremap = require("mikemimik.keymap").nnoremap
@@ -13,19 +15,24 @@ local autocmd = vim.api.nvim_create_autocmd
 
 local common_attach = function(client, bufnr)
   local format_group = augroup("Format", { clear = true })
-  local opts = { noremap = true, silent = true, buffer = bufnr }
+  local opts = {
+    noremap = true,
+    silent = true,
+    buffer = bufnr,
+  }
 
   if client.server_capabilities.documentRangeFormattingProvider then
     -- keybinding for visual formatting (format section)
     xnoremap("<leader>f", function()
-      vim.lsp.buf.range_formatting({})
+      vim.lsp.buf.format({ async = true })
     end, opts)
   end
 
   if client.server_capabilities.documentFormattingProvider then
     -- keybind for formatting
     nnoremap("<leader>f", function()
-      vim.lsp.buf.formatting()
+      vim.lsp.buf.format({ async = true })
+      log.info("buf", bufnr, "client", client.name)
     end, opts)
 
     -- format on save
@@ -74,9 +81,7 @@ protocol.CompletionItemKind = {
   '', -- TypeParameter
 }
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(
-  protocol.make_client_capabilities()
-)
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local function config(_config)
   return vim.tbl_deep_extend("force", {
@@ -85,13 +90,14 @@ local function config(_config)
   }, _config or {})
 end
 
-require("null-ls").setup({
+null_ls.setup({
   on_attach = common_attach,
   sources = {
-    require("null-ls").builtins.completion.luasnip,
-    require("null-ls").builtins.formatting.prettierd,
-    require("null-ls").builtins.diagnostics.actionlint, -- requires https://github.com/rhysd/actionlint
-    require("null-ls").builtins.code_actions.shellcheck, -- requires https://github.com/koalaman/shellcheck
+    null_ls.builtins.completion.luasnip,
+    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.diagnostics.actionlint, -- requires https://github.com/rhysd/actionlint
+    null_ls.builtins.code_actions.shellcheck, -- requires https://github.com/koalaman/shellcheck
+    null_ls.builtins.diagnostics.shellcheck, -- requires https://github.com/koalaman/shellcheck
   },
 })
 
@@ -110,7 +116,7 @@ lspconfig.tsserver.setup(config({
     --     vim.lsp.buf.formatting()
     --   end,
     -- })
-    common_attach(client, bufnr)
+    -- common_attach(client, bufnr)
   end,
   filetypes = { "typescript", "typscriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
@@ -118,7 +124,7 @@ lspconfig.tsserver.setup(config({
 
 -- INFO: requires 'lua-language-server'
 -- `brew install lua-language-server`
-lspconfig.sumneko_lua.setup(config({
+lspconfig.lua_ls.setup(config({
   settings = {
     Lua = {
       diagnostics = {

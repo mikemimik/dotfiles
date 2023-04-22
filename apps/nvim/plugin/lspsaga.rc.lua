@@ -4,15 +4,21 @@ if (not status) then return end
 -- print("plugin.lspsaga.rc -- loading")
 local nnoremap = require("mikemimik.keymap").nnoremap
 
-saga.init_lsp_saga({
-  server_filetype_map = {
-    typescript = "typescript",
-  },
-  code_action_lightbulb = {
+saga.setup({
+  lightbulb = {
     enable = false,
     enable_in_insert = false,
   },
 })
+-- saga.init_lsp_saga({
+--   server_filetype_map = {
+--     typescript = "typescript",
+--   },
+--   code_action_lightbulb = {
+--     enable = false,
+--     enable_in_insert = false,
+--   },
+-- })
 
 local opts = { silent = true }
 -- INFO: collides with <s-k>
