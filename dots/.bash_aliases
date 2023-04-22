@@ -141,12 +141,23 @@ alias dclean='docker images --no-trunc | grep "<none>" | awk '\''{ print $3 }'\'
 alias a=aws
 alias aauth=aws-iam-authenticator
 alias al=aws_localstack
+alias isaws="env | grep ^AWS"
 
 # OpenFaas aliases
 alias fast=faas-cli
 
-# Taskbook aliases
-alias task=tb
+# Taskwarrior aliases
+alias t="task"
+alias ta="task add"
+alias tad="task add"
+alias tan=task_annotate
+alias tl="task list"
 
 # BearNotes aliases
 alias newnote=new_note
+
+# Tmux aliases
+alias tm=tmux_create_session
+alias tml="tmux list-sessions"
+alias tma=tmux_attach_session
+alias tmd=tmux_delete_session
