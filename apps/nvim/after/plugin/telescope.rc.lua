@@ -22,11 +22,14 @@ telescope.setup({
     },
     mappings = {
       n = {
-        ["q"] = actions.close,
+            ["q"] = actions.close,
       },
       i = {
-        ["<esc>"] = actions.close,
-        ["<leader>,"] = actions.close,
+            ["<esc>"] = actions.close,
+            ["<leader>,"] = actions.close,
+            ["<leader>v"] = actions.select_vertical,
+            ["<leader>x"] = actions.select_horizontal,
+            ["<leader>t"] = actions.select_tab,
       },
     },
     vimgrep_arguments = grep_args,
@@ -41,12 +44,12 @@ telescope.setup({
       theme = "dropdown",
       hijack_netrw = true,
       mappings = {
-        ["i"] = {
+            ["i"] = {
         },
-        ["n"] = {
-          ["<leader>v"] = actions.select_vertical,
-          ["<leader>x"] = actions.select_horizontal,
-          ["<leader>t"] = actions.select_tab,
+            ["n"] = {
+              ["<leader>v"] = actions.select_vertical,
+              ["<leader>x"] = actions.select_horizontal,
+              ["<leader>t"] = actions.select_tab,
         },
       },
     },
@@ -62,17 +65,34 @@ end
 nnoremap("<c-p>", function()
   builtin.find_files({
     prompt_prefix = "Files > ",
+    attach_mappings = function(_, map)
+      -- These are set above in the defaults; leaving them here are a reminder
+      -- of how to do this.
+      -- map("i", "<leader>v", actions.select_vertical)
+      -- map("i", "<leader>x", actions.select_horizontal)
+
+      return true;
+    end,
   })
 end)
 
 nnoremap("<c-f>", function()
   builtin.live_grep({
     prompt_prefix = "Grep > ",
+    attach_mappings = function(_, map)
+      -- map("i", "<leader>v", actions.select_vertical)
+      -- map("i", "<leader>x", actions.select_horizontal)
+
+      return true;
+    end,
   })
 end)
 
 nnoremap("\\\\", function()
-  builtin.buffers()
+  builtin.buffers({
+    ignore_current_buffer = true,
+    sort_mru = true,
+  })
 end)
 
 nnoremap("<leader>z", function()
