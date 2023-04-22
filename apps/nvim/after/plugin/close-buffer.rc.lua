@@ -11,7 +11,7 @@ local nnoremap = require("mikemimik.keymap").nnoremap
 
 closebuffer.setup({
   filetype_ignore = {},
-  file_glob_ignore ={},
+  file_glob_ignore = {},
   file_regex_ignore = {},
   preserve_window_layout = { "this", "nameless" },
   next_buffer_cmd = nil,
@@ -28,6 +28,14 @@ end, opts)
 
 nnoremap("<leader>c,", function()
   closebuffer.delete({ type = "this" })
+end, opts)
+
+nnoremap("<leader>ca", function()
+  closebuffer.delete({ type = "all" })
+end, opts)
+
+nnoremap("<leader>co", function()
+  closebuffer.delete({ type = "other" })
 end, opts)
 
 log.debug("after/plugin.close-buffer.rc -- loaded")
