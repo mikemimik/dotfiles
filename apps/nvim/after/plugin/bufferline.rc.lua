@@ -10,19 +10,21 @@ log.debug("after/plugin.bufferline.rc -- loading")
 bufferline.setup({
   options = {
     mode = "buffers",
+    numbers = "buffer_id",
     separator_style = "slant",
     -- separator_style = "thin",
+    diagnostics = "nvim_lsp",
     show_close_icon = false,
-    buffer_close_icon = "",
-    close_icon = "",
-    color_icons = false,
+    show_buffer_icons = true,
+    show_buffer_close_icons = false,
+    color_icons = true,
     -- left_trunc_marker = "",
     -- right_trunc_marker = "",
     -- indicator = {
     --   icon = "| ",
     --   style = "none",
     -- },
-    numbers = "buffer_id",
+    persist_buffer_sort = false,
   },
 })
 
