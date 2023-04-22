@@ -5,6 +5,7 @@
 # Check if NVM exists then source it
 [ -s "$NVM_INSTALL_DIR/nvm.sh" ] && source "$NVM_INSTALL_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_INSTALL_DIR/etc/bash_completion.d/nvm" ] && source "$NVM_INSTALL_DIR/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -n "$TMUX" ] && tmux setenv -g "TMUX_NVM_$(tmux display -p "#D" | tr -d %)" "$NVM_BIN"
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 if [ -e "$HOME/.ssh/config" ]; then
@@ -47,4 +48,4 @@ fi
 # ssh-add -K ~/.ssh/github_rsa
 
 # Load iterm2 integration script
-test -e "${HOME}/.iterm2_shell_integration.sh" && source "${HOME}/.iterm2_shell_integration.sh"
+# test -e "${HOME}/.iterm2_shell_integration.sh" && source "${HOME}/.iterm2_shell_integration.sh"
