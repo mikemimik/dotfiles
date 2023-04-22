@@ -11,6 +11,15 @@ function errcho(){
   >&2 echo "$@";
 }
 
+function promptYesNo() {
+  local message=$1
+  local response=""
+
+  response=$(echo "yes no" | ipt -u -s " " -M "${message}")
+
+  echo "${response}"
+}
+
 ########################################
 # resolver -ssh
 ########################################
@@ -300,4 +309,133 @@ aws_localstack() {
         ;;
     esac
     aws --endpoint-url=http://localhost:$localstack_port $*
+}
+
+########################################
+# Tmux
+########################################
+tmux_default_session() {
+  echo "${USER}-main"
+}
+
+tmux_interactive_get_session() {
+  local tmux_session=""
+  tmux_session=$(tmux list-sessions \
+    | ipt -u \
+    | cut -d ':' -f 1)
+
+  echo "${tmux_session}"
+}
+
+tmux_list_sessions() {
+  local tmux_sessions=""
+  tmux_sessions=$(tmux list-sessions -F '#S')
+
+  echo "${tmux_sessions}"
+}
+
+tmux_find_session() {
+  local tmux_session=$1
+  local found=""
+
+  for session in $(tmux_list_sessions)
+  do
+    if [[ "${session}" == "${tmux_session}" ]]
+    then
+      found="${session}"
+    fi
+  done
+
+  echo "${found}"
+}
+
+tmux_create_session() {
+  local tmux_session_name=""
+  tmux_session_name=$1
+
+  if [[ "${tmux_session_name}" == "" ]]
+  then
+    # user didn't enter session name; infer from working dir
+    tmux_session_name=$(pwd \
+      | awk '{ split($1, path, "/"); print path[length(path)]; }')
+  fi
+
+  # look for default session
+  local default_session=""
+  default_session=$(tmux_find_session "$(tmux_default_session)")
+
+  local has_default=""
+  if [[ "${default_session}" == "" ]]
+  then
+    has_default="false"
+  else
+    has_default="true"
+  fi
+
+  if [[ "${has_default}" == "false" ]]
+  then
+    tmux_session_name=$(tmux_default_session)
+  else
+    local answer="yes"
+    answer=$(promptYesNo "Found default session; attach?")
+  fi
+
+  if [[ "${answer}" == "yes" ]]
+  then
+    tmux attach -t "$(tmux_default_session)"
+  else
+    tmux new-session -s "${tmux_session_name}"
+  fi
+}
+
+tmux_attach_session() {
+  local tmux_session=""
+  tmux_session=$(tmux_interactive_get_session)
+
+  tmux attach -t "${tmux_session}"
+}
+
+tmux_delete_session() {
+  local tmux_session=""
+  tmux_session=$(tmux_interactive_get_session)
+
+  tmux kill-session -t "${tmux_session}"
+}
+
+
+########################################
+# Taskwarrior
+########################################
+task_annotate() {
+  trap '[[ -n ${annot_file:-} ]] && rm -f "$annot_file"' EXIT
+
+  local filter="$1"
+  shift
+  annot="$*"
+
+  # Check if any task exists
+  if ! task info "$filter" > /dev/null 2>&1; then
+    echo "No tasks found."
+  elif [[ -n "$annot" ]]; then
+    # Use annotation from CLI if provided
+    task $filter annotate "$annot"
+  else
+    # Use annotation from editor
+    # Add file extension to get syntax highlighting
+    local annot_file="$(mktemp).md"
+    $EDITOR "$annot_file"
+
+    if [[ "$(wc -l "$annot_file" | cut -d ' ' -f 1)" -gt 1 ]]; then
+      annot="\n$(cat "$annot_file")"
+    else
+      annot="$(cat "$annot_file")"
+    fi
+
+    # Print annotation if error saving, otherwise the user will lose it
+    if ! task $filter annotate "$annot"; then
+      echo "Error annotating task. Here is your annotation:"
+      echo
+      echo "$annot"
+    fi
+  fi
 }
