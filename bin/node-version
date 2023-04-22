@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+pane=$(tmux display -p "#D" | tr -d %)
+
+env_var="TMUX_NVM_${pane}"
+
+get_match() {
+  str=$1
+  re=$2
+  arr_pos=${3:-0}
+  value=$([[ $str =~ $re ]] && echo "${BASH_REMATCH[${arr_pos}]}")
+
+  echo "$value"
+}
+
+declare version
+if [[ -n ${!env_var} ]]
+then
+  version=$("${!env_var}/node" --version)
+else
+  # No pane specific version found; use default
+  version="$(node --version) (D)"
+fi
+
+echo "node: $version"

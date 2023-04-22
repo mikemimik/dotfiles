@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+pane=$(tmux display -p "#D" | tr -d %)
+
+env_var="TMUX_NVM_${pane}"
+
+declare version
+if [[ -n ${!env_var} ]]
+then
+  version=$("${!env_var}/npm" --version)
+else
+  # No pane specific version found; use default
+  version="$(npm --version) (D)"
+fi
+
+echo "npm: v${version}"

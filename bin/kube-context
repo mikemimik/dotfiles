@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+declare -r name=$(kubectl config view -o json | jq -r --arg CTX "$(kubectl config current-context)" '.contexts[] | select(.name | contains($CTX)) | .context.cluster')
+declare -r hasSlash="[\/]"
+
+if [[ $name =~ $hasSlash ]]
+then
+  declare -r output=$(echo "$name" | awk '{ split($1, a, "/"); print a[2]; }')
+else
+  declare -r output="$name"
+fi
+
+echo "kube: $output"
