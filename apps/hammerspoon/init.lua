@@ -493,7 +493,7 @@ hs.loadSpoon("Hyper")
 Config = {}
 Config.applications = {
   ["com.googlecode.iterm2"] = {
-    bundleID = "com.googlecode.iterm2",
+    bundleID = "org.alacritty",
     hyperKey = "k",
     tags = { "coding" },
     layouts = {
@@ -550,6 +550,16 @@ Config.applications = {
     bundleID = "com.culturedcode.ThingsMac",
     hyperKey = "t",
     tags = { "planning" },
+  },
+  ["com.apple.Safari"] = {
+    bundleID = "com.apple.Safari",
+    hyperKey = "s",
+    tags = { "browsers" },
+  },
+  ["com.apple.iCal"] = {
+    bundleID = "com.apple.iCal",
+    hyperKey = "c",
+    tags = { "planning", "meetings" },
   },
 }
 Hyper = spoon.Hyper
