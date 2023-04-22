@@ -22,6 +22,8 @@ module.exports = {
   'apps/nvim/after/plugin/close-buffer.rc.lua': '.config/nvim/after/plugin/close-buffer.rc.lua',
   'apps/nvim/after/plugin/cmp.rc.lua': '.config/nvim/after/plugin/cmp.rc.lua',
   'apps/nvim/after/plugin/colors.rc.lua': '.config/nvim/after/plugin/colors.rc.lua',
+  'apps/nvim/after/plugin/glow.rc.lua': '.config/nvim/after/plugin/glow.rc.lua',
+  'apps/nvim/after/plugin/transparent.rc.lua': '.config/nvim/after/plugin/transparent.rc.lua',
   'apps/nvim/after/plugin/indentline.rc.lua': '.config/nvim/after/plugin/indentline.rc.lua',
   'apps/nvim/after/plugin/lspkind.rc.lua': '.config/nvim/after/plugin/lspkind.rc.lua',
   'apps/nvim/after/plugin/lualine.rc.lua': '.config/nvim/after/plugin/lualine.rc.lua',
@@ -33,9 +35,15 @@ module.exports = {
 
   'apps/karabiner/karabiner.json': '.config/karabiner/karabiner.json',
   'apps/karabiner/assets/complex_modifications/local.json': '.config/karabiner/assets/complex_modifications/local.json',
+
   'apps/hammerspoon/init.lua': '.hammerspoon/init.lua',
   'apps/hammerspoon/inspect.lua': '.hammerspoon/inspect.lua',
   'apps/hammerspoon/Spoons/Hyper.spoon/init.lua': '.hammerspoon/Spoons/Hyper.spoon/init.lua',
+
+  'apps/nvm/default-packages': '.nvm/default-packages',
+
+  'apps/tmux/tmux.conf': '.config/tmux/tmux.conf',
+
   'dots/.agignore': '.agignore',
   'dots/.bash_aliases': '.bash_aliases',
   'dots/.bash_exports': '.bash_exports',
