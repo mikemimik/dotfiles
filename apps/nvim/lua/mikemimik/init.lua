@@ -42,6 +42,7 @@ vim.opt.splitright = true -- prefer vsplitting to the right
 vim.opt.splitbelow = true -- prefer splitting below
 vim.opt.textwidth = 80
 vim.opt.signcolumn = "yes"
+vim.opt.termguicolors = true
 
 -- Colours
 vim.opt.termguicolors = true
@@ -67,5 +68,11 @@ autocmd({ "BufNewFile", "BufRead" }, {
   callback = function()
     vim.opt.syntax = "sh"
   end,
+})
+
+autocmd({ "VimResized" }, {
+  group = baseGroup,
+  pattern = "*",
+  command = "wincmd =",
 })
 -- print("mikemimik.init -- loaded")
