@@ -1,7 +1,7 @@
 {
   "rules": [
     {
-      "description": "Change left_control+backspace delete",
+      "description": "Change left_control+backspace to delete",
       "manipulators": [
         {
           "from": {
@@ -14,6 +14,26 @@
           "to": [
             {
               "key_code": "delete_forward"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Change left_control+comma to F12",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "comma",
+            "modifiers": {
+              "mandatory": ["left_control"],
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "f12"
             }
           ],
           "type": "basic"
