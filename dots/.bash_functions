@@ -8,7 +8,7 @@ NC='\033[0m'
 # common
 ########################################
 function errcho(){
-  >&2 echo $@;
+  >&2 echo "$@";
 }
 
 ########################################
@@ -151,7 +151,8 @@ function new_note() {
 # iterm2
 ########################################
 function get_current_context_cluster_name() {
-  local name=$(kubectl config view -o json \
+  local name=""
+  name=$(kubectl config view -o json \
    | jq \
       -r \
       --arg CTX "$(kubectl config current-context)" \
@@ -159,16 +160,16 @@ function get_current_context_cluster_name() {
     )
   local hasSlash="[\/]"
   if [[ $name =~ $hasSlash ]]; then
-    echo $(echo $name | awk '{ split($1, a, "/"); print a[2]; }')
+    echo "$name" | awk '{ split($1, a, "/"); print a[2]; }'
   else
-    echo $name
+    echo "$name"
   fi
 }
 
 function iterm2_print_user_vars() {
-    iterm2_set_user_var nodeVersion $(node --version)
-    iterm2_set_user_var npmVersion $(npm --version)
-    iterm2_set_user_var kubeContext $(get_current_context_cluster_name)
+    iterm2_set_user_var nodeVersion "$(node --version)"
+    iterm2_set_user_var npmVersion "$(npm --version)"
+    iterm2_set_user_var kubeContext "$(get_current_context_cluster_name)"
 }
 
 ########################################
@@ -181,7 +182,7 @@ strip_color() {
 }
 
 cd() {
-  builtin cd "$@"
+  builtin cd "$@" || return
   clear
   gls -alp --color=auto --group-directories-first
   nvmcheck
@@ -258,7 +259,7 @@ dotfiles() {
     if [ "$#" -eq 0 ]; then
         cd ~/dotfiles
     else
-        ${NVM_BIN}/dotfiles $@
+        ${NVM_BIN}/dotfiles "$@"
     fi
 }
 
@@ -272,7 +273,7 @@ docker_bash() {
 docker_exec() {
     container=$1
     shift
-    docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it $container $@
+    docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it $container "$@"
 }
 
 docker_stop_and_remove() {
