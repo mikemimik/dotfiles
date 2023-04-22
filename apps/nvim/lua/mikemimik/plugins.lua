@@ -20,15 +20,20 @@ return packer.startup(function(use)
 
   -- Visualizations
   use("junegunn/seoul256.vim")
-  use("kyazdani42/nvim-web-devicons")
+  use("nvim-tree/nvim-web-devicons")
   -- requires patched font with glyps
   use({
     "akinsho/bufferline.nvim",
-    tag = "v2.*",
-    -- requires = 'kyazdani42/nvim-web-devicons'
+    tag = "v3.*",
+    requires = 'nvim-tree/nvim-web-devicons'
   })
   use("Yggdroot/indentLine")
   use("nvim-lualine/lualine.nvim")
+  use({
+    "ellisonleao/glow.nvim"
+    -- requires 'glow' (brew install)
+  })
+  use({ "xiyaowong/transparent.nvim" })
 
   -- Functionality
   use({
@@ -42,6 +47,7 @@ return packer.startup(function(use)
   })
   use("nvim-telescope/telescope-file-browser.nvim")
   use("tpope/vim-commentary")
+  use("tpope/vim-fugitive")
   use("kazhala/close-buffers.nvim")
 
   -- LSP Configuration
