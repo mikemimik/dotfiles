@@ -40,6 +40,8 @@ module.exports = {
   'apps/hammerspoon/inspect.lua': '.hammerspoon/inspect.lua',
   'apps/hammerspoon/Spoons/Hyper.spoon/init.lua': '.hammerspoon/Spoons/Hyper.spoon/init.lua',
 
+  'apps/alacritty/alacritty.yml': '.config/alacritty/alacritty.yml',
+
   'apps/nvm/default-packages': '.nvm/default-packages',
 
   'apps/tmux/tmux.conf': '.config/tmux/tmux.conf',
