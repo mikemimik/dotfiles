@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+is_aws_expired() {
+  aws sts get-caller-identity > /dev/null
+
+  echo $?
+}
+
+aws_account_name() {
+  declare -r account_id=$(aws sts get-caller-identity | jq -r '.Account')
+  declare -r name=$(gk list | grep "$account_id" | awk '{ print $2 }')
+
+  echo "$name"
+}
+
+if [[ $(env | grep -c "^AWS") -gt 0 ]]
+then
+  declare account_name=$(aws_account_name)
+
+  if [[ $(is_aws_expired) -eq 0 ]]
+  then
+    declare -r expired=" "
+  else
+    declare -r expired=" (expired)"
+  fi
+  declare -r output="(AWS:${account_name})${expired}"
+else
+  declare -r output=""
+fi
+
+echo "$output"
