@@ -1,0 +1,8 @@
+selection:
+  save_to_clipboard: true
+live_config_reload: true
+shell:
+  program: /usr/local/bin/bash
+mouse:
+  double_click: { threshold: 300 }
+  hide_when_typing: false

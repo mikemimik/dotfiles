@@ -1,0 +1,5 @@
+window:
+  dimensions:
+    columns: 235
+    lines: 50
+  opacity: 0.98
