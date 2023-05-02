@@ -1,6 +1,19 @@
 #!/usr/bin/env bash
 
+source ~/.bash_exports
+
 uptime_value=$(uptime)
+
+if [[ "$TMUX_STATUS_UPTIME_DISPLAY" == "short" ]]
+then
+  tmux_status_uptime_suffix_day="D"
+  tmux_status_uptime_suffix_hour="H"
+  tmux_status_uptime_suffix_minute="M"
+else
+  tmux_status_uptime_suffix_day=" days"
+  tmux_status_uptime_suffix_hour=" hrs"
+  tmux_status_uptime_suffix_minute=" mins"
+fi
 
 get_match() {
   re=$1
@@ -10,8 +23,15 @@ get_match() {
   echo "$value"
 }
 
-re_days="[0-9]+ days|day?"
-days=$(get_match "$re_days")
+re_days="([0-9]+) days|day?"
+days="$(get_match "$re_days" 1)"
+
+if [[ -z $days ]]
+then
+  days=""
+else
+  days="${days}${tmux_status_uptime_suffix_day}"
+fi
 
 declare hours minutes
 re_time="([0-9]?[0-9]):([0-9]{2}),"
@@ -23,12 +43,25 @@ minutes=$(get_match "$re_time" 2)
 # INFO: '-n' checks IF NOT EMPTY
 if [[ -z $hours ]]
 then
+  if [[ -z $days ]]
+  then
+    min_sep=""
+  else
+    min_sep=" "
+  fi
+
   # hours is empty
   hours=""
-  minutes=" $(get_match "$re_mins" 1)"
+  minutes="${min_sep}$(get_match "$re_mins" 1)"
 else
-  hours=" $hours hrs"
-  minutes=" $minutes mins"
+  if [[ -z $days ]]
+  then
+    hour_sep=""
+  else
+    hour_sep=" "
+  fi
+  hours="${hour_sep}${hours}${tmux_status_uptime_suffix_hour}"
+  minutes=" ${minutes}${tmux_status_uptime_suffix_minute}"
 fi
 
 echo "uptime: ${days}${hours}${minutes}"
