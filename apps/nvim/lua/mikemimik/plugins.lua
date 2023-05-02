@@ -24,7 +24,7 @@ return packer.startup(function(use)
   -- requires patched font with glyps
   use({
     "akinsho/bufferline.nvim",
-    tag = "v3.*",
+    tag = "*",
     requires = 'nvim-tree/nvim-web-devicons'
   })
   use("Yggdroot/indentLine")

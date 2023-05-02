@@ -11,20 +11,16 @@ bufferline.setup({
   options = {
     mode = "buffers",
     numbers = "buffer_id",
-    separator_style = "slant",
-    -- separator_style = "thin",
+    indicator = {
+      style = "underline",
+    },
     diagnostics = "nvim_lsp",
-    show_close_icon = false,
+    color_icons = true,
     show_buffer_icons = true,
     show_buffer_close_icons = false,
-    color_icons = true,
-    -- left_trunc_marker = "",
-    -- right_trunc_marker = "",
-    -- indicator = {
-    --   icon = "| ",
-    --   style = "none",
-    -- },
+    show_close_icon = false,
     persist_buffer_sort = false,
+    separator_style = { "|", "|" },
   },
 })
 
