@@ -350,42 +350,32 @@ tmux_find_session() {
 }
 
 tmux_create_session() {
-  local tmux_session_name=""
-  tmux_session_name=$1
-
-  if [[ "${tmux_session_name}" == "" ]]
+  if [[ $# -eq 1 ]]
   then
-    # user didn't enter session name; infer from working dir
-    tmux_session_name=$(pwd \
-      | awk '{ split($1, path, "/"); print path[length(path)]; }')
-  fi
-
-  # look for default session
-  local default_session=""
-  default_session=$(tmux_find_session "$(tmux_default_session)")
-
-  local has_default=""
-  if [[ "${default_session}" == "" ]]
-  then
-    has_default="false"
+    selected=$1
   else
-    has_default="true"
+    selected=$(find ~/repos ~/auth0 -mindepth 1 -maxdepth 1 -type d | fzf)
   fi
 
-  if [[ "${has_default}" == "false" ]]
+  if [[ -z $selected ]]
   then
-    tmux_session_name=$(tmux_default_session)
-  else
-    local answer="yes"
-    answer=$(promptYesNo "Found default session; attach?")
+    exit 0
   fi
 
-  if [[ "${answer}" == "yes" ]]
+  selected_name=$(basename "$selected")
+
+  if [[ -z $TMUX ]]
   then
-    tmux attach -t "$(tmux_default_session)"
-  else
-    tmux new-session -s "${tmux_session_name}"
+    tmux new-session -s "$selected_name" -c "$selected"
+    exit 0
   fi
+
+  if ! tmux has-session -t "$selected_name" 2> /dev/null
+  then
+    tmux new-session -ds "$selected_name" -c "$selected"
+  fi
+
+  tmux switch-client -t "$selected_name"
 }
 
 tmux_attach_session() {
