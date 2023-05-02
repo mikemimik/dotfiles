@@ -41,6 +41,11 @@ module.exports = {
   'apps/hammerspoon/Spoons/Hyper.spoon/init.lua': '.hammerspoon/Spoons/Hyper.spoon/init.lua',
 
   'apps/alacritty/alacritty.yml': '.config/alacritty/alacritty.yml',
+  'apps/alacritty/colors.yml': '.config/alacritty/colors.yml',
+  'apps/alacritty/config.yml': '.config/alacritty/config.yml',
+  'apps/alacritty/font.yml': '.config/alacritty/font.yml',
+  'apps/alacritty/keybindings.yml': '.config/alacritty/keybindings.yml',
+  'apps/alacritty/window.yml': '.config/alacritty/window.yml',
 
   'apps/nvm/default-packages': '.nvm/default-packages',
 
