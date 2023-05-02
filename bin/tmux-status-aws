@@ -1,0 +1,108 @@
+#!/usr/bin/env bash
+
+
+errcho() {
+  >&2 echo "$@";
+}
+
+aws_is_expired() {
+  declare -r cmd_env=$1
+
+  if [[ -n $cmd_env ]]
+  then
+    env -S "$cmd_env" aws sts get-caller-identity > /dev/null
+  else
+    aws sts get-caller-identity > /dev/null
+  fi
+
+  echo $?
+}
+
+get_active_pane_pid() {
+  tmux list-panes -F '#{pane_active} #{pane_pid}' \
+    | grep "^1" \
+    | awk '{ print $2 }'
+}
+
+get_pid_env() {
+  ps e -o command -p "$1" \
+    | awk 'BEGIN { RS=""; FS="\n"; OFS="" } { print $2 }'
+}
+
+# readarray -t output < <(get_pid_env "$(get_active_pane_pid)" | ggrep -Po "$re_env")
+fetch_env_vars() {
+  declare -r pid=$1
+  declare -r re=$2
+  declare -r callback=$3
+  declare -r re_env="(\s\S+\=)(.+?(?=\s\S+\=)|.+?(?=\R))"
+
+  if [[ -n $re ]]
+  then
+    declare -r output=$(get_pid_env "$pid" \
+      | ggrep -Po "$re_env" \
+      | sed -e 's/^[[:space:]]*//' \
+      | grep "$re" | xargs
+    )
+  else
+    declare -r output=$(get_pid_env "$pid" \
+      | ggrep -Po "$re_env" \
+      | xargs)
+  fi
+
+  if [[ -n $callback ]]
+  then
+    $callback "$output"
+  else
+    echo "$output"
+  fi
+}
+
+determine_aws() {
+  if ! command -v gk &> /dev/null
+  then
+    echo "~"
+    exit 0
+  fi
+
+  declare -r pane_pid=$(get_active_pane_pid)
+  declare -r re_aws="\\\-\+\=.+gk exec"
+  # declare -r re_bash="\\\-\+\=.+bash"
+
+  declare -r aws_context=$(pstree -p "$pane_pid" "$pane_pid" | grep -E "$re_aws" | tail -1)
+  # declare -r shell_context=$(pstree -p "$pane_pid" "$pane_pid" | grep -E "$re_bash" | tail -1)
+
+  if [[ -n $aws_context ]]
+  then
+    declare -r account_name=$(echo "$aws_context" \
+      | sed -e 's/^[[:space:]]*//' \
+      | awk '{ print $7 }'
+    )
+    # echo "AWS: ${account_name}"
+
+    # declare -r shell_pid=$(echo "$shell_context" \
+    #   | sed -e 's/^[[:space:]]*//' \
+    #   | awk '{ print $2 }'
+    # )
+
+    # echo "AWS: ${account_name} (~)"
+    # declare -r aws_env_str=$(fetch_env_vars "$shell_pid" "^AWS")
+    # declare -r aws_result=$(aws_is_expired "$aws_env_str")
+    # echo "AWS: ${account_name} (${aws_result})"
+    # sleep 2
+
+    # declare -r is_expired=$(fetch_env_vars "$shell_pid" "^AWS")
+    # if [[ $aws_result -eq 0 ]]
+    # then
+    #   declare -r expired=" "
+    # else
+    #   declare -r expired=" (expired)"
+    # fi
+
+    # echo "AWS: ${account_name}${expired}"
+    echo "AWS: ${account_name}"
+  else
+    echo "AWS: ~"
+  fi
+}
+
+determine_aws
