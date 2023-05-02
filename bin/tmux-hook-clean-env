@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+event=$1
+
+errcho() {
+  >&2 echo "$@";
+}
+
+pane_list=$(tmux list-panes -s -F '#{pane_active} #{pane_id}' \
+ | awk '{ print $2 }' \
+ | tr -d '%'
+)
+
+env_list=$(tmux showenv -g \
+  | grep -E "TMUX_NVM_\d+=" \
+  | awk 'BEGIN { FS="="; } { print $1 }' \
+  | sed -e 's/TMUX_NVM_//'
+)
+
+for env_item in $env_list
+do
+  match=""
+  for pane in $pane_list
+  do
+    if [[ $env_item -eq $pane ]]
+    then
+      errcho "match: $env_item / $pane"
+      match="true"
+    fi
+  done
+
+  if [[ -z $match ]]
+  then
+    errcho "should remove $env_item"
+    tmux setenv -gr "TMUX_NVM_$env_item"
+  fi
+done
+
+msg="tmux-hook-clean-env run sucessful"
+if [[ -n $event ]]
+then
+  msg="${msg} (${event})"
+fi
+
+time=$(tmux show-option -gqv display-time)
+tmux set-option -g  display-time 750
+tmux display-message "$msg"
+tmux set-option -g  display-time "$time"
