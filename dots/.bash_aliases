@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Set personal aliases, overriding those provided by framework or bash_profile
 
 # TERMINAL IMPROVEMENT CONFIGS
@@ -157,7 +159,8 @@ alias tl="task list"
 alias newnote=new_note
 
 # Tmux aliases
-alias tm=tmux_create_session
+alias tm="tmux"
 alias tml="tmux list-sessions"
 alias tma=tmux_attach_session
 alias tmd=tmux_delete_session
+alias tmcs=tmux_create_session
