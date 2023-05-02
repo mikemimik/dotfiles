@@ -561,6 +561,11 @@ Config.applications = {
     hyperKey = "c",
     tags = { "planning", "meetings" },
   },
+  ["WhatsApp"] = {
+    bundleID = "WhatsApp",
+    hyperKey = "w",
+    tags = { "communication" },
+  },
 }
 Hyper = spoon.Hyper
 
