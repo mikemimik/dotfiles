@@ -36,8 +36,7 @@ alias brewdeps=brew_dep_graph
 alias dotfiles=dotfiles
 alias rebash="source ~/.bashrc"
 
-# RESOLVER aliases
-alias r='rslv'
+# ssh aliases
 alias sshlogin=sshlogin
 
 ## Resolver repositories
