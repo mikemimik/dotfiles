@@ -314,6 +314,10 @@ aws_localstack() {
 ########################################
 # Tmux
 ########################################
+tmux_set_pane_title() {
+  printf '\033]2;%s\033\\' "$1"
+}
+
 tmux_default_session() {
   echo "${USER}-main"
 }
