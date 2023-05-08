@@ -9,6 +9,7 @@ saga.setup({
     enable = false,
     enable_in_insert = false,
   },
+  request_imeout = 5000,
 })
 -- saga.init_lsp_saga({
 --   server_filetype_map = {
@@ -24,6 +25,7 @@ local opts = { silent = true }
 -- INFO: collides with <s-k>
 -- nnoremap("K", ":Lspsaga hover_doc<cr>", opts)
 nnoremap("gd", ":Lspsaga lsp_finder<cr>", opts)
+nnoremap("gp", ":Lspsaga peek_definition<cr>", opts)
 nnoremap("]1", ":Lspsaga diagnostic_jump_next<cr>", opts)
 nnoremap("[1", ":Lspsaga diagnostic_jump_prev<cr>", opts)
 

@@ -1,6 +1,9 @@
 local status, lspconfig = pcall(require, "lspconfig")
 if (not status) then return end
 
+local util_status, util = pcall(require, "lspconfig/util")
+if (not util_status) then return end
+
 local null_status, null_ls = pcall(require, "null-ls")
 if (not null_status) then return end
 
@@ -46,6 +49,18 @@ local common_attach = function(client, bufnr)
             return f_client.name == "null_ls"
           end,
           bufnr = bufnr,
+        })
+      end,
+    })
+
+    autocmd("BufWritePre", {
+      pattern = "*.go",
+      callback = function()
+        vim.lsp.buf.code_action({
+          context = {
+            only = { 'source.organizeImports' },
+          },
+          apply = true,
         })
       end,
     })
@@ -95,6 +110,7 @@ null_ls.setup({
   sources = {
     null_ls.builtins.completion.luasnip,
     null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.gofmt,
     null_ls.builtins.diagnostics.actionlint, -- requires https://github.com/rhysd/actionlint
     null_ls.builtins.code_actions.shellcheck, -- requires https://github.com/koalaman/shellcheck
     null_ls.builtins.diagnostics.shellcheck, -- requires https://github.com/koalaman/shellcheck
@@ -137,5 +153,21 @@ lspconfig.lua_ls.setup(config({
     },
   },
 }))
+
+-- INFO: requires "Go language server"
+-- `brew install gopls`
+lspconfig.gopls.setup({
+  cmd = { "gopls", "serve" },
+  filetypes = { "go", "gomod" },
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = false,
+    },
+  },
+})
 
 -- print("plugin.lspconfig.rc -- loaded")
