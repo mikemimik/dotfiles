@@ -6,7 +6,7 @@ errcho() {
   >&2 echo "$@";
 }
 
-pane_list=$(tmux list-panes -s -F '#{pane_active} #{pane_id}' \
+pane_list=$(tmux list-panes -a -F '#{pane_active} #{pane_id}' \
  | awk '{ print $2 }' \
  | tr -d '%'
 )
