@@ -21,7 +21,7 @@ vim.opt.expandtab = true -- <Tab> inserts spaces
 
 -- Look & Feel
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 -- https://vi.stackexchange.com/questions/422/displaying-tabs-as-characters
 vim.opt.wrap = false
 vim.opt.cursorline = true
