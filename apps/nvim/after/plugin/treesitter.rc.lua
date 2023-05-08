@@ -8,6 +8,8 @@ ts.setup {
     "json",
     "tsx",
     "javascript",
+    "go",
+    "make",
   },
   sync_install = false,
   -- requires `tree-sitter` cli installed
