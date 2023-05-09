@@ -9,12 +9,6 @@
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
 
-# Set computer name
-NAME="mcp-auth0"
-COMPUTERNAME="$NAME"
-HOSTNAME="$NAME"
-LOCALHOSTNAME="$NAME"
-
 # Ask for the administrator password upfront
 sudo -v
 
@@ -24,12 +18,6 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
-
-# Set computer name (as done via System Preferences -> Sharing)
-sudo scutil --set ComputerName "$COMPUTERNAME"
-sudo scutil --set HostName "$HOSTNAME"
-sudo scutil --set LocalHostName "$LOCALHOSTNAME"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$LOCALHOSTNAME"
 
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -241,10 +229,20 @@ sudo pmset -c womp 0
 # Do some clean up work.                                                      #
 ###############################################################################
 
-for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-           "Dock" "Finder" "Mail" "Messages" "Safari" "SystemUIServer" \
-           "Terminal" "Twitter" "iCal"; do
-           killall "${app}" &> /dev/null
+for app in "Activity Monitor" \
+          "Address Book" \
+          "Calendar" \
+          "cfprefsd" \
+          "Contacts" \
+          "Dock" \
+          "Finder" \
+          "Mail" \
+          "Messages" \
+          "Safari" \
+          "SystemUIServer" \
+          "Terminal" \
+          "iCal"; do
+          killall "${app}" &> /dev/null
 done
 
 # Wait a bit before moving on...
@@ -253,23 +251,3 @@ sleep 1
 # ..and then.
 echo "Success! Defaults are set."
 echo "Some changes will not take effect until you reboot your machine."
-
-# See if the user wants to reboot.
-function reboot() {
-  read -p "Do you want to reboot your computer now? (y/N)" choice
-  case "$choice" in
-    y | Yes | yes ) echo "Yes"; exit;; # If y | yes, reboot
-    n | N | No | no) echo "No"; exit;; # If n | no, exit
-    * ) echo "Invalid answer. Enter \"y/yes\" or \"N/no\"" && return;;
-  esac
-}
-
-# Call on the function
-if [[ "Yes" == $(reboot) ]]
-then
-  echo "Rebooting."
-  sudo reboot
-  exit 0
-else
-  exit 1
-fi
