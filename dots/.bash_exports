@@ -55,11 +55,11 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # JAVA_BIN_EXPORT="/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/bin"
 
 # For compilers to find ruby@2.7 you may need to set:
-#   export LDFLAGS="-L/usr/local/opt/ruby@2.7/lib"
-#   export CPPFLAGS="-I/usr/local/opt/ruby@2.7/include"
+#   export LDFLAGS="-L${prefix}/opt/ruby@2.7/lib"
+#   export CPPFLAGS="-I${prefix}/opt/ruby@2.7/include"
 
 # For pkg-config to find ruby@2.7 you may need to set:
-#   export PKG_CONFIG_PATH="/usr/local/opt/ruby@2.7/lib/pkgconfig"
+#   export PKG_CONFIG_PATH="${prefix}/opt/ruby@2.7/lib/pkgconfig"
 
 
 # SYSTEM EXPORTS
