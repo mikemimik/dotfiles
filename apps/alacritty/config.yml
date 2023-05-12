@@ -2,7 +2,9 @@ selection:
   save_to_clipboard: true
 live_config_reload: true
 shell:
-  program: /usr/local/bin/bash
+  program: /opt/homebrew/bin/bash
 mouse:
   double_click: { threshold: 300 }
   hide_when_typing: false
+env:
+  TERM: screen-256color
