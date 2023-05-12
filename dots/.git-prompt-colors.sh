@@ -13,7 +13,7 @@ override_git_prompt_colors() {
   # match the serial number of the computer. If it does not match then HOST
   # will be the result of running the 'hostname' command.
   local HOST="\h"
-  if [ "$(hostname)" == "C02DW6KTMD6P" ]; then
+  if [ "$(hostname)" == "JY16GKQR6L" ]; then
     HOST="local"
   fi
 
