@@ -4,3 +4,6 @@
 [submodule "apps/hammerspoon/Spoons/WindowManager.spoon"]
 	path = apps/hammerspoon/Spoons/WindowManager.spoon
 	url = git@github.com:mikemimik/WindowManager.spoon.git
+[submodule "apps/complete-alias"]
+	path = apps/complete-alias
+	url = git@github.com:cykerway/complete-alias.git
