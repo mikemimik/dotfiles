@@ -55,6 +55,7 @@ module.exports = {
   'dots/.bash_aliases': '.bash_aliases',
   'dots/.bash_exports': '.bash_exports',
   'dots/.bash_functions': '.bash_functions',
+  'dots/.bash_completion': '.bash_completion',
   'dots/.bash_profile': '.bash_profile',
   'dots/.bashrc': '.bashrc',
   'dots/.gitconfig': '.gitconfig',
