@@ -19,7 +19,7 @@ return packer.startup(function(use)
   use("tjdevries/vlog.nvim")
 
   -- Visualizations
-  use("junegunn/seoul256.vim")
+  use("shaunsingh/seoul256.nvim")
   use("nvim-tree/nvim-web-devicons")
   -- requires patched font with glyps
   use({
