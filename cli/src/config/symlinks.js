@@ -36,9 +36,9 @@ module.exports = {
   'apps/karabiner/karabiner.json': '.config/karabiner/karabiner.json',
   'apps/karabiner/assets/complex_modifications/local.json': '.config/karabiner/assets/complex_modifications/local.json',
 
+  'apps/hammerspoon/Spoons': '.hammerspoon/Spoons',
   'apps/hammerspoon/init.lua': '.hammerspoon/init.lua',
   'apps/hammerspoon/inspect.lua': '.hammerspoon/inspect.lua',
-  'apps/hammerspoon/Spoons/Hyper.spoon/init.lua': '.hammerspoon/Spoons/Hyper.spoon/init.lua',
 
   'apps/alacritty/alacritty.yml': '.config/alacritty/alacritty.yml',
   'apps/alacritty/colors.yml': '.config/alacritty/colors.yml',
