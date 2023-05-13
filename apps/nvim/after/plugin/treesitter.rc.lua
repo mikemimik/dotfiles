@@ -10,6 +10,7 @@ ts.setup {
     "javascript",
     "go",
     "make",
+    "markdown",
   },
   sync_install = false,
   -- requires `tree-sitter` cli installed
