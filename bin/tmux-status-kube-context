@@ -10,4 +10,4 @@ else
   declare -r output="$name"
 fi
 
-echo "kube: $output"
+echo "kube: ${output:0:15}"
