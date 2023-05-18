@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source "$(dirname "$0")/tmux-common"
+
 declare -r name=$(kubectl config view -o json | jq -r --arg CTX "$(kubectl config current-context)" '.contexts[] | select(.name | contains($CTX)) | .context.cluster')
 declare -r hasSlash="[\/]"
 

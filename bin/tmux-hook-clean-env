@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
-event=$1
+source "$(dirname "$0")/tmux-common"
 
-errcho() {
-  >&2 echo "$@";
-}
+event=$1
 
 pane_list=$(tmux list-panes -a -F '#{pane_active} #{pane_id}' \
  | awk '{ print $2 }' \

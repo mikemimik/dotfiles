@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
-
-errcho() {
-  >&2 echo "$@";
-}
+source "$(dirname "$0")/tmux-common"
 
 aws_is_expired() {
   declare -r cmd_env=$1
@@ -61,7 +58,6 @@ determine_aws() {
   if ! command -v gk &> /dev/null
   then
     echo "~"
-    exit 0
   fi
 
   declare -r pane_pid=$(get_active_pane_pid)

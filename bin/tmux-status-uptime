@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-source ~/.bash_exports
+source "$(dirname "$0")/tmux-common"
+source "${HOME}/.bash_exports"
 
 uptime_value=$(uptime)
 
@@ -15,16 +16,8 @@ else
   tmux_status_uptime_suffix_minute=" mins"
 fi
 
-get_match() {
-  re=$1
-  arr_pos=${2:-0}
-  value=$([[ $uptime_value =~ $re ]] && echo "${BASH_REMATCH[${arr_pos}]}")
-
-  echo "$value"
-}
-
 re_days="([0-9]+) days|day?"
-days="$(get_match "$re_days" 1)"
+days="$(get_match "$uptime_value" "$re_days" 1)"
 
 if [[ -z $days ]]
 then
@@ -36,8 +29,8 @@ fi
 declare hours minutes
 re_time="([0-9]?[0-9]):([0-9]{2}),"
 re_mins="([0-9]+ mins|min)"
-hours=$(get_match "$re_time" 1)
-minutes=$(get_match "$re_time" 2)
+hours=$(get_match "$uptime_value" "$re_time" 1)
+minutes=$(get_match "$uptime_value" "$re_time" 2)
 
 # INFO: '-z' checks IF EMPTY
 # INFO: '-n' checks IF NOT EMPTY
@@ -52,7 +45,7 @@ then
 
   # hours is empty
   hours=""
-  minutes="${min_sep}$(get_match "$re_mins" 1)"
+  minutes="${min_sep}$(get_match "$uptime_value" "$re_mins" 1)"
 else
   if [[ -z $days ]]
   then

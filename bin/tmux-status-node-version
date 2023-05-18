@@ -1,17 +1,10 @@
 #!/usr/bin/env bash
 
+source "$(dirname "$0")/tmux-common"
+
 pane=$(tmux display -p "#D" | tr -d %)
 
 env_var="TMUX_NVM_${pane}"
-
-get_match() {
-  str=$1
-  re=$2
-  arr_pos=${3:-0}
-  value=$([[ $str =~ $re ]] && echo "${BASH_REMATCH[${arr_pos}]}")
-
-  echo "$value"
-}
 
 declare version
 if [[ -n ${!env_var} ]]

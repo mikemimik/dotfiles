@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+errcho() {
+  >&2 echo "$@";
+}
+
+get_match() {
+  str=$1
+  re=$2
+  arr_pos=${3:-0}
+  value=$([[ $str =~ $re ]] && echo "${BASH_REMATCH[${arr_pos}]}")
+
+  echo "$value"
+}

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source "$(dirname "$0")/tmux-common"
+
 pane=$(tmux display -p "#D" | tr -d %)
 
 env_var="TMUX_NVM_${pane}"
