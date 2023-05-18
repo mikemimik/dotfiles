@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+source "$(dirname "$0")/tmux-common"
+
+selected_session=$(tmux list-sessions | fzf)
+parsed_session=$(echo "$selected_session" | awk 'BEGIN { FS=":" } { print $1 }')
+
+if [[ -z $parsed_session ]]
+then
+  exit 0
+else
+  tmux switch-client -t "$parsed_session"
+  tmux display-message "Switched to '$parsed_session' session"
+fi
