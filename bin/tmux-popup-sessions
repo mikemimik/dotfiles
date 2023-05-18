@@ -10,5 +10,5 @@ then
   exit 0
 else
   tmux switch-client -t "$parsed_session"
-  tmux display-message "Switched to '$parsed_session' session"
+  quick_message "Switched to '$parsed_session' session"
 fi

@@ -40,7 +40,4 @@ then
   msg="${msg} (${event})"
 fi
 
-time=$(tmux show-option -gqv display-time)
-tmux set-option -g  display-time 750
-tmux display-message "$msg"
-tmux set-option -g  display-time "$time"
+quick_message "$msg"
