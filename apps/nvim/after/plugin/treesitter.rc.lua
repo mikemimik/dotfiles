@@ -22,4 +22,11 @@ ts.setup {
   },
 }
 
+-- Folding
+-- vim.opt.foldenable = true
+-- vim.opt.foldcolumn = "9"
+vim.opt.foldlevel = 10
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 -- print("after/plugin.treesitter.rc -- loaded")
