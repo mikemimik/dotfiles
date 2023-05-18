@@ -1,6 +1,20 @@
 #!/usr/bin/env bash
 
-if [[ -f ~/dotfiles/apps/complete-alias/complete_alias ]]
+# Add completion for commands
+HOMEBREW_PREFIX=$(brew --prefix)
+if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
+then
+  source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+fi
+
+if type brew &>/dev/null; then
+  for COMPLETION in "$HOMEBREW_PREFIX"/etc/bash_completion.d/*
+  do
+    [[ -f $COMPLETION ]] && source "$COMPLETION"
+  done
+fi
+
+if [[ -f ${HOME}/dotfiles/apps/complete-alias/complete_alias ]]
 then
   source "${HOME}/dotfiles/apps/complete-alias/complete_alias"
 
@@ -18,20 +32,10 @@ then
   complete -F _complete_alias tm
 fi
 
-# Add completion for commands
-HOMEBREW_PREFIX=$(brew --prefix)
-[[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]] && . "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
-if type brew &>/dev/null; then
-  for COMPLETION in "$HOMEBREW_PREFIX"/etc/bash_completion.d/*
-  do
-    [[ -f $COMPLETION ]] && source "$COMPLETION"
-  done
-fi
-
-# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
-if [ -e "$HOME/.ssh/config" ]; then
-    complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
-fi
+# # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+# if [ -e "$HOME/.ssh/config" ]; then
+#     complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+# fi
 
 source <(kubectl completion bash)
 source <(eksctl completion bash)
