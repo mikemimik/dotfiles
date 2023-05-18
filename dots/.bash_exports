@@ -46,6 +46,7 @@ export OPENFAAS_URL="http://antenna.orionsbelt.ca"
 export OPENFAAS_PREFIX="mperrotte"
 export KUBE_EDITOR="${HOMEBREW_PREFIX}/bin/nvim"
 export SHELL="${HOMEBREW_PREFIX}/bin/bash"
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # CUSTOM PATH EXPORTS
 # RUBY_EXPORT="${HOMEBREW_PREFIX}/opt/ruby@2.7/bin"
