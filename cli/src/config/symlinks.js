@@ -35,6 +35,9 @@ module.exports = {
 
   'apps/karabiner/karabiner.json': '.config/karabiner/karabiner.json',
   'apps/karabiner/assets/complex_modifications/local.json': '.config/karabiner/assets/complex_modifications/local.json',
+  'apps/karabiner/assets/complex_modifications/q8.json': '.config/karabiner/assets/complex_modifications/q8.json',
+  'apps/karabiner/assets/complex_modifications/okta-machine.json': '.config/karabiner/assets/complex_modifications/okta-machine.json',
+  'apps/karabiner/assets/complex_modifications/personal-machine.json': '.config/karabiner/assets/complex_modifications/personal-machine.json',
 
   'apps/hammerspoon/Spoons': '.hammerspoon/Spoons',
   'apps/hammerspoon/init.lua': '.hammerspoon/init.lua',
@@ -60,5 +63,5 @@ module.exports = {
   'dots/.bashrc': '.bashrc',
   'dots/.gitconfig': '.gitconfig',
   'dots/.git-prompt-colors.sh': '.git-prompt-colors.sh',
-  'dots/.iterm2_shell_integration.sh': '.iterm2_shell_integration.sh',
+  // 'dots/.iterm2_shell_integration.sh': '.iterm2_shell_integration.sh',
 }
