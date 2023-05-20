@@ -40,20 +40,6 @@ alias rebash="source ~/.bashrc"
 # ssh aliases
 alias sshlogin=sshlogin
 
-## Resolver repositories
-alias core-services="cd /Code/core-services"
-alias core-client="cd /Code/core-client"
-alias core-packages="cd /Code/npm-packages"
-alias resolver-cli="cd /Code/dev-tooling/resolver-cli"
-alias fdc="cd /Code/dev-tooling/fdc"
-alias concourse-lax="cd /Code/dev-tooling/concourse-lax"
-alias ops-cli="cd /Code/dev-tooling/ops-cli"
-alias resolver-server-common="cd /Code/npm-packages/modules/resolver-server-common"
-alias resolver-data-client="cd /Code/npm-packages/clients/resolver-data-client"
-alias resolver-user-client="cd /Code/npm-packages/clients/resolver-user-client"
-alias resolver-object-client="cd /Code/npm-packages/clients/resolver-object-client"
-alias resolver-config="cd /Code/npm-packages/modules/resolver-config"
-
 # PERSONAL Computer aliases
 alias repos="cd ~/repos"
 alias npminc="cd ~/npminc"
