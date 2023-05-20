@@ -1,0 +1,56 @@
+{
+  "title": "3-okta machine",
+  "rules": [
+    {
+      "description": "[Okta] Change fn <-> left_control",
+      "manipulators": [
+        {
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "product_id": 835,
+                  "vendor_id": 1452,
+                  "is_keyboard": true
+                }
+              ]
+            }
+          ],
+          "from": {
+            "key_code": "fn"
+          },
+          "to": [
+            {
+              "key_code": "left_control"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "product_id": 835,
+                  "vendor_id": 1452,
+                  "is_keyboard": true
+                }
+              ]
+            }
+          ],
+          "from": {
+            "key_code": "left_control"
+          },
+          "to": [
+            {
+              "key_code": "fn"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}

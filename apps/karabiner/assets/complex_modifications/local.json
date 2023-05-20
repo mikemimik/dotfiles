@@ -1,7 +1,8 @@
 {
+  "title": "0-local",
   "rules": [
     {
-      "description": "Change left_control+backspace to delete",
+      "description": "[main] Change left_control+backspace to delete",
       "manipulators": [
         {
           "from": {
@@ -21,7 +22,7 @@
       ]
     },
     {
-      "description": "Change left_control+comma to F12",
+      "description": "[main] Change left_control+comma to F12",
       "manipulators": [
         {
           "from": {
@@ -41,48 +42,7 @@
       ]
     },
     {
-      "description": "Change left_shift+esc to tilde",
-      "manipulators": [
-        {
-          "from": {
-            "key_code": "escape",
-            "modifiers": {
-              "mandatory": ["left_shift"],
-              "optional": ["any"]
-            }
-          },
-          "to": [
-            {
-              "key_code": "grave_accent_and_tilde",
-              "modifiers": ["left_shift"]
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "Change left_control+esc to grave accent",
-      "manipulators": [
-        {
-          "from": {
-            "key_code": "escape",
-            "modifiers": {
-              "mandatory": ["left_control"],
-              "optional": ["any"]
-            }
-          },
-          "to": [
-            {
-              "key_code": "grave_accent_and_tilde"
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "Change left_control+hjkl to arrow keys",
+      "description": "[main] Change left_control+hjkl to arrow keys",
       "manipulators": [
         {
           "from": {
@@ -147,7 +107,7 @@
       ]
     },
     {
-      "description": "Disable cmd+tab",
+      "description": "[main] Disable cmd+tab",
       "manipulators": [
         {
           "from": {
@@ -182,7 +142,7 @@
       ]
     },
     {
-      "description": "Shift training wheels",
+      "description": "[main] Shift training wheels",
       "manipulators": [
         {
           "from": {
@@ -645,6 +605,22 @@
           "to": [
             {
               "key_code": "vk_none"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "[main] Change caps_lock -> f19",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "caps_lock"
+          },
+          "to": [
+            {
+              "key_code": "f19"
             }
           ],
           "type": "basic"
