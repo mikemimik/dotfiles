@@ -164,24 +164,35 @@ hs.fnutils.each(Config.applications, function(appConfig)
       hs.application.launchOrFocusByBundleID(appConfig.bundleID)
     end)
 
-    Hyper:bind({ "shift" }, appConfig.hyperKey, function()
-      -- save current space
-      local currentSpace = hs.spaces.focusedSpace()
-      -- launch or focus the app
-      hs.application.launchOrFocusByBundleID(appConfig.bundleID)
-      -- save windowId
-      local window = hs.window.focusedWindow()
-      -- move window to 'current space'
-      hs.spaces.moveWindowToSpace(window, currentSpace)
-      -- refocus the space
-      hs.timer.delayed.new(0.3, function()
-        hs.application.launchOrFocusByBundleID(appConfig.bundleID)
-      end):start()
-    end)
+    -- Yank window to current space
+    -- Hyper:bind({ "shift" }, appConfig.hyperKey, function()
+    --   -- save current space
+    --   local currentSpace = hs.spaces.focusedSpace()
+    --   -- launch or focus the app
+    --   hs.application.launchOrFocusByBundleID(appConfig.bundleID)
+    --   -- save windowId
+    --   local window = hs.window.focusedWindow()
+    --   -- move window to 'current space'
+    --   hs.spaces.moveWindowToSpace(window, currentSpace)
+    --   -- refocus the space
+    --   hs.timer.delayed.new(0.3, function()
+    --     hs.application.launchOrFocusByBundleID(appConfig.bundleID)
+    --   end):start()
+    -- end)
   end
+
   if appConfig.localBindings then
     hs.fnutils.each(appConfig.localBindings, function(key)
       Hyper:bindPassThrough(key, appConfig.bundleID)
     end)
   end
 end)
+
+-- Insert current date (YYYY-MM-DD)
+Hyper:bind({ "alt" }, "t", function()
+  local date = os.date("%Y-%m-%d")
+  hs.eventtap.keyStrokes(date)
+end)
+
+-- Loaded successfully!
+hs.alert.show('🔨🥄✅')
