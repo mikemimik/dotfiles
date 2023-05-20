@@ -2,7 +2,12 @@
 
 source "$(dirname "$0")/tmux-common"
 
-selected_session=$(tmux list-sessions | fzf)
+selected_session=$(tmux list-sessions -F "#{session_name}" \
+  | fzf \
+    --exit-0 \
+    --preview-window="right,70%" \
+    --preview='tmux capture-pane -ep -t {}')
+
 parsed_session=$(echo "$selected_session" | awk 'BEGIN { FS=":" } { print $1 }')
 
 if [[ -z $parsed_session ]]
