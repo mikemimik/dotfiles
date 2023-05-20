@@ -61,13 +61,14 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # ROOT_BIN_EXPORT="/bin"
 # ROOT_SBIN_EXPORT="/sbin"
 
+prepend_path "${HOMEBREW_PREFIX}/opt/grep/bin" # grep binaries
+prepend_path "${HOMEBREW_PREFIX}/opt/curl/bin" # curl binaries
+prepend_path "${HOMEBREW_PREFIX}/opt/postgresql@14/bin" # postgres binaries
 prepend_path "${HOMEBREW_PREFIX}/opt/openssl@1.1/bin" # openssl binaries
 prepend_path "${HOMEBREW_PREFIX}/opt/ruby/bin" # ruby binaries
 prepend_path "${HOME}/dotfiles/bin" # dotfile binaries
 prepend_path "${HOME}/repos/flutter/bin" # flutter binaries
 prepend_path "${GOPATH}/bin" # go binaries
-prepend_path "${HOMEBREW_PREFIX}/opt/curl/bin" # curl binaries
-prepend_path "${HOMEBREW_PREFIX}/opt/postgresql@14/bin" # postgres binaries
 # prepend_path "${HOMEBREW_PREFIX}/opt/qt/bin" # qt binaries
 # prepend_path "${HOME}/.krew/bin" # krew binaries
 
