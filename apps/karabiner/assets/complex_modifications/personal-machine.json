@@ -1,4 +1,56 @@
 {
   "title": "2-personal machine",
-  "rules": []
+  "rules": [
+    {
+      "description": "[personal] Change fn <-> left_control",
+      "manipulators": [
+        {
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "product_id": 635,
+                  "vendor_id": 1452,
+                  "is_keyboard": true
+                }
+              ]
+            }
+          ],
+          "from": {
+            "key_code": "fn"
+          },
+          "to": [
+            {
+              "key_code": "left_control"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "product_id": 635,
+                  "vendor_id": 1452,
+                  "is_keyboard": true
+                }
+              ]
+            }
+          ],
+          "from": {
+            "key_code": "left_control"
+          },
+          "to": [
+            {
+              "key_code": "fn"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
 }
