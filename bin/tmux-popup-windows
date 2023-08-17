@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+source "$(dirname "$0")/tmux-common"
+
+selected_window=$(tmux list-windows \
+    -F "#{window_index}: #{window_name}#{window_flags} (#{window_panes} panes) #{window_id}" \
+  | fzf --exit-0 --tac)
+
+parsed_window=$(echo "$selected_window" | awk '{ print $5 }' )
+
+if [[ -z $parsed_window ]]
+then
+  exit 0
+else
+  tmux select-window -t "$parsed_window"
+  quick_message "Switched to '$parsed_window' window"
+fi
