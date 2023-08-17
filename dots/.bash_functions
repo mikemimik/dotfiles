@@ -20,6 +20,13 @@ function promptYesNo() {
   echo "${response}"
 }
 
+function fuzzy_history() {
+  eval $(history \
+    | fzf --exit-0 \
+    | awk '{ for (i=2; i<=NF; i++) printf "%s%s", $i, (i<NF ? OFS : ORS) }' \
+    | tr -d '\n')
+}
+
 ########################################
 # ssh helpers
 ########################################
@@ -63,7 +70,7 @@ function isNumber() {
     fi
 }
 
-function first_push() {
+function first_git_push() {
   local branch=""
   branch="$(git rev-parse --abbrev-ref HEAD)"
 
@@ -75,6 +82,48 @@ function first_push() {
     # NOT TRACKING remote branch
     git push -u origin "${branch}"
   fi
+}
+
+function fuzzy_git_diff_pick() {
+  git -c color.status=always status -s "$@" \
+    | fzf \
+      --exit-0 \
+      --ansi \
+      --header="CTRL-C or ESC to quit" \
+      --header-first \
+      --preview-window="top,70%" \
+      --preview="git diff $@ --color=always -- {-1}" \
+      --layout="reverse" \
+    | awk '{ print $NF }' \
+    | tr -d '[:space:]' \
+    | pbcopy
+}
+
+function fuzzy_git_diff() {
+  git diff --name-only $@  \
+    | fzf \
+      --exit-0 \
+      --ansi \
+      --header="CTRL-C or ESC to quit" \
+      --preview-window="top,70%" \
+      --preview="git diff $@ --color=always -- {-1}" \
+      --layout="reverse" \
+    | awk '{ print $NF }' \
+    | tr -d '[:space:]' \
+    | pbcopy
+}
+
+function fuzzy_git_log() {
+  git log \
+    -n 15 \
+    --oneline \
+    --color=always \
+    "$@" \
+    | fzf \
+      --exit-0 \
+      --ansi \
+      --preview="git show --color=always {+1}"
+
 }
 
 function checkout_pull() {
@@ -315,7 +364,9 @@ aws_localstack() {
 # Tmux
 ########################################
 tmux_set_pane_title() {
+  tmux set -w pane-border-status top
   printf '\033]2;%s\033\\' "$1"
+  clear
 }
 
 tmux_default_session() {
