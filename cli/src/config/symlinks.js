@@ -36,6 +36,7 @@ module.exports = {
   'apps/karabiner/karabiner.json': '.config/karabiner/karabiner.json',
   'apps/karabiner/assets/complex_modifications/local.json': '.config/karabiner/assets/complex_modifications/local.json',
   'apps/karabiner/assets/complex_modifications/q8.json': '.config/karabiner/assets/complex_modifications/q8.json',
+  'apps/karabiner/assets/complex_modifications/k11.json': '.config/karabiner/assets/complex_modifications/k11.json',
   'apps/karabiner/assets/complex_modifications/okta-machine.json': '.config/karabiner/assets/complex_modifications/okta-machine.json',
   'apps/karabiner/assets/complex_modifications/personal-machine.json': '.config/karabiner/assets/complex_modifications/personal-machine.json',
 
