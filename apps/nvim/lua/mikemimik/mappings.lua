@@ -36,6 +36,14 @@ vnoremap("<s-k>", ":m '<-2<cr>gv=gv")
 nnoremap("<up>", "<c-y>")
 nnoremap("<down>", "<c-e>")
 
+-- resize splits
+nnoremap("<leader>rh", ":vert resize -5<cr>")
+nnoremap("<leader>rl", ":vert resize +5<cr>")
+nnoremap("<leader>rk", ":resize -5<cr>")
+nnoremap("<leader>rj", ":resize +5<cr>")
+nnoremap("<leader>rf", "<c-w>_<c-w>|")
+nnoremap("<leader>re", "<c-w>=")
+
 -- search word under cursor
 nnoremap(
   "#",
