@@ -21,6 +21,7 @@ alias c='clear'
 alias cat='bat'
 alias getloc="pwd | pbcopy"
 alias lpath='echo $PATH | tr ":" "\n"'
+alias hist="fuzzy_history"
 
 alias vim="nvim"
 
@@ -86,8 +87,8 @@ alias gsc="clear && git status"     # (gsc) git status and clear shorthand
 alias gc="git commit -m"            # (gc) git commit shorthand
 alias gca="git commit --amend"      # (gca) ammend git commit shorthand
 alias ga="git add"                  # (ga) git add shorthand
-alias gd="git diff"                 # (gd) git diff shorthand
-alias gfp="first_push"              # (gfp) git first push
+alias gd="fuzzy_git_diff"                 # (gd) git diff shorthand
+alias gfp="first_git_push"              # (gfp) git first push
 alias gr="git restore"              # (gr) git restore
 alias grs="git restore --staged"    # (grs) git restore staged
 alias fetch="git fetch"             # (fetch) fetch shorthand
@@ -99,13 +100,13 @@ alias co="git checkout"             # (co) checkout shorthand
 alias unstage="git reset HEAD --"   # (unstage) work/file
 alias gl="git log -n 10 --oneline"  # (gl) one line log
 alias glf="git log -n 10 --pretty='format:%C(auto)%h %<(1)%C(cyan)%an %C(auto)%s'" # (gl) fancy one line log
-alias glp='git log --oneline | ipt -u | awk '\''{ print $1 }'\'' | xargs git show'
+alias glp="fuzzy_git_log"
 alias gitback="git rebase -i HEAD~15" # interactive rebase last 15 commits
 alias wb="git branch -vv"           # (wb) which branch
 # GitHub Specific
 alias copull="checkout_pull"
 ## Git interactive aliases
-alias gdp="git status -s | ipt -p | tee >(pbcopy) | xargs git diff"
+alias gdp="fuzzy_git_diff_pick"
 alias wbp="git branch -vv | ipt -u | cut -d ' ' -f 1 | xargs git checkout"
 alias gstash="git stash list"
 alias gstashapply="git stash list | ipt -u | cut -d ':' -f 1 | xargs git stash apply --index"
