@@ -1,8 +1,8 @@
 {
-  "title": "2-Q8",
+  "title": "1-K11",
   "rules": [
     {
-      "description": "[Q8] Change left_shift+esc to tilde",
+      "description": "[K11] Change left_shift+esc to tilde",
       "manipulators": [
         {
           "conditions": [
@@ -10,7 +10,7 @@
               "type": "device_if",
               "identifiers": [
                 {
-                  "product_id":  385,
+                  "product_id": 694,
                   "vendor_id": 13364,
                   "is_keyboard": true
                 }
@@ -35,7 +35,7 @@
       ]
     },
     {
-      "description": "[Q8] Change left_control+esc to grave accent",
+      "description": "[K11] Change left_control+esc to grave accent",
       "manipulators": [
         {
           "conditions": [
@@ -43,7 +43,7 @@
               "type": "device_if",
               "identifiers": [
                 {
-                  "product_id":  385,
+                  "product_id": 694,
                   "vendor_id": 13364,
                   "is_keyboard": true
                 }
@@ -67,7 +67,7 @@
       ]
     },
     {
-      "description": "[Q8] Change left_control+esc to grave accent",
+      "description": "[K11] Change right_shift to right_option",
       "manipulators": [
         {
           "conditions": [
@@ -75,7 +75,35 @@
               "type": "device_if",
               "identifiers": [
                 {
-                  "product_id":  385,
+                  "product_id": 694,
+                  "vendor_id": 13364,
+                  "is_keyboard": true
+                }
+              ]
+            }
+          ],
+          "from": {
+            "key_code": "right_shift"
+          },
+          "to": [
+            {
+              "key_code": "right_option"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "[K11] Change left_control+esc to grave accent",
+      "manipulators": [
+        {
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "product_id": 694,
                   "vendor_id": 13364,
                   "is_keyboard": true
                 }
