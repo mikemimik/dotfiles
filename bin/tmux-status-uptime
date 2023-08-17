@@ -16,7 +16,7 @@ else
   tmux_status_uptime_suffix_minute=" mins"
 fi
 
-re_days="([0-9]+) days|day?"
+re_days="([0-9]+) day"
 days="$(get_match "$uptime_value" "$re_days" 1)"
 
 if [[ -z $days ]]
