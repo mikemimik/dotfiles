@@ -57,7 +57,7 @@ fetch_env_vars() {
 determine_aws() {
   if ! command -v gk &> /dev/null
   then
-    echo "~"
+    echo "AWS: ~"
   fi
 
   declare -r pane_pid=$(get_active_pane_pid)
