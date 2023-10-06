@@ -9,8 +9,6 @@ if (not null_status) then return end
 
 local log = require("mikemimik.log").new({ plugin = "lspconfig" })
 
--- print("plugin.lspconfig.rc -- loading")
-local nnoremap = require("mikemimik.keymap").nnoremap
 local xnoremap = require("mikemimik.keymap").xnoremap
 
 local augroup = vim.api.nvim_create_augroup
@@ -43,10 +41,11 @@ local common_attach = function(client, bufnr)
       group = format_group,
       buffer = bufnr,
       callback = function()
-        -- vim.lsp.buf.formatting()
         vim.lsp.buf.format({
+          async = true,
           filter = function(f_client)
-            return f_client.name == "null_ls"
+            log.info("client", f_client.name)
+            return f_client.name == "null-ls"
           end,
           bufnr = bufnr,
         })
@@ -111,9 +110,11 @@ null_ls.setup({
     null_ls.builtins.completion.luasnip,
     null_ls.builtins.formatting.prettierd,
     null_ls.builtins.formatting.gofmt,
-    null_ls.builtins.diagnostics.actionlint, -- requires https://github.com/rhysd/actionlint
+    null_ls.builtins.formatting.buf,          -- requires https://github.com/bufbuild/buf
+    null_ls.builtins.diagnostics.buf,         -- requires https://github.com/bufbuild/buf
+    null_ls.builtins.diagnostics.actionlint,  -- requires https://github.com/rhysd/actionlint
+    null_ls.builtins.diagnostics.shellcheck,  -- requires https://github.com/koalaman/shellcheck
     null_ls.builtins.code_actions.shellcheck, -- requires https://github.com/koalaman/shellcheck
-    null_ls.builtins.diagnostics.shellcheck, -- requires https://github.com/koalaman/shellcheck
   },
 })
 
