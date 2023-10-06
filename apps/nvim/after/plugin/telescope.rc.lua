@@ -22,14 +22,20 @@ telescope.setup({
     },
     mappings = {
       n = {
-            ["q"] = actions.close,
+        ["q"] = actions.close,
       },
       i = {
-            ["<esc>"] = actions.close,
-            ["<leader>,"] = actions.close,
-            ["<leader>v"] = actions.select_vertical,
-            ["<leader>x"] = actions.select_horizontal,
-            ["<leader>t"] = actions.select_tab,
+        ["<esc>"] = actions.close,
+        ["<leader>,"] = actions.close,
+        ["<leader>v"] = actions.select_vertical,
+        ["<leader>x"] = actions.select_horizontal,
+        ["<leader>t"] = actions.select_tab,
+        ["<S-Down>"] = actions.preview_scrolling_down,
+        ["<S-Up>"] = actions.preview_scrolling_up,
+        ["<S-Left>"] = actions.preview_scrolling_left,
+        ["<S-Right>"] = actions.preview_scrolling_right,
+        ["<Left>"] = actions.results_scrolling_left,
+        ["<Right>"] = actions.results_scrolling_right,
       },
     },
     vimgrep_arguments = grep_args,
@@ -44,12 +50,12 @@ telescope.setup({
       theme = "dropdown",
       hijack_netrw = true,
       mappings = {
-            ["i"] = {
+        ["i"] = {
         },
-            ["n"] = {
-              ["<leader>v"] = actions.select_vertical,
-              ["<leader>x"] = actions.select_horizontal,
-              ["<leader>t"] = actions.select_tab,
+        ["n"] = {
+          ["<leader>v"] = actions.select_vertical,
+          ["<leader>x"] = actions.select_horizontal,
+          ["<leader>t"] = actions.select_tab,
         },
       },
     },
