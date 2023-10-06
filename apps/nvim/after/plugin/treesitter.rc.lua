@@ -11,7 +11,11 @@ ts.setup {
     "go",
     "make",
     "markdown",
+    "dockerfile",
   },
+  -- TODO: determine if this property is necessary
+  modules = {},
+  ignore_install = {},
   sync_install = false,
   -- requires `tree-sitter` cli installed
   auto_install = true,
