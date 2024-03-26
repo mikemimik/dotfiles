@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+source "$(dirname "$0")/tmux-common"
+
+option_value=$(tmux show-options -wqv synchronize-panes)
+
+save_titles() {
+  tmux setenv -r "TMUX_PANE_TITLES"
+
+  saved_pane_titles=""
+  for pane_data in $(tmux list-panes -F "#{pane_active}:#{pane_id}:#{pane_title}")
+  do
+    saved_pane_titles=${saved_pane_titles}${saved_pane_titles:+,}${pane_data}
+  done
+
+  tmux setenv "TMUX_PANE_TITLES" "${saved_pane_titles}"
+}
+
+reset_titles() {
+  saved_pane_titles=$(tmux showenv "TMUX_PANE_TITLES" \
+    | awk 'BEGIN { FS="="; } { print $2 }' \
+    | tr ',' ' ' \
+  )
+  for pane_data in ${saved_pane_titles}
+  do
+    pane_id=$(echo "${pane_data}" | awk 'BEGIN { FS=":"; } { print $2 }')
+    pane_title=$(echo "${pane_data}" | awk 'BEGIN { FS=":"; } { print $3 }')
+    tmux select-pane -t "${pane_id}" -T "${pane_title}"
+  done
+
+  tmux setenv -r "TMUX_PANE_TITLES"
+}
+
+if [ "${option_value}" = "off" ] || [ -z "${option_value}" ]
+then
+  save_titles
+  for pane_id in $(tmux list-panes -F "#{pane_active}:#{pane_id}:#{pane_title}" | awk 'BEGIN { FS=":"; } { print $2 }')
+  do
+    tmux select-pane -t "${pane_id}" -T "SYNC CURSOR"
+  done
+  tmux set -w pane-border-status top
+  tmux set -w synchronize-panes on
+fi
+
+if [ "${option_value}" = "on" ]
+then
+  reset_titles
+  tmux set -w pane-border-status off
+  tmux set -w synchronize-panes off
+fi
