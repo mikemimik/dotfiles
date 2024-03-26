@@ -47,6 +47,7 @@ alias sshlogin=sshlogin
 # Auth0 aliases
 alias l0="layer0"
 alias l="layer0"
+alias v="vivaldi"
 
 ## Auth0 repositories
 alias cruise-spa="cd ~/auth0/auth0-demo-cruise-spa"
