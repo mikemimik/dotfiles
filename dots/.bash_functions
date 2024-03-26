@@ -64,7 +64,7 @@ function gkconsole() {
     return 1;
   fi
 
-  gk console --profile ${profile}
+  gk console --profile "${profile}" "$@"
 }
 
 function gkexec() {
