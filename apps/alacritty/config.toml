@@ -1,0 +1,11 @@
+[selection]
+save_to_clipboard = true
+
+[shell]
+program = "/opt/homebrew/bin/bash"
+
+[mouse]
+hide_when_typing = false
+
+[env]
+TERM = "screen-256color"
