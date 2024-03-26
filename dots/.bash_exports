@@ -35,6 +35,8 @@ export GPG_TTY=$(tty) # Added for Krypton
 export KUBEVAL_SCHEMA_LOCATION="https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master"
 export EDITOR="${HOMEBREW_PREFIX}/bin/nvim"
 export TMUX_STATUS_UPTIME_DISPLAY="short"
+# NOTE(mperrotte): disable "update everything every time"
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 # TOOL ENVIRONMENT CONFIGS
 export GOPATH="$HOME/repos/go"
