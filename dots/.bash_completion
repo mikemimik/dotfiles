@@ -38,7 +38,11 @@ fi
 #     complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 # fi
 
-source <(kubectl completion bash)
-source <(eksctl completion bash)
+# INFO: this is added already to ${HOMEBREW_PREFIX}/etc/bash_completion.d/
+# source <(kubectl completion bash)
+#
+# INFO: this is added already to ${HOMEBREW_PREFIX}/etc/bash_completion.d/
+# source <(eksctl completion bash)
+
 source <(kustomize completion bash)
 source <(op completion bash)
