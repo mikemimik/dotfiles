@@ -7,6 +7,9 @@
   sshCommand = "ssh -i ~/.ssh/mperrotte-20190909 -F /dev/null"
   editor = nvim
 
+[merge]
+  conflictStyle = zdiff3
+
 [github]
   user = mikemimik
 
@@ -18,5 +21,6 @@
 
 [pull]
 	ff = only
+
 [init]
 	defaultBranch = main
