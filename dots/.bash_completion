@@ -24,6 +24,7 @@ then
 
   complete -F _complete_alias l
   complete -F _complete_alias l0
+  complete -F _complete_alias v
 
   complete -F _complete_alias d
   complete -F _complete_alias dc
