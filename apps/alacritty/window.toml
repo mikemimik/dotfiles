@@ -1,0 +1,10 @@
+[window]
+opacity = 0.98
+option_as_alt = "OnlyRight"
+dynamic_title = false
+title = "Terminal"
+resize_increments = true
+
+[window.dimensions]
+columns = 200
+lines = 60
