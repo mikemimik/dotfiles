@@ -56,6 +56,7 @@ return packer.startup(function(use)
       })
     end
   })
+  use({ "isobit/vim-caddyfile" })
 
   -- Functionality
   use({
@@ -93,8 +94,7 @@ return packer.startup(function(use)
   use({
     "VonHeikemen/lsp-zero.nvim",
     -- TODO: September 20, 2023 this will be set
-    -- branch = "v3.x",
-    branch = "dev-v3",
+    branch = "v3.x",
     requires = {
       -- LSP Support
       { "neovim/nvim-lspconfig" }, -- Required
