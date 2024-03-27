@@ -99,6 +99,11 @@ Config.applications = {
       { "Confluence", 1, hs.layout.maximized },
     },
   },
+  ["org.mozilla.firefox"] = {
+    bundleID = "org.mozilla.firefox",
+    hyperKey = "f",
+    tags = { "browsers" },
+  },
   ["com.tinyspeck.slackmacgap"] = {
     bundleID = "com.tinyspeck.slackmacgap",
     hyperKey = "h",
@@ -109,7 +114,8 @@ Config.applications = {
     },
   },
   ["net.shinyfrog.bear"] = {
-    bundleID = "net.shinyfrog.bear",
+    -- bundleID = "net.shinyfrog.bear",
+    bundleID = "notion.id",
     hyperKey = "l",
     tags = { "planning" },
     layouts = {},
@@ -125,11 +131,6 @@ Config.applications = {
     hyperKey = "p",
     tags = {},
     layouts = {},
-  },
-  ["com.reincubate.macos.cam"] = {
-    bundleID = "com.reincubate.macos.cam",
-    hyperKey = "b",
-    tags = { "communication", "meetings" },
   },
   ["com.apple.MobileSMS"] = {
     bundleID = "com.apple.MobileSMS",
@@ -152,7 +153,7 @@ Config.applications = {
     tags = { "planning", "meetings" },
   },
   ["WhatsApp"] = {
-    bundleID = "WhatsApp",
+    bundleID = "net.whatsapp.WhatsApp",
     hyperKey = "w",
     tags = { "communication" },
   },
