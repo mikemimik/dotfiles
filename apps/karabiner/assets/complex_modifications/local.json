@@ -107,6 +107,43 @@
       ]
     },
     {
+      "description": "[main] Change lef_control+h/l to ctrl+a/e"
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "mandatory": ["left_control", "left_command"],
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "a"
+              "modifiers": ["left_control"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "mandatory": ["left_control", "left_command"],
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "e",
+              "modifiers": ["left_control"]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
       "description": "[main] Disable cmd+tab",
       "manipulators": [
         {
