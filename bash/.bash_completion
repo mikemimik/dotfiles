@@ -14,9 +14,9 @@ if type brew &>/dev/null; then
   done
 fi
 
-if [[ -f ${HOME}/dotfiles/apps/complete-alias/complete_alias ]]
+if [[ -f ${HOME}/dotfiles/complete-alias/complete_alias ]]
 then
-  source "${HOME}/dotfiles/apps/complete-alias/complete_alias"
+  source "${HOME}/dotfiles/complete-alias/complete_alias"
 
   complete -F _complete_alias k
   complete -F _complete_alias kz
