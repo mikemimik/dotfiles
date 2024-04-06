@@ -1,9 +1,22 @@
 #!/usr/bin/env bash
 
-[ -r "${HOME}/.bash_exports" ] && [ -f "${HOME}/.bash_exports" ] && source "${HOME}/.bash_exports"
-[ -r "${HOME}/.bash_functions" ] && [ -f "${HOME}/.bash_functions" ] && source "${HOME}/.bash_functions"
-[ -r "${HOME}/.bash_aliases" ] && [ -f "${HOME}/.bash_aliases" ] && source "${HOME}/.bash_aliases"
-[ -r "${HOME}/.bash_completion" ] && [ -f "${HOME}/.bash_completion" ] && source "${HOME}/.bash_completion"
+# INFO: source all appropriate shell files
+bash_files="exports functions aliases completion"
+
+for bash_file in $bash_files
+do
+  # Create filenames
+  file=".bash_${bash_file}"
+  file_work=${file}_work
+
+  # Create file paths
+  file_path="${HOME}/${file}"
+  file_work_path="${HOME}/${file_work}"
+
+  # Source files; if they exist
+  [ -r "${file_path}" ] && [ -f "${file_path}" ] && source "${file_path}"
+  [ -r "${file_work_path}" ] && [ -f "${file_work_path}" ] && source "${file_work_path}"
+done
 
 # Check if NVM exists then source it
 [ -s "${NVM_INSTALL_DIR}/nvm.sh" ] && source "${NVM_INSTALL_DIR}/nvm.sh"  # This loads nvm
