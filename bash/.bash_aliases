@@ -112,10 +112,15 @@ alias copull="checkout_pull"
 alias gdp="fuzzy_git_diff_pick"
 alias wbp="git branch -vv | ipt -u | cut -d ' ' -f 1 | xargs git checkout"
 alias gstash="git stash list"
+alias gst="gstash"
 alias gstashapply="git stash list | ipt -u | cut -d ':' -f 1 | xargs git stash apply --index"
 alias gstasha="gstashapply"
+alias gsta="gstashapply"
 alias gstashshow="git stash list | ipt -u | cut -d ':' -f 1 | xargs git stash show -p"
 alias gstashs="gstashshow"
+alias gsts="gstashshow"
+alias gstashdrop="git stash list | ipt -u | cut -d ':' -f 1 | xargs git stash drop"
+alias gstashd="gstashdrop"
 
 # Docker
 alias d=docker
