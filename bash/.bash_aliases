@@ -2,6 +2,9 @@
 
 # Set personal aliases, overriding those provided by framework or bash_profile
 
+# NOTE: If autocomplete is needed on an alias, add that alias to
+# /usr/local/etc/bash_completion.d/complete-alias
+
 # TERMINAL IMPROVEMENT CONFIGS
 COMMON_FLAGS="--color=auto --group-directories-first"
 alias ls='gls -ap $COMMON_FLAGS'
