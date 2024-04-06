@@ -19,14 +19,3 @@ if [ -f "${HOMEBREW_PREFIX}/opt/bash-git-prompt/share/gitprompt.sh" ]; then
     __GIT_PROMPT_DIR="${HOMEBREW_PREFIX}/opt/bash-git-prompt/share"
     source "${HOMEBREW_PREFIX}/opt/bash-git-prompt/share/gitprompt.sh"
 fi
-
-# # SSH keys
-# eval $(ssh-agent -s)
-# CURRENT_KEYS=$(ssh-add -l | cut -d ' ' -f 3 | cut -d '/' -f 5)
-
-# [ ${CURRENT_KEYS} =~ (^| )$x($| ) ] &&
-# ssh-add -K ${HOME}/.ssh/id_rsa
-# ssh-add -K ${HOME}/.ssh/github_rsa
-
-# Load iterm2 integration script
-# test -e "${HOME}/.iterm2_shell_integration.sh" && source "${HOME}/.iterm2_shell_integration.sh"
