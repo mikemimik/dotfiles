@@ -7,3 +7,6 @@
 [submodule "apps/complete-alias"]
 	path = complete-alias
 	url = git@github.com:cykerway/complete-alias.git
+[submodule "okta"]
+	path = okta
+	url = git@github.com:mikemimik/dotfiles-okta.git
