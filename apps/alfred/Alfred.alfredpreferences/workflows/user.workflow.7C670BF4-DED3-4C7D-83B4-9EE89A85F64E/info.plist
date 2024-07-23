@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>de.jmeischner.bear-templates</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>1280523C-82E9-4A14-8849-D6305E787233</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F2053454-10F3-4CDC-90A3-6B481321AD93</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>141A1F5B-8D76-494E-9B97-EAC28723F60E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A5E8086B-C15B-489C-8885-E36282558D46</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>56F41054-A04C-4198-BC13-179EED4F9DDC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>141A1F5B-8D76-494E-9B97-EAC28723F60E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>6419B8BF-A306-43E7-8575-F61357669D89</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>1280523C-82E9-4A14-8849-D6305E787233</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A5E8086B-C15B-489C-8885-E36282558D46</key>
+		<array/>
+		<key>F2053454-10F3-4CDC-90A3-6B481321AD93</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>56F41054-A04C-4198-BC13-179EED4F9DDC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Jan Meischner</string>
+	<key>description</key>
+	<string>Create Bear Notes from Markdown Templates</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Bear Templates</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>F2053454-10F3-4CDC-90A3-6B481321AD93</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>open bear://x-callback-url/create?text=$1</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>A5E8086B-C15B-489C-8885-E36282558D46</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>1</integer>
+				<key>script</key>
+				<string>cat "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>1280523C-82E9-4A14-8849-D6305E787233</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>import sys, urllib; 
+
+text = sys.argv[1]
+encoded_text = urllib.quote(text, safe='')
+
+print(encoded_text)</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>141A1F5B-8D76-494E-9B97-EAC28723F60E</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>2</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>bt</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>import os, json
+from os.path import expanduser, join, splitext
+
+basepath = join(expanduser("~"), os.getenv("bearTemplateDirectory"))
+files = os.listdir(basepath)
+
+filenames = []
+
+for file in files:
+	filenames.append({
+		'title': splitext(file)[0],
+		'arg': join(basepath, file)
+	})
+
+print(json.dumps({'items': filenames}))</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>from template</string>
+				<key>title</key>
+				<string>Create Bear Note</string>
+				<key>type</key>
+				<integer>3</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>6419B8BF-A306-43E7-8575-F61357669D89</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>json</key>
+				<string>{
+  "alfredworkflow" : {
+    "arg" : "{clipboard}",
+    "config" : {
+    },
+    "variables" : {
+    }
+  }
+}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.json</string>
+			<key>uid</key>
+			<string>56F41054-A04C-4198-BC13-179EED4F9DDC</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string># Alfred Bear Templates Workflow
+
+Workflow to create a bear note from a given template. These templates follow bear snippet syntax and can contain default alfred variables (e.g. {datetime}).
+
+The Templates live in the *bearTemplateDirectory* which is by default '~/.bear-templates' but can be changed by giving another path starting at the users home directory.
+
+# Change Notes
+## 1.0.1
+- exported the bearTemplateDirectory Variable, thanks to @deanishe and @RobinB</string>
+	<key>uidata</key>
+	<dict>
+		<key>1280523C-82E9-4A14-8849-D6305E787233</key>
+		<dict>
+			<key>note</key>
+			<string>Get template text</string>
+			<key>xpos</key>
+			<integer>220</integer>
+			<key>ypos</key>
+			<integer>90</integer>
+		</dict>
+		<key>141A1F5B-8D76-494E-9B97-EAC28723F60E</key>
+		<dict>
+			<key>note</key>
+			<string>Urlencode template text</string>
+			<key>xpos</key>
+			<integer>690</integer>
+			<key>ypos</key>
+			<integer>90</integer>
+		</dict>
+		<key>56F41054-A04C-4198-BC13-179EED4F9DDC</key>
+		<dict>
+			<key>note</key>
+			<string>Replace {query} with {clipboard}</string>
+			<key>xpos</key>
+			<integer>580</integer>
+			<key>ypos</key>
+			<integer>120</integer>
+		</dict>
+		<key>6419B8BF-A306-43E7-8575-F61357669D89</key>
+		<dict>
+			<key>note</key>
+			<string>Read all filenames in bear templates directory to get the suggestions</string>
+			<key>xpos</key>
+			<integer>40</integer>
+			<key>ypos</key>
+			<integer>90</integer>
+		</dict>
+		<key>A5E8086B-C15B-489C-8885-E36282558D46</key>
+		<dict>
+			<key>note</key>
+			<string>Create bear note from template</string>
+			<key>xpos</key>
+			<integer>875</integer>
+			<key>ypos</key>
+			<integer>90</integer>
+		</dict>
+		<key>F2053454-10F3-4CDC-90A3-6B481321AD93</key>
+		<dict>
+			<key>note</key>
+			<string>Replace all placeholders with alfred snippet logic</string>
+			<key>xpos</key>
+			<integer>400</integer>
+			<key>ypos</key>
+			<integer>90</integer>
+		</dict>
+	</dict>
+	<key>variables</key>
+	<dict>
+		<key>bearTemplateDirectory</key>
+		<string>.bear-templates</string>
+	</dict>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>1.0.1</string>
+	<key>webaddress</key>
+	<string>https://jmeischner.github.io</string>
+</dict>
+</plist>
