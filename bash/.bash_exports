@@ -47,6 +47,7 @@ export OPENFAAS_PREFIX="mperrotte"
 export KUBE_EDITOR="${HOMEBREW_PREFIX}/bin/nvim"
 export SHELL="${HOMEBREW_PREFIX}/bin/bash"
 export BASH_SILENCE_DEPRECATION_WARNING=1
+export DOTFILES="${HOME}/dotfiles"
 
 # CUSTOM PATH EXPORTS
 # RUBY_EXPORT="${HOMEBREW_PREFIX}/opt/ruby@2.7/bin"
@@ -69,6 +70,7 @@ prepend_path "${HOMEBREW_PREFIX}/opt/ruby/bin" # ruby binaries
 prepend_path "${HOME}/dotfiles/bin" # dotfile binaries
 prepend_path "${HOME}/repos/flutter/bin" # flutter binaries
 prepend_path "${GOPATH}/bin" # go binaries
+prepend_path "${HOMEBREW_PREFIX}/opt/redis@6.2/bin" # redis binaries
 # prepend_path "${HOMEBREW_PREFIX}/opt/qt/bin" # qt binaries
 # prepend_path "${HOME}/.krew/bin" # krew binaries
 
