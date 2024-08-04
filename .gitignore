@@ -2,3 +2,11 @@
 *.swp
 *.vim
 *.swo
+# INFO(nvm): ignoring working directories
+nvm/.nvm/versions/*
+nvm/.nvm/alias/*
+nvm/.nvm/.cache/*
+nvm/.nvm/nvm.sh
+nvm/.nvm/nvm-exec
+# INFO(tmux): ignoring working directories
+tmux/.config/tmux/plugins/*
