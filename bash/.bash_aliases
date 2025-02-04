@@ -124,7 +124,7 @@ alias gstashd="gstashdrop"
 
 # Docker
 alias d=docker
-alias dc=docker-compose
+alias dc="docker compose"
 alias dbash=docker_bash
 alias de=docker_exec
 alias dsr=docker_stop_and_remove
