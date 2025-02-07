@@ -3,7 +3,7 @@ save_to_clipboard = true
 
 # NOTE: this value is different on apple silicon
 [terminal]
-shell = "/usr/local/bin/bash"
+shell = "/opt/homebrew/bin/bash"
 
 [mouse]
 hide_when_typing = false
