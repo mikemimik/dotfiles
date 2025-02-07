@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>customSites</key>
+	<dict>
+		<key>4240E3FA-F2B5-47F0-AA7C-3EE486187993</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>npmjs</string>
+			<key>text</key>
+			<string>npmjs package search</string>
+			<key>url</key>
+			<string>https://www.npmjs.com/search?q={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>FD96F866-94D6-4531-B699-AAEBFB76EEE6</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>slab</string>
+			<key>text</key>
+			<string>slab document search</string>
+			<key>url</key>
+			<string>https://npmjs.slab.com/search?q={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

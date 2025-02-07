@@ -1,0 +1,20 @@
+[user]
+  email = mike@mikecorp.ca
+  name = Michael Perrotte
+
+[core]
+  pager = diff-so-fancy | less --tabs=4 -RFX
+  ; sshCommand = "ssh -i ~/.ssh/mperrotte-20190909 -F /dev/null"
+  editor = nvim
+
+[github]
+  user = mikemimik
+
+[color]
+  ui = true
+
+[color "status"]
+  changed = yellow
+
+[pull]
+	ff = only

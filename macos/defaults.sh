@@ -1,6 +1,8 @@
 #!/bin/bash
 
-#
+# INFO: For more information about macOS defaults visit the site below
+# - https://macos-defaults.com/
+
 # Reasonable set of macOS defaults. My sources:
 # - https://github.com/nicksp/dotfiles/blob/master/osx/set-defaults.sh
 # - https://github.com/mathiasbynens/dotfiles/blob/master/.macos
@@ -40,7 +42,9 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
 # Automatically quit printer app once the print jobs complete
-defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+# INFO: Seems to not be an application anymore
+# INFO: Possibly replaced by com.apple.printcenter
+# defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
 # Set Help Viewer windows to non-floating mode
 defaults write com.apple.helpviewer DevMode -bool true
@@ -49,10 +53,12 @@ defaults write com.apple.helpviewer DevMode -bool true
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 
 # Menu bar: show battery percentage
-defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+# INFO: 'com.apple.menuextra.battery' does not exist
+# defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
 # Disable the “Are you sure you want to open this application?” dialog
-defaults write com.apple.LaunchServices LSQuarantine -bool false
+# INFO: 'com.apple.LaunchServices' does not exist
+# defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Disable smart dashes as they’re annoying when typing code
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
@@ -69,12 +75,13 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool false
+defaults write com.apple.AppleMultitouchTrackpad "Dragging" -bool true
+defaults write com.apple.AppleMultitouchTrackpad "Clicking" -bool true
 
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
-defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
 
 # Disable press-and-hold for keys in favor of key repeat.
 defaults write -g ApplePressAndHoldEnabled -bool false
@@ -88,7 +95,7 @@ defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # Turn off mouse acceleration
-defaults write NSGlobalDomain com.apple.mouse.scaling -1
+defaults write NSGlobalDomain com.apple.mouse.scaling -float "-1"
 
 # NOTE(mperrotte): this doesn't seem to work
 # Use scroll gesture with the Cmd (⌘) modifier key to zoom
@@ -109,10 +116,11 @@ defaults write com.apple.screencapture type -string "png"
 
 # Enable subpixel font rendering on non-Apple LCDs
 # Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
-defaults write NSGlobalDomain AppleFontSmoothing -int 1
+# INFO: doesn't seem to be a thing anymore
+# defaults write NSGlobalDomain AppleFontSmoothing -int 1
 
 # Enable HiDPI display modes (requires restart)
-sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+# sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
 ###############################################################################
 # Finder                                                                      #
@@ -165,10 +173,11 @@ defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 ###############################################################################
 
 # iTerm2: Don’t display the annoying prompt when quitting iTerm
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+# INFO: no longer use iTerm2
+# defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 # TextEdit: Set plain text as default format in TextEdit
-defaults write com.apple.TextEdit RichText -int 0
+defaults write com.apple.TextEdit RichText -bool false
 
 ###############################################################################
 # Dock                                                                        #
@@ -188,7 +197,7 @@ defaults write com.apple.dock recent-apps -array
 # defaults write com.apple.dock launchanim -bool false
 
 # Set minimize animation to scale
-defaults write com.apple.dock mineffect scale
+defaults write com.apple.dock mineffect -string "scale"
 
 # Minimize windows into their application’s icon
 defaults write com.apple.dock minimize-to-application -bool true
@@ -209,30 +218,31 @@ defaults write com.apple.dock autohide -bool true
 # Power                                                                       #
 ###############################################################################
 
-# Set standby delay to 24 hours (default is 1 hour)
-sudo pmset -a standbydelay 86400
+# INFO: No not want to set these values in this script
+# # Set standby delay to 24 hours (default is 1 hour)
+# sudo pmset -a standbydelay 86400
 
-# Computer sleep: 60 min
-sudo pmset -b sleep 60 # Battery
-sudo pmset -c sleep 30 # Power Adapter
+# # Computer sleep: 60 min
+# sudo pmset -b sleep 60 # Battery
+# sudo pmset -c sleep 30 # Power Adapter
 
-# Display sleep: 60 min
-sudo pmset -b displaysleep 60 # Battery
-sudo pmset -c displaysleep 60 # Power Adapter
+# # Display sleep: 60 min
+# sudo pmset -b displaysleep 60 # Battery
+# sudo pmset -c displaysleep 60 # Power Adapter
 
-# Put the hard disk(s) to sleep when possible: 60 min
-sudo pmset -b disksleep 60 # Battery
-sudo pmset -c disksleep 60 # Power Adapter
+# # Put the hard disk(s) to sleep when possible: 60 min
+# sudo pmset -b disksleep 60 # Battery
+# sudo pmset -c disksleep 60 # Power Adapter
 
-# Slightly dim the display when using this power source
-sudo pmset -b lessbright 1
+# # Slightly dim the display when using this power source
+# sudo pmset -b lessbright 1
 
-# Automatically reduce brightness before display goes to sleep
-sudo pmset -b halfdim 1 # Battery
-sudo pmset -c halfdim 1 # Power Adapter
+# # Automatically reduce brightness before display goes to sleep
+# sudo pmset -b halfdim 1 # Battery
+# sudo pmset -c halfdim 1 # Power Adapter
 
-# Wake for network access
-sudo pmset -c womp 0
+# # Wake for network access
+# sudo pmset -c womp 0
 
 ###############################################################################
 # Do some clean up work.                                                      #

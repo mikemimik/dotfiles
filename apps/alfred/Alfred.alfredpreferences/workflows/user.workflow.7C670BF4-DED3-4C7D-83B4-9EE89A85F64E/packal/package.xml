@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>Bear Templates</name>
+  <version>1.0.1</version>
+  <bundle>de.jmeischner.bear-templates</bundle>
+  <updated>1570872044</updated>
+  <file>bear_templates.alfredworkflow</file>
+</workflow>

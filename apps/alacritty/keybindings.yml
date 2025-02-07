@@ -1,5 +1,0 @@
-key_bindings:
-  - { key: K,              mods: Command, mode: ~Vi|~Search, chars: "\x0c"                 }
-  - { key: K,              mods: Command, mode: ~Vi|~Search, action: ClearHistory          }
-  - { key: Left,           mods: Command, mode: AppCursor,   chars: "\x1bOH"               } # Home
-  - { key: Right,          mods: Command, mode: AppCursor,   chars: "\x1bOF"               } # End

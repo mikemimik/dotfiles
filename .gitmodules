@@ -1,9 +1,12 @@
 [submodule "apps/hammerspoon/Spoons/Hyper.spoon"]
-	path = apps/hammerspoon/Spoons/Hyper.spoon
+	path = hammerspoon/.hammerspoon/Spoons/Hyper.spoon
 	url = git@github.com:evantravers/Hyper.spoon.git
 [submodule "apps/hammerspoon/Spoons/WindowManager.spoon"]
-	path = apps/hammerspoon/Spoons/WindowManager.spoon
+	path = hammerspoon/.hammerspoon/Spoons/WindowManager.spoon
 	url = git@github.com:mikemimik/WindowManager.spoon.git
 [submodule "apps/complete-alias"]
-	path = apps/complete-alias
+	path = complete-alias
 	url = git@github.com:cykerway/complete-alias.git
+[submodule "okta"]
+	path = okta
+	url = git@github.com:mikemimik/dotfiles-okta.git

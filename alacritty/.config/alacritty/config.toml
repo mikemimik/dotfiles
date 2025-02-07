@@ -1,0 +1,22 @@
+[selection]
+save_to_clipboard = true
+
+# NOTE: this value is different on apple silicon
+[terminal]
+shell = "/opt/homebrew/bin/bash"
+
+[mouse]
+hide_when_typing = false
+
+[env]
+TERM = "screen-256color"
+
+[[hints.enabled]]
+binding = { key = "O", mods = "Control|Shift" }
+command = "open"
+hyperlinks = true
+mouse.enabled = true
+mouse.mods = "Command"
+post_processing = true
+persist = false
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"

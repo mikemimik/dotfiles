@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.orionsbelt.slack-status</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>0F514892-D8C7-491F-8406-E423C35E513C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C26F75BB-4738-4600-BC6B-4F1D7033544C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>4EB17127-4F27-4B9D-88E5-FFE14277EB0D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>DB6D0DF3-BCB1-420F-95E9-461ABFC4CA4D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>6EF58113-6EBB-48EE-B2EB-DD642E4B8852</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>C26F75BB-4738-4600-BC6B-4F1D7033544C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>5406F73F-0425-41C1-8638-A6B7F8B61559</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F4727D0F-9A2B-4623-9E80-F43D8FB81766</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>9ACFCF94-E34E-4451-B85E-9434F51A5A8D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>4EB17127-4F27-4B9D-88E5-FFE14277EB0D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C26F75BB-4738-4600-BC6B-4F1D7033544C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>ECF7E533-A1F4-4604-AF4F-043D7772312F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>DB6D0DF3-BCB1-420F-95E9-461ABFC4CA4D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>AE8AE6A0-6AC3-4E15-8E9D-EED64C0A4413</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>F4727D0F-9A2B-4623-9E80-F43D8FB81766</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9ACFCF94-E34E-4451-B85E-9434F51A5A8D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Michael Perrotte</string>
+	<key>description</key>
+	<string>Update slack status using statushooks.io</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Slack Status</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>#################
+#
+# Filter Query
+#
+#################
+
+query="$1"
+uri=""
+
+status=${!query}
+
+if [[ -z "${status}" ]]; then
+	uri="noop"
+else
+	uri="${api}?id=${status}"
+fi
+
+format_msg() {
+	output=$(echo "{}" | \
+		$(brew --prefix)/bin/jq \
+			-r \
+			-c \
+			--arg uri $uri \
+			--arg input $query \
+			'{ "alfredworkflow": { "arg": $uri, "variables": { "input": $input } } }'
+	)
+	echo "$output"
+}
+
+echo -n "$(format_msg)"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>9ACFCF94-E34E-4451-B85E-9434F51A5A8D</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>status</string>
+				<key>subtext</key>
+				<string>Enter a predefined status</string>
+				<key>text</key>
+				<string>Set Status</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>5406F73F-0425-41C1-8638-A6B7F8B61559</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>json</key>
+				<string>{
+  "alfredworkflow" : {
+    "arg" : "{query}",
+    "config" : {
+    },
+    "variables" : {
+      "api" : "https://api.statushook.cool/v1/prod/webhook/fire",
+      "away" : "9711f7d2-8290-11eb-8f57-5aabe7e38f61",
+      "focus" : "83581d16-8290-11eb-8f57-5aabe7e38f61",
+      "lunch" : "b53b5b68-8290-11eb-8f57-5aabe7e38f61",
+      "coffee" : "8dc7b1b4-81cb-11eb-b5c4-fe1d198ed213",
+      "clear" : "adc14b1a-81c6-11eb-b9da-aadb5b52766a",
+      "afk" : "6e71fac2-81c6-11eb-b9da-aadb5b52766a",
+      "sleep" : "231965c4-81cb-11eb-b5c4-fe1d198ed213",
+      "meeting" : "45d924b6-8291-11eb-8f57-5aabe7e38f61",
+      "dinner" : "7e58c776-07ae-11ed-a57f-2e3dceaa5100",
+      "pto": "4d4b9156-14e5-11ed-be54-be989efa4704",
+      "ooo": "35615d9a-b7e8-11ed-9449-0a40cb8a548a"
+    }
+  }
+}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.json</string>
+			<key>uid</key>
+			<string>F4727D0F-9A2B-4623-9E80-F43D8FB81766</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{var:error}</string>
+				<key>title</key>
+				<string>Stack Status</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>AE8AE6A0-6AC3-4E15-8E9D-EED64C0A4413</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>json</key>
+				<string>{
+  "alfredworkflow" : {
+    "config" : {
+    },
+    "arg" : "{query}",
+    "query" : "{query}",
+    "variables" : {
+      "error": "Invalid status: {var:input}"
+    }
+  }
+}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.json</string>
+			<key>uid</key>
+			<string>DB6D0DF3-BCB1-420F-95E9-461ABFC4CA4D</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>noop</string>
+						<key>outputlabel</key>
+						<string>bad input</string>
+						<key>uid</key>
+						<string>6EF58113-6EBB-48EE-B2EB-DD642E4B8852</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+				<key>hideelse</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>4EB17127-4F27-4B9D-88E5-FFE14277EB0D</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{var:input} status set</string>
+				<key>title</key>
+				<string>Slack Status</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>ECF7E533-A1F4-4604-AF4F-043D7772312F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>###############
+#
+# Send Request
+#
+###############
+
+uri="$1"
+
+make_request() {
+	uri=$1
+
+	result=$(curl -s -X POST "$uri")
+	echo "${result}"
+}
+
+response=$(make_request "${uri}")
+
+echo "response: ${response}"
+echo -n "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>request.sh</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>C26F75BB-4738-4600-BC6B-4F1D7033544C</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>'{query}', {allvars}</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>0F514892-D8C7-491F-8406-E423C35E513C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>0F514892-D8C7-491F-8406-E423C35E513C</key>
+		<dict>
+			<key>xpos</key>
+			<real>245</real>
+			<key>ypos</key>
+			<real>370</real>
+		</dict>
+		<key>4EB17127-4F27-4B9D-88E5-FFE14277EB0D</key>
+		<dict>
+			<key>xpos</key>
+			<real>495</real>
+			<key>ypos</key>
+			<real>220</real>
+		</dict>
+		<key>5406F73F-0425-41C1-8638-A6B7F8B61559</key>
+		<dict>
+			<key>xpos</key>
+			<real>30</real>
+			<key>ypos</key>
+			<real>55</real>
+		</dict>
+		<key>9ACFCF94-E34E-4451-B85E-9434F51A5A8D</key>
+		<dict>
+			<key>note</key>
+			<string>Filter Query</string>
+			<key>xpos</key>
+			<real>300</real>
+			<key>ypos</key>
+			<real>55</real>
+		</dict>
+		<key>AE8AE6A0-6AC3-4E15-8E9D-EED64C0A4413</key>
+		<dict>
+			<key>note</key>
+			<string>Notify: Error</string>
+			<key>xpos</key>
+			<real>840</real>
+			<key>ypos</key>
+			<real>185</real>
+		</dict>
+		<key>C26F75BB-4738-4600-BC6B-4F1D7033544C</key>
+		<dict>
+			<key>note</key>
+			<string>Send Request</string>
+			<key>xpos</key>
+			<real>650</real>
+			<key>ypos</key>
+			<real>345</real>
+		</dict>
+		<key>DB6D0DF3-BCB1-420F-95E9-461ABFC4CA4D</key>
+		<dict>
+			<key>xpos</key>
+			<real>685</real>
+			<key>ypos</key>
+			<real>215</real>
+		</dict>
+		<key>ECF7E533-A1F4-4604-AF4F-043D7772312F</key>
+		<dict>
+			<key>note</key>
+			<string>Notify: Success</string>
+			<key>xpos</key>
+			<real>840</real>
+			<key>ypos</key>
+			<real>345</real>
+		</dict>
+		<key>F4727D0F-9A2B-4623-9E80-F43D8FB81766</key>
+		<dict>
+			<key>note</key>
+			<string>Workflow Configuration</string>
+			<key>xpos</key>
+			<real>200</real>
+			<key>ypos</key>
+			<real>85</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string></string>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
