@@ -10,3 +10,5 @@ nvm/.nvm/nvm.sh
 nvm/.nvm/nvm-exec
 # INFO(tmux): ignoring working directories
 tmux/.config/tmux/plugins/*
+# INFO(karabiner): ignore automatic backups
+karabiner/.config/karabiner/automatic_backups/*
