@@ -15,7 +15,7 @@ xmap("<leader>p", '"*p') -- paste from system clipboard
 
 -- Move lines up and down
 nmap("<s-j>", ":m .+1<cr>==")
-nmap("<s-k>", ":m .-2<cr>==")
+nmap("<s-k>", ":m .-2<cr>==") -- this doesn't work; a plugin overwrites it
 vmap("<s-j>", ":m '>+1<cr>gv=gv")
 vmap("<s-k>", ":m '<-2<cr>gv=gv")
 
