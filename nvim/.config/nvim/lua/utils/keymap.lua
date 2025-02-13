@@ -14,4 +14,3 @@ M.xmap = bind("x")
 M.imap = bind("i")
 
 return M
-
