@@ -36,4 +36,3 @@ vim.opt.textwidth = 80
 vim.opt.signcolumn = "yes"
 vim.opt.termguicolors = true
 vim.opt.hlsearch = true
-
