@@ -1,5 +1,5 @@
 -- Entrypoint
-local inspect = require 'inspect'
+local inspect = require("inspect")
 
 -- Load Spoons
 WindowManager = hs.loadSpoon("WindowManager")
@@ -11,7 +11,7 @@ local usbWatcher = nil
 local delay = nil
 
 local function moveSpace(spaceNum)
-  return function ()
+  return function()
     local spaces = hs.spaces.spacesForScreen()
     hs.spaces.gotoSpace(spaces[spaceNum])
     hs.spaces.closeMissionControl()
@@ -24,10 +24,10 @@ local function setHotkeys()
   --  print("gridFrame:", hs.grid.getGridFrame(mainScreen))
   -- end)
 
-  hs.hotkey.bind({ "cmd", "shift", "," }, "/", function ()
+  hs.hotkey.bind({ "cmd", "shift", "," }, "/", function()
     hs.console.clearConsole()
   end)
-  hs.hotkey.bind({ "cmd", "shift", "," }, ".", function ()
+  hs.hotkey.bind({ "cmd", "shift", "," }, ".", function()
     hs.reload()
   end)
 
@@ -42,7 +42,7 @@ local function setScreenWatcher()
   local identifier = string.format("%sCallback", screenKey)
   local primaryScreen = hs.screen.primaryScreen()
   hs.settings.set(screenKey, primaryScreen:id())
-  hs.settings.watchKey(identifier, screenKey, function ()
+  hs.settings.watchKey(identifier, screenKey, function()
     hs.console.clearConsole()
     hs.reload()
   end)
@@ -78,11 +78,11 @@ WindowManager:bindHotKeys({})
 WindowManager:start()
 
 -- Hyper Config
-Hyper:bindHotKeys({hyperKey = {{}, "F19"}})
+Hyper:bindHotKeys({ hyperKey = { {}, "F19" } })
 
 Config = {}
 Config.applications = {
-  ["com.googlecode.iterm2"] = {
+  ["terminal"] = {
     bundleID = "org.alacritty",
     hyperKey = "k",
     tags = { "coding" },
@@ -90,7 +90,7 @@ Config.applications = {
       { nil, 1, hs.layout.maximized },
     },
   },
-  ["com.google.Chrome"] = {
+  ["chrome"] = {
     bundleID = "com.google.Chrome",
     hyperKey = "j",
     tags = { "browsers" },
@@ -99,12 +99,17 @@ Config.applications = {
       { "Confluence", 1, hs.layout.maximized },
     },
   },
-  ["org.mozilla.firefox"] = {
+  ["firefox"] = {
     bundleID = "org.mozilla.firefox",
     hyperKey = "f",
     tags = { "browsers" },
   },
-  ["com.tinyspeck.slackmacgap"] = {
+  ["safari"] = {
+    bundleID = "com.apple.Safari",
+    hyperKey = "s",
+    tags = { "browsers" },
+  },
+  ["slack"] = {
     bundleID = "com.tinyspeck.slackmacgap",
     hyperKey = "h",
     tags = { "distraction", "communication", "chat" },
@@ -113,49 +118,54 @@ Config.applications = {
       { nil, 2, hs.layout.maximized },
     },
   },
-  ["net.shinyfrog.bear"] = {
+  ["notion"] = {
     -- bundleID = "net.shinyfrog.bear",
     bundleID = "notion.id",
     hyperKey = "l",
     tags = { "planning" },
     layouts = {},
   },
-  ["us.zoom.xos"] = {
+  ["zoom"] = {
     bundleID = "us.zoom.xos",
     hyperKey = "y",
     tags = { "communication", "meetings" },
     layouts = {},
   },
-  ["com.spotify.client"] = {
+  ["spotify"] = {
     bundleID = "com.spotify.client",
     hyperKey = "p",
     tags = {},
     layouts = {},
   },
-  ["com.apple.MobileSMS"] = {
+  ["messages"] = {
     bundleID = "com.apple.MobileSMS",
     hyperKey = "m",
     tags = { "communication" },
   },
-  ["com.culturedcode.ThingsMac"] = {
+  ["todos"] = {
     bundleID = "com.culturedcode.ThingsMac",
     hyperKey = "t",
     tags = { "planning" },
   },
-  ["com.apple.Safari"] = {
-    bundleID = "com.apple.Safari",
-    hyperKey = "s",
-    tags = { "browsers" },
-  },
-  ["com.apple.iCal"] = {
+  ["calendar"] = {
     bundleID = "com.apple.iCal",
     hyperKey = "c",
     tags = { "planning", "meetings" },
   },
-  ["WhatsApp"] = {
+  ["whatsapp"] = {
     bundleID = "net.whatsapp.WhatsApp",
     hyperKey = "w",
     tags = { "communication" },
+  },
+  ["finder"] = {
+    bundleID = "com.apple.finder",
+    hyperKey = "0",
+    tags = { "file-manager" },
+  },
+  ["1password"] = {
+    bundleID = "com.1password.1password",
+    hyperKey = "1",
+    tags = { "password-manager" },
   },
 }
 
@@ -196,4 +206,4 @@ Hyper:bind({ "alt" }, "t", function()
 end)
 
 -- Loaded successfully!
-hs.alert.show('🔨🥄✅')
+hs.alert.show("🔨🥄✅")
