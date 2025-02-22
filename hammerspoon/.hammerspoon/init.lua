@@ -118,6 +118,12 @@ Config.applications = {
       { nil, 2, hs.layout.maximized },
     },
   },
+  ["bear"] = {
+    bundleID = "net.shinyfrog.bear",
+    hyperKey = "b",
+    tags = { "planning" },
+    layouts = {},
+  },
   ["notion"] = {
     -- bundleID = "net.shinyfrog.bear",
     bundleID = "notion.id",
