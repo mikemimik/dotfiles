@@ -51,6 +51,44 @@ function brew_cask() {
   brew "$1" --cask "$2"
 }
 
+newbrew() {
+  local operation
+
+  for arg in "$@"; do
+    if [[ "${arg}" == "--help" ]]; then
+      # INFO: bailout if there was a help flag
+      unset operation
+      break
+    fi
+
+    if [[ "${arg}" == "install" ||
+      "${arg}" == "uninstall" ||
+      "${arg}" == "remove" ||
+      "${arg}" == "rm" ]]; then
+      operation="${arg}"
+    fi
+  done
+
+  command brew ${@}
+
+  # INFO: if previous command failed; bail out
+  if [[ $? -ne 0 ]]; then
+    return
+  fi
+
+  if [[ ! -z ${operation} ]]; then
+    local string_args="$*"
+    command brew bundle dump --file="${DOTFILES}/Brewfile" --force
+    local current=$(pwd)
+    builtin cd "${DOTFILES}" >&/dev/null
+    git add Brewfile >&/dev/null
+    git commit -m "feat: update Brewfile [script]" -m "- feat: ${string_args}" >&/dev/null
+    git push origin "${GIT_BRANCH}" >&/dev/null
+    builtin cd "${current}" >&/dev/null
+    echo "[DOTFILES] Updated Brewfile"
+  fi
+}
+
 ########################################
 # Git
 ########################################
