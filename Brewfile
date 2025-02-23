@@ -1,3 +1,4 @@
+tap "homebrew/bundle"
 tap "homebrew/services"
 tap "mike-engel/jwt-cli"
 brew "argo"
@@ -8,14 +9,13 @@ brew "bash"
 brew "bash-completion@2"
 brew "bash-git-prompt"
 brew "bat"
+brew "btop"
 brew "libmpc"
 brew "gcc"
-brew "btop"
 brew "checkov"
 brew "colordiff"
 brew "conftest"
 brew "coreutils"
-brew "libidn2"
 brew "curl"
 brew "diff-so-fancy"
 brew "diffutils"
@@ -29,6 +29,7 @@ brew "gh"
 brew "git"
 brew "glow"
 brew "gnu-sed"
+brew "libidn2"
 brew "unbound"
 brew "gnutls"
 brew "go"
@@ -72,9 +73,11 @@ brew "tfsec"
 brew "the_silver_searcher"
 brew "tig"
 brew "tmux"
+brew "tpm"
 brew "tree"
 brew "tz"
 brew "viddy"
+brew "virtualenv"
 brew "vit"
 brew "watch"
 brew "wifi-password"
@@ -96,7 +99,10 @@ cask "iterm2"
 cask "itsycal"
 cask "kap"
 cask "karabiner-elements"
+cask "logi-options+"
 cask "ngrok"
+cask "notion"
+cask "obs"
 cask "obsidian"
 cask "shortcat"
 cask "spotify"
@@ -107,11 +113,16 @@ cask "visual-studio-code"
 cask "whatsapp"
 mas "1Blocker", id: 1365531024
 mas "1Password for Safari", id: 1569813296
+mas "Adobe Lightroom", id: 1451544217
 mas "Bear", id: 1091189122
 mas "Clocker", id: 1056643111
 mas "Dark Reader for Safari", id: 1438243180
-mas "Grammarly for Safari", id: 1462114288
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
 mas "JSONPeep", id: 1458969831
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
 mas "Things", id: 904280696
-mas "Vimari", id: 1480933944
 mas "Xcode", id: 497799835
+vscode "vscodevim.vim"
