@@ -78,13 +78,31 @@ newbrew() {
 
   if [[ ! -z ${operation} ]]; then
     local string_args="$*"
+
+    # INFO: update Brewfile
     command brew bundle dump --file="${DOTFILES}/Brewfile" --force
+
+    # INFO: save current working directory
     local current=$(pwd)
+
+    # INFO: change directory to dotfiles
     builtin cd "${DOTFILES}" >&/dev/null
+
+    # INFO: get current branch
+    local branch=$(git rev-parse --abbrev-ref HEAD)
+
+    # INFO: add updated Brewfile
     git add Brewfile >&/dev/null
+
+    # INFO: create commit for update to Brewfile
     git commit -m "feat: update Brewfile [script]" -m "- feat: ${string_args}" >&/dev/null
-    git push origin "${GIT_BRANCH}" >&/dev/null
+
+    # INFO: push changes to current branch
+    git push origin "${branch}" >&/dev/null
+
+    # INFO: change directory back to previous location
     builtin cd "${current}" >&/dev/null
+
     echo "[DOTFILES] Updated Brewfile"
   fi
 }
