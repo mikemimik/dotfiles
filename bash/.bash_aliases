@@ -25,6 +25,7 @@ alias cat='bat'
 alias getloc="pwd | pbcopy"
 alias lpath='echo $PATH | tr ":" "\n"'
 alias hist="fuzzy_history"
+alias where='which'
 
 alias vim="nvim"
 
@@ -33,9 +34,8 @@ alias hello="ping www.google.ca"
 
 # Brew / Cask aliases
 alias cask='brew_cask'
-alias where='which'
-alias brwe='brew' #typoes
 alias brewdeps=brew_dep_graph
+alias brwe='brew' #typoes
 alias brew=newbrew
 
 # Dotfiles
@@ -86,27 +86,27 @@ alias kc="kubectl config current-context"
 alias ek="eksctl"
 
 # Git aliases
-alias gs="git status"               # (gs) git staths shorthand
-alias gsc="clear && git status"     # (gsc) git status and clear shorthand
-alias gc="git commit -m"            # (gc) git commit shorthand
-alias gca="git commit --amend"      # (gca) ammend git commit shorthand
-alias ga="git add"                  # (ga) git add shorthand
-alias gd="fuzzy_git_diff"                 # (gd) git diff shorthand
-alias gfp="first_git_push"              # (gfp) git first push
-alias gr="git restore"              # (gr) git restore
-alias grs="git restore --staged"    # (grs) git restore staged
-alias fetch="git fetch"             # (fetch) fetch shorthand
-alias prune="git fetch --prune"     # (prune) fetch and prune shorthand
-alias pull="git pull --ff-only"     # (pull) pull shorthand
-alias fpp="fetch && prune && pull"  # (fpp) fetch, prune, pull shorthand
-alias fp="fetch && prune"           # (fp) fetch and prune shorthand
-alias co="git checkout"             # (co) checkout shorthand
-alias unstage="git reset HEAD --"   # (unstage) work/file
-alias gl="git log -n 10 --oneline"  # (gl) one line log
+alias gs="git status"                                                              # (gs) git staths shorthand
+alias gsc="clear && git status"                                                    # (gsc) git status and clear shorthand
+alias gc="git commit -m"                                                           # (gc) git commit shorthand
+alias gca="git commit --amend"                                                     # (gca) ammend git commit shorthand
+alias ga="git add"                                                                 # (ga) git add shorthand
+alias gd="fuzzy_git_diff"                                                          # (gd) git diff shorthand
+alias gfp="first_git_push"                                                         # (gfp) git first push
+alias gr="git restore"                                                             # (gr) git restore
+alias grs="git restore --staged"                                                   # (grs) git restore staged
+alias fetch="git fetch"                                                            # (fetch) fetch shorthand
+alias prune="git fetch --prune"                                                    # (prune) fetch and prune shorthand
+alias pull="git pull --ff-only"                                                    # (pull) pull shorthand
+alias fpp="fetch && prune && pull"                                                 # (fpp) fetch, prune, pull shorthand
+alias fp="fetch && prune"                                                          # (fp) fetch and prune shorthand
+alias co="git checkout"                                                            # (co) checkout shorthand
+alias unstage="git reset HEAD --"                                                  # (unstage) work/file
+alias gl="git log -n 10 --oneline"                                                 # (gl) one line log
 alias glf="git log -n 10 --pretty='format:%C(auto)%h %<(1)%C(cyan)%an %C(auto)%s'" # (gl) fancy one line log
 alias glp="fuzzy_git_log"
 alias gitback="git rebase -i HEAD~15" # interactive rebase last 15 commits
-alias wb="git branch -vv"           # (wb) which branch
+alias wb="git branch -vv"             # (wb) which branch
 # GitHub Specific
 alias copull="checkout_pull"
 ## Git interactive aliases
