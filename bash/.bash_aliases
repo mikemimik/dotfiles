@@ -36,6 +36,7 @@ alias cask='brew_cask'
 alias where='which'
 alias brwe='brew' #typoes
 alias brewdeps=brew_dep_graph
+alias brew=newbrew
 
 # Dotfiles
 alias dotfiles=dotfiles
