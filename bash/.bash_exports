@@ -36,6 +36,7 @@ export KUBEVAL_SCHEMA_LOCATION="https://raw.githubusercontent.com/yannh/kubernet
 export EDITOR="${HOMEBREW_PREFIX}/bin/nvim"
 export TMUX_STATUS_UPTIME_DISPLAY="short"
 export HOMEBREW_NO_AUTO_UPDATE=1
+export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 
 # TOOL ENVIRONMENT CONFIGS
 export GOPATH="$HOME/repos/go"
@@ -63,15 +64,15 @@ export DOTFILES="${HOME}/dotfiles"
 # ROOT_BIN_EXPORT="/bin"
 # ROOT_SBIN_EXPORT="/sbin"
 
-prepend_path "${HOMEBREW_PREFIX}/opt/grep/bin" # grep binaries
-prepend_path "${HOMEBREW_PREFIX}/opt/curl/bin" # curl binaries
+prepend_path "${HOMEBREW_PREFIX}/opt/grep/bin"          # grep binaries
+prepend_path "${HOMEBREW_PREFIX}/opt/curl/bin"          # curl binaries
 prepend_path "${HOMEBREW_PREFIX}/opt/postgresql@14/bin" # postgres binaries
-prepend_path "${HOMEBREW_PREFIX}/opt/openssl@1.1/bin" # openssl binaries
-prepend_path "${HOMEBREW_PREFIX}/opt/ruby/bin" # ruby binaries
-prepend_path "${HOME}/dotfiles/bin" # dotfile binaries
-prepend_path "${HOME}/repos/flutter/bin" # flutter binaries
-prepend_path "${GOPATH}/bin" # go binaries
-prepend_path "${HOMEBREW_PREFIX}/opt/redis@6.2/bin" # redis binaries
+prepend_path "${HOMEBREW_PREFIX}/opt/openssl@1.1/bin"   # openssl binaries
+prepend_path "${HOMEBREW_PREFIX}/opt/ruby/bin"          # ruby binaries
+prepend_path "${HOME}/dotfiles/bin"                     # dotfile binaries
+prepend_path "${HOME}/repos/flutter/bin"                # flutter binaries
+prepend_path "${GOPATH}/bin"                            # go binaries
+prepend_path "${HOMEBREW_PREFIX}/opt/redis@6.2/bin"     # redis binaries
 # prepend_path "${HOMEBREW_PREFIX}/opt/qt/bin" # qt binaries
 # prepend_path "${HOME}/.krew/bin" # krew binaries
 
