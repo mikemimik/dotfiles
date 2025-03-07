@@ -21,6 +21,9 @@ return {
         mappings = {
           ["<leader>v"] = "open_vsplit",
           ["<leader>x"] = "open_split",
+          -- INFO: same mappings used with telescope
+          ["<C-u>"] = "open_vsplit",
+          ["<C-i>"] = "open_split",
         },
       },
     },
