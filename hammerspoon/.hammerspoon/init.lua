@@ -173,6 +173,11 @@ Config.applications = {
     hyperKey = "1",
     tags = { "password-manager" },
   },
+  ["lightroom"] = {
+    bundleID = "com.adobe.mas.lightroomCC",
+    hyperKey = "v",
+    tags = { "photography" },
+  },
 }
 
 hs.fnutils.each(Config.applications, function(appConfig)
