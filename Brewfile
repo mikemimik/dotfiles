@@ -89,7 +89,7 @@ cask "alfred"
 cask "bartender"
 cask "coconutbattery"
 cask "discord"
-cask "docker"
+cask "docker-desktop"
 cask "dropbox"
 cask "google-chrome"
 cask "hammerspoon"
@@ -103,14 +103,15 @@ cask "ngrok"
 cask "notion"
 cask "obs"
 cask "obsidian"
-cask "shortcat"
+cask "slack"
 cask "spotify"
 cask "steam"
 cask "sublime-text"
 cask "tableplus"
-cask "todoist"
+cask "todoist-app"
 cask "visual-studio-code"
 cask "whatsapp"
+cask "zoom"
 mas "1Blocker", id: 1365531024
 mas "1Password for Safari", id: 1569813296
 mas "Adobe Lightroom", id: 1451544217
@@ -125,4 +126,5 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Things", id: 904280696
 mas "Xcode", id: 497799835
+vscode "mechatroner.rainbow-csv"
 vscode "vscodevim.vim"
