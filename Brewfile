@@ -86,6 +86,7 @@ cask "1password"
 cask "1password-cli"
 cask "alacritty"
 cask "alfred"
+cask "autodesk-fusion"
 cask "bartender"
 cask "coconutbattery"
 cask "discord"
@@ -127,5 +128,6 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Things", id: 904280696
 mas "Xcode", id: 497799835
+vscode "davidanson.vscode-markdownlint"
 vscode "mechatroner.rainbow-csv"
 vscode "vscodevim.vim"
