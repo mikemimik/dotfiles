@@ -42,7 +42,6 @@ brew "k9s"
 brew "kubernetes-cli", link: false
 brew "krew"
 brew "kubectx"
-brew "kubie"
 brew "kustomize"
 brew "lua-language-server"
 brew "luajit"
