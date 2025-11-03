@@ -83,6 +83,7 @@ cask "alacritty"
 cask "alfred"
 cask "autodesk-fusion"
 cask "bartender"
+cask "battle-net"
 cask "coconutbattery"
 cask "crossover"
 cask "discord"
@@ -118,7 +119,7 @@ mas "Clocker", id: 1056643111
 mas "Dark Reader for Safari", id: 1438243180
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
-mas "JSONPeep", id: 1458969831
+mas "JSON Peep", id: 1458969831
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
