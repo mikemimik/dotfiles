@@ -90,6 +90,7 @@ cask "crossover"
 cask "discord"
 cask "docker-desktop"
 cask "dropbox"
+cask "firefox"
 cask "google-chrome"
 cask "hammerspoon"
 cask "insomnia"
@@ -126,6 +127,7 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Things", id: 904280696
 mas "Xcode", id: 497799835
+vscode "anthropic.claude-code"
 vscode "davidanson.vscode-markdownlint"
 vscode "mechatroner.rainbow-csv"
 vscode "vscodevim.vim"
