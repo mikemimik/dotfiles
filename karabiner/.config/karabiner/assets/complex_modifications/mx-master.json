@@ -1,0 +1,35 @@
+{
+  "title": "5-MX Master 4",
+  "rules": [
+    {
+      "description": "[MX Master] Change button7 to mission control",
+      "manipulators": [
+        {
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "product_id": 45122,
+                  "vendor_id": 1133
+                }
+              ]
+            }
+          ],
+          "from": {
+            "pointing_button": "button7",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "mission_control"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}
