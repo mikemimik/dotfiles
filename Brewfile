@@ -55,8 +55,6 @@ brew "glow"
 brew "gnu-sed"
 # International domain name library (IDNA2008, Punycode and TR46)
 brew "libidn2"
-# Validating, recursive, caching DNS resolver
-brew "unbound"
 # GNU Transport Layer Security (TLS) Library
 brew "gnutls"
 # Open source programming language to build simple/reliable/efficient software
@@ -139,8 +137,12 @@ brew "tmux"
 brew "tpm"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Parser generator tool
+brew "tree-sitter-cli"
 # CLI time zone visualizer
 brew "tz"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
 # Modern watch command
 brew "viddy"
 # Tool for creating isolated virtual python environments
