@@ -181,6 +181,18 @@ function fuzzy_git_log() {
 
 }
 
+function fuzzy_git_stash() {
+  git stash list |
+    fzf \
+      --exit-0 \
+      --ansi \
+      --header="CTRL-C or ESC to quit" \
+      --header-first \
+      --preview-window="top,70%" \
+      --preview="git stash show -p $@" \
+      --layout="reverse"
+}
+
 function checkout_pull() {
   local remote
   local pullNum
