@@ -162,3 +162,7 @@ alias tml="tmux list-sessions"
 alias tma=tmux_attach_session
 alias tmd=tmux_delete_session
 alias tmcs=tmux_create_session
+
+# Node Development
+alias ls_nodemodules="find . -name 'node_modules' -type d -prune"
+alias rm_nodemodules="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
