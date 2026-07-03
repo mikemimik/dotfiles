@@ -107,6 +107,7 @@ alias glf="git log -n 10 --pretty='format:%C(auto)%h %<(1)%C(cyan)%an %C(auto)%s
 alias glp="fuzzy_git_log"
 alias gitback="git rebase -i HEAD~15" # interactive rebase last 15 commits
 alias wb="git branch -vv"             # (wb) which branch
+alias gwt="git worktree"
 # GitHub Specific
 alias copull="checkout_pull"
 ## Git interactive aliases
