@@ -9,7 +9,7 @@ return {
       },
       {
         "\\\\",
-        "<cmd>FzfLua buffers<cr>",
+        LazyVim.pick("buffers"),
         desc = "Switch Buffer",
       },
     },
@@ -123,16 +123,26 @@ return {
           actions = {
             ["ctrl-u"] = actions.file_vsplit,
             ["ctrl-i"] = actions.file_split,
-            ["alt-i"] = { actions.toggle_ignore },
-            ["alt-h"] = { actions.toggle_hidden },
+            -- ["alt-i"] = { actions.toggle_ignore },
+            ["ctrl-\\"] = { actions.toggle_ignore },
+            -- ["alt-h"] = { actions.toggle_hidden },
+            ["ctrl-/"] = { actions.toggle_hidden },
           },
         },
         grep = {
           actions = {
             ["ctrl-u"] = actions.file_vsplit,
             ["ctrl-i"] = actions.file_split,
-            ["alt-i"] = { actions.toggle_ignore },
-            ["alt-h"] = { actions.toggle_hidden },
+            -- ["alt-i"] = { actions.toggle_ignore },
+            ["ctrl-\\"] = { actions.toggle_ignore },
+            -- ["alt-h"] = { actions.toggle_hidden },
+            ["ctrl-/"] = { actions.toggle_hidden },
+          },
+        },
+        buffers = {
+          actions = {
+            ["ctrl-u"] = actions.file_vsplit,
+            ["ctrl-i"] = actions.file_split,
           },
         },
         lsp = {
