@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 
+# Noop out of this if we're not in an interactive shell
+[[ $- == *i* ]] || return
+
 # Add completion for commands
 HOMEBREW_PREFIX=$(brew --prefix)
-if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
-then
+if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
   source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
 fi
 
 if type brew &>/dev/null; then
-  for COMPLETION in "$HOMEBREW_PREFIX"/etc/bash_completion.d/*
-  do
+  for COMPLETION in "$HOMEBREW_PREFIX"/etc/bash_completion.d/*; do
     [[ -f $COMPLETION ]] && source "$COMPLETION"
   done
 fi
 
-if [[ -f ${HOME}/dotfiles/complete-alias/complete_alias ]]
-then
+if [[ -f ${HOME}/dotfiles/complete-alias/complete_alias ]]; then
   source "${HOME}/dotfiles/complete-alias/complete_alias"
 
   complete -F _complete_alias k
