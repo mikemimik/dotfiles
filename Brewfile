@@ -187,6 +187,8 @@ cask "google-chrome"
 cask "hammerspoon"
 # HTTP and GraphQL Client
 cask "insomnia"
+# Frontend application for the Buttplug sex toy control library
+cask "intiface-central"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Menu bar calendar
