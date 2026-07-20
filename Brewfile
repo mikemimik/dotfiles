@@ -197,6 +197,8 @@ cask "itsycal"
 cask "kap"
 # Keyboard customiser
 cask "karabiner-elements"
+# Tool to prevent the system from going into sleep mode
+cask "keepingyouawake"
 # Software for Logitech devices
 cask "logi-options+"
 # Reverse proxy, secure introspectable tunnels to localhost
