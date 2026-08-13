@@ -223,6 +223,8 @@ cask "steam"
 cask "sublime-text"
 # Native GUI tool for relational databases
 cask "tableplus"
+# To-do & task list manager
+cask "ticktick"
 # To-do list
 cask "todoist-app"
 # Open-source code editor
