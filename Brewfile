@@ -73,8 +73,6 @@ brew "jless"
 brew "jq"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "k9s"
-# Kubernetes command-line interface
-brew "kubernetes-cli", link: false
 # Package manager for kubectl plugins
 brew "krew"
 # Tool that can switch between kubectl contexts easily and create aliases
@@ -141,8 +139,6 @@ brew "tz"
 brew "unbound"
 # Tool for creating isolated virtual python environments
 brew "virtualenv"
-# Full-screen terminal interface for Taskwarrior
-brew "vit"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
