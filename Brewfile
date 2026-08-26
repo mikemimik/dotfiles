@@ -139,8 +139,6 @@ brew "tree-sitter-cli"
 brew "tz"
 # Validating, recursive, caching DNS resolver
 brew "unbound"
-# Modern watch command
-brew "viddy"
 # Tool for creating isolated virtual python environments
 brew "virtualenv"
 # Full-screen terminal interface for Taskwarrior
