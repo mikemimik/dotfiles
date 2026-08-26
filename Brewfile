@@ -123,8 +123,6 @@ brew "taskwarrior-tui"
 brew "terrascan"
 # Linter for Terraform files
 brew "tflint"
-# Static analysis security scanner for your terraform code
-brew "tfsec"
 # Code-search similar to ack
 brew "the_silver_searcher"
 # Text interface for Git repositories
