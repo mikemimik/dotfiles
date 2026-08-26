@@ -105,8 +105,6 @@ brew "neovim"
 brew "nvm"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
-# Object-relational database system
-brew "postgresql@14"
 # Show ps output as a tree
 brew "pstree"
 # Search tool like grep and The Silver Searcher
