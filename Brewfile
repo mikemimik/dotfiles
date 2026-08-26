@@ -15,12 +15,6 @@ brew "bash-git-prompt"
 brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
-# C library for the arithmetic of high precision complex numbers
-brew "libmpc"
-# GNU compiler collection
-brew "gcc"
-# Prevent cloud misconfigurations during build-time for IaC tools
-brew "checkov"
 # Color-highlighted diff(1) output
 brew "colordiff"
 # Test your configuration files using Open Policy Agent
@@ -45,6 +39,10 @@ brew "findutils"
 brew "fzf"
 # GNU awk utility
 brew "gawk"
+# C library for the arithmetic of high precision complex numbers
+brew "libmpc"
+# GNU compiler collection
+brew "gcc"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
