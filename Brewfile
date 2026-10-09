@@ -157,8 +157,6 @@ cask "autodesk-fusion"
 cask "bartender"
 # Online gaming platform
 cask "battle-net"
-# Terminal-based AI coding assistant
-cask "claude-code"
 # Tool to show live information about the batteries in various devices
 cask "coconutbattery"
 # Tool to run Windows software
@@ -238,7 +236,6 @@ mas "Xcode", id: 497799835
 vscode "anthropic.claude-code"
 vscode "davidanson.vscode-markdownlint"
 vscode "esbenp.prettier-vscode"
-vscode "github.copilot-chat"
 vscode "mechatroner.rainbow-csv"
 vscode "vscodevim.vim"
 npm "@fsouza/prettierd"
