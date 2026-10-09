@@ -157,6 +157,8 @@ cask "autodesk-fusion"
 cask "bartender"
 # Online gaming platform
 cask "battle-net"
+# Terminal-based AI coding assistant
+cask "claude-code@latest"
 # Tool to show live information about the batteries in various devices
 cask "coconutbattery"
 # Tool to run Windows software
