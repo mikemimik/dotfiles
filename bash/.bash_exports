@@ -27,6 +27,9 @@ elif [[ -f "/usr/local/bin/brew" ]]; then
 fi
 
 # ENVIRONMENT CONFIGS
+# Locale: set LANG so bash-completion's fallback (${LC_ALL:-${LC_CTYPE:-${LANG-}}}) resolves
+# to a valid locale. Without it, new interactive shells warn: setlocale: cannot change locale ()
+export LANG=en_CA.UTF-8
 export CLICOLOR=1
 # NOTE(mperrotte): these color sets are the same; BSD vs GNU
 export LSCOLORS=ExFxcxdxBxegedabagacad
