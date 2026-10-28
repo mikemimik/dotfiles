@@ -189,6 +189,8 @@ cask "kap"
 cask "karabiner-elements"
 # Tool to prevent the system from going into sleep mode
 cask "keepingyouawake"
+# Discover, download, and run local LLMs
+cask "lm-studio"
 # Software for Logitech devices
 cask "logi-options+"
 # Reverse proxy, secure introspectable tunnels to localhost
@@ -241,6 +243,7 @@ vscode "esbenp.prettier-vscode"
 vscode "mechatroner.rainbow-csv"
 vscode "vscodevim.vim"
 npm "@fsouza/prettierd"
+npm "claude-code-for-everyone"
 npm "corepack"
 npm "ipt"
 npm "npmrc"
