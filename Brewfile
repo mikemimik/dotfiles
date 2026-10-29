@@ -205,6 +205,8 @@ cask "obsidian"
 cask "orbstack"
 # App that enables mouse-free UI interaction
 cask "shortcat"
+# Team communication and collaboration software
+cask "slack"
 # Music streaming service
 cask "spotify"
 # Video game digital distribution service
