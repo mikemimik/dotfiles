@@ -201,6 +201,8 @@ cask "notion"
 cask "obs"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Replacement for Docker Desktop
+cask "orbstack"
 # App that enables mouse-free UI interaction
 cask "shortcat"
 # Team communication and collaboration software
